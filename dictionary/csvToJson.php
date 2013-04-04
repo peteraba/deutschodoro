@@ -52,6 +52,8 @@ while (($data = fgetcsv($handle, 1000, ";")) !== false) {
 }
 fclose($handle);
 
-file_put_contents(__DIR__ . '/dict.json', json_encode($dictionary));
+$content = 'var dict = ' . json_encode($dictionary) . ";\n";
+
+file_put_contents(__DIR__ . '/dict.js', $content);
 
 echo "\n";
