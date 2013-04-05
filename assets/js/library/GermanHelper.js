@@ -1,5 +1,5 @@
 var GermanHelper = (function($, _){
-    var modify, umlauter;
+    var modify, umlauter, find;
 
     umlauter = function(base){
         var indexToChange, charToChange, newChar, result;
@@ -48,7 +48,7 @@ var GermanHelper = (function($, _){
         return result;
     };
 
-    modify = function(base, modified){
+    modify = function(base, modified) {
         if (modified == '' || modified == '–') {
             return false;
         }
@@ -62,7 +62,25 @@ var GermanHelper = (function($, _){
         return modified.substr(0, 1);
     };
 
+    find = function(dict, searchData) {
+        var result = false;
+
+        _.each(dict, function(word) {
+            var found = true;
+
+            _.each(searchData, function(searchOption) {
+                if (typeof searchOption != '') {
+                    throw new Exception('Search option is not string: ' + searchOption);
+                }
+
+            });
+        });
+
+        return result;
+    };
+
     return {
-        modify: modify
+        modify: modify,
+        find: find
     };
 })(jQuery, _);

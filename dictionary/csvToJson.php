@@ -60,7 +60,17 @@ $dictionary = array();
 while (($data = fgetcsv($handle, 1000, ";")) !== false) {
     $num = count($data);
     for ($c = 0; $c < $num; $c++) {
-        $data[$c] = explode(",", $data[$c]);
+        if (strpos($data[$c], ',')===false) {
+            $data[$c] = trim($data[$c]);
+        } else {
+            $data[$c] = explode(",", $data[$c]);
+            foreach ($data[$c] as $key => $value) {
+                $data[$c][$key] = trim($value);
+                if (empty($data[$c][$key])) {
+                    unset($data[$c][$key]);
+                }
+            }
+        }
     }
     $dictionary[] = getRow($data);
 }
