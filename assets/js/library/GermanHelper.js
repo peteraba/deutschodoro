@@ -1,4 +1,4 @@
-var DictionaryHelper = (function($, _){
+var GermanHelper = (function($, _){
     var modify, umlauter;
 
     umlauter = function(base){
@@ -7,8 +7,10 @@ var DictionaryHelper = (function($, _){
         indexToChange = Math.max(
             base.lastIndexOf('a'),
             base.lastIndexOf('o'),
+            base.lastIndexOf('u'),
             base.lastIndexOf('A'),
-            base.lastIndexOf('O')
+            base.lastIndexOf('O'),
+            base.lastIndexOf('U')
         );
 
         charToChange = base.substr(indexToChange, 1);
@@ -20,11 +22,17 @@ var DictionaryHelper = (function($, _){
             case 'o':
                 newChar = 'ö';
                 break;
+            case 'u':
+                newChar = 'ü';
+                break;
             case 'A':
                 newChar = 'Ä';
                 break;
             case 'O':
                 newChar = 'Ö';
+                break;
+            case 'U':
+                newChar = 'Ü';
                 break;
             default:
                 newChar = '';

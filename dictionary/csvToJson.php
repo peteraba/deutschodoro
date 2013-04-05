@@ -16,8 +16,9 @@ function getRow(array $data)
                 'genitive' => $data[2],
                 'plural' => $data[3],
                 'type' => 'noun',
-                'level' => $data[5],
-                'english' => $data[6],
+                'category' => $data[5],
+                'level' => $data[6],
+                'english' => $data[7]
             );
             break;
         case 'adj':
@@ -27,16 +28,29 @@ function getRow(array $data)
                 'comparative' => $data[2],
                 'superlative' => $data[3],
                 'type' => 'adj',
-                'level' => $data[5],
-                'english' => $data[6],
+                'category' => $data[5],
+                'level' => $data[6],
+                'english' => $data[7]
             );
             break;
+        case 'verb':
+            $row = array(
+                'info' => $data[0],
+                'german' => $data[1],
+                'present' => $data[2],
+                'past' => $data[3],
+                'type' => 'verb',
+                'category' => $data[5],
+                'level' => $data[6],
+                'english' => $data[7]
+            );
         default:
             $row = array(
                 'german' => $data[1],
                 'type' => $data[4],
-                'level' => $data[5],
-                'english' => $data[6],
+                'category' => $data[5],
+                'level' => $data[6],
+                'english' => $data[7]
             );
     }
     return $row;
