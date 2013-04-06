@@ -13,12 +13,12 @@ d3.wordHelper = (function($, _){
         word = word.toLowerCase();
 
         _.every(charSets, function(charSet){
-            var foundIndices = [], charSet;
+            var foundIndices = [];
 
             charSet = _.isArray(charSet) ? charSet : [charSet];
 
             _.each(charSet, function(chars){
-                var index = word.indexOf(chars.toLowerCase());
+                var index = word.lastIndexOf(chars.toLowerCase());
 
                 if (index >= 0) {
                     foundIndices.push(index);

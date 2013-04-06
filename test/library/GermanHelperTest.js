@@ -26,6 +26,7 @@ describe('GermanHelper', function() {
             expect(d3.germanHelper.modifyWord('Apfel', '⍨')).to.be('Äpfel');
             expect(d3.germanHelper.modifyWord('Haus', '⍨er')).to.be('Häuser');
             expect(d3.germanHelper.modifyWord('Raum', '⍨e')).to.be('Räume');
+            expect(d3.germanHelper.modifyWord('Umzug', '⍨e')).to.be('Umzüge');
         });
     });
 
