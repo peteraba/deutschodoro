@@ -1,19 +1,16 @@
-var GermanHelper = (function($, _){
-    var modify, umlauter, find;
+d3.germanHelper = (function($, _){
+    function findFirstChars(word, chars) {
 
-    umlauter = function(base){
-        var indexToChange, charToChange, newChar, result;
+    }
 
-        indexToChange = Math.max(
-            base.lastIndexOf('a'),
-            base.lastIndexOf('o'),
-            base.lastIndexOf('u'),
-            base.lastIndexOf('A'),
-            base.lastIndexOf('O'),
-            base.lastIndexOf('U')
-        );
+    function umlauter(word) {
+        var indexToChange, charToChange, newChar, result, charSet;
 
-        charToChange = base.substr(indexToChange, 1);
+        charSet = [['au'], ['a', 'o', 'u']];
+
+        indexToChange = d3.wordHelper.findLastChars(word, charSet);
+
+        charToChange = word.substr(indexToChange, 1);
 
         switch (charToChange) {
             case 'a':
@@ -40,15 +37,15 @@ var GermanHelper = (function($, _){
 
         result = false;
         if (indexToChange > 0) {
-            result = base.substr(0, indexToChange) + newChar + base.substr(indexToChange + 1);
+            result = word.substr(0, indexToChange) + newChar + word.substr(indexToChange + 1);
         } else if (indexToChange == 0) {
-            result = newChar + base.substr(1);
+            result = newChar + word.substr(1);
         }
 
         return result;
-    };
+    }
 
-    modify = function(base, modified) {
+    function modifyWord(base, modified) {
         if (modified == '' || modified == '–') {
             return false;
         }
@@ -59,28 +56,76 @@ var GermanHelper = (function($, _){
             return umlauter(base) + modified.substr(1);
         }
 
-        return modified.substr(0, 1);
-    };
+        return modified;
+    }
 
-    find = function(dict, searchData) {
+    function checkItemKey(word, expression, key) {
+        var arrayResult;
+
+        if (typeof word[key] == 'undefined') {
+            return false;
+        } else if (_.isArray(word[key])) {
+            arrayResult = false;
+            _.every(word[key], function(element){
+                if (element == expression) {
+                    arrayResult = true;
+                    return false;
+                }
+                return true;
+            });
+            return arrayResult;
+        }
+
+        return word[key] == expression;
+    }
+
+    function checkItem(word, searchData) {
+        var found = true;
+
+        _.every(searchData, function(value, key) {
+            if (!checkItemKey(word, value, key)) {
+                found = false;
+                return false;
+            }
+            return true;
+        });
+
+        return found;
+    }
+
+    function findFirstWord(dict, searchData) {
         var result = false;
 
-        _.each(dict, function(word) {
-            var found = true;
-
-            _.each(searchData, function(searchOption) {
-                if (typeof searchOption != '') {
-                    throw new Exception('Search option is not string: ' + searchOption);
-                }
-
-            });
+        _.every(dict, function(word) {
+            if (checkItem(word, searchData)) {
+                result = word;
+                return false;
+            }
+            return true;
         });
 
         return result;
-    };
+    }
+
+    function findRandomWord(dict, searchData) {
+        var results = [];
+
+        _.each(dict, function(word) {
+            if (checkItem(word, searchData)) {
+                results.push(word);
+            }
+        });
+
+        if (results.length) {
+            return results[_.random(results.length - 1)];
+        }
+
+        return false;
+    }
 
     return {
-        modify: modify,
-        find: find
+        modifyWord: modifyWord,
+        findFirstWord: findFirstWord,
+        findRandomWord: findRandomWord
     };
 })(jQuery, _);
