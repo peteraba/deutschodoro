@@ -286,7 +286,7 @@ d3.germanVerb = (function($, _){
     /**
      *
      * @param {String} defaultForm present tense, plural, 3rd person
-     * @param {String} person, person to use, one of s1-s3, p1-p3
+     * @param {String} person to use, one of s1-s3, p1-p3
      * @param {String} type one of w (weak), s1-s7 (strong), irr (irregular)
      * @param {*} present array with present variations or modifiers
      * @return {*}

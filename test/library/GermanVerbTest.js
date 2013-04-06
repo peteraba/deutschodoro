@@ -133,12 +133,12 @@ describe('GermanVerb', function() {
         it('should return handle exceptions if given', function(){
             var lesen = ['lese', 'liest', 'liest', 'lesen', 'lest', 'lesen'];
 
-            expect(d3.germanVerb.present('lesen', 's1', 's5', lesen)).to.be('lese');
-            expect(d3.germanVerb.present('lesen', 's2', 's5', lesen)).to.be('liest');
-            expect(d3.germanVerb.present('lesen', 's3', 's5', lesen)).to.be('liest');
-            expect(d3.germanVerb.present('lesen', 'p1', 's5', lesen)).to.be('lesen');
-            expect(d3.germanVerb.present('lesen', 'p2', 's5', lesen)).to.be('lest');
-            expect(d3.germanVerb.present('lesen', 'p3', 's5', lesen)).to.be('lesen');
+            expect(d3.germanVerb.present('lesen', 's1', 'w', lesen)).to.be('lese');
+            expect(d3.germanVerb.present('lesen', 's2', 'w', lesen)).to.be('liest');
+            expect(d3.germanVerb.present('lesen', 's3', 'w', lesen)).to.be('liest');
+            expect(d3.germanVerb.present('lesen', 'p1', 'w', lesen)).to.be('lesen');
+            expect(d3.germanVerb.present('lesen', 'p2', 'w', lesen)).to.be('lest');
+            expect(d3.germanVerb.present('lesen', 'p3', 'w', lesen)).to.be('lesen');
         });
     });
 });
