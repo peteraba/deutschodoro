@@ -1,8 +1,9 @@
 d3.germanHelper = (function($, _){
-    function findFirstChars(word, chars) {
-
-    }
-
+    /**
+     *
+     * @param {String} word
+     * @return {String}
+     */
     function umlauter(word) {
         var indexToChange, charToChange, newChar, result, charSet;
 
@@ -35,7 +36,7 @@ d3.germanHelper = (function($, _){
                 newChar = '';
         }
 
-        result = false;
+        result = '';
         if (indexToChange > 0) {
             result = word.substr(0, indexToChange) + newChar + word.substr(indexToChange + 1);
         } else if (indexToChange == 0) {
@@ -45,6 +46,12 @@ d3.germanHelper = (function($, _){
         return result;
     }
 
+    /**
+     *
+     * @param {String} base
+     * @param {String} modified
+     * @return {*}
+     */
     function modifyWord(base, modified) {
         if (modified == '' || modified == '–') {
             return false;
@@ -59,6 +66,13 @@ d3.germanHelper = (function($, _){
         return modified;
     }
 
+    /**
+     *
+     * @param {String} word
+     * @param {String} expression
+     * @param {String} key
+     * @return {Boolean}
+     */
     function checkItemKey(word, expression, key) {
         var arrayResult;
 
@@ -79,6 +93,12 @@ d3.germanHelper = (function($, _){
         return word[key] == expression;
     }
 
+    /**
+     *
+     * @param {String} word
+     * @param {Object} searchData
+     * @return {Boolean}
+     */
     function checkItem(word, searchData) {
         var found = true;
 
@@ -93,6 +113,12 @@ d3.germanHelper = (function($, _){
         return found;
     }
 
+    /**
+     *
+     * @param {Array} dict
+     * @param {Object} searchData
+     * @return {Boolean|Object}
+     */
     function findFirstWord(dict, searchData) {
         var result = false;
 
@@ -107,6 +133,12 @@ d3.germanHelper = (function($, _){
         return result;
     }
 
+    /**
+     *
+     * @param {Array} dict
+     * @param {Object} searchData
+     * @return {Object}
+     */
     function findRandomWord(dict, searchData) {
         var results = [];
 

@@ -1,15 +1,28 @@
 d3.germanVerb = (function($, _){
     var verbTypes = {}, prefixes;
 
+    /**
+     * @type {Array}
+     */
     prefixes = [
         "ab", "an",  "auf", "aus", "be", "bei", "dar", "ein", "ent", "er", "ge", "hin", "nach", "nieder", "über", "um",
         "unter", "ver", "vor", "weg", "wider", "zer", "zu", "zusammen"
     ];
 
+    /**
+     *
+     * @param {String} p3
+     * @return {String}
+     */
     function getEnding(p3) {
-        return p3.substr(p3.length-2);
+        return p3.substr(p3.length - 2);
     }
 
+    /**
+     *
+     * @param {String} p3
+     * @return {String}
+     */
     function getBase(p3) {
         var ending = getEnding(p3);
 
@@ -22,6 +35,11 @@ d3.germanVerb = (function($, _){
         throw new Exception('Unable to define base for: `' + p3 + '`');
     }
 
+    /**
+     *
+     * @param {String} p3
+     * @return {Boolean}
+     */
     function getPrefix(p3) {
         var result = false;
 
@@ -34,6 +52,12 @@ d3.germanVerb = (function($, _){
         return result;
     }
 
+    /**
+     *
+     * @param {String} p3
+     * @param {String} person
+     * @return {String}
+     */
     verbTypes.default = function(p3, person) {
         var base = getBase(p3);
 
@@ -47,10 +71,19 @@ d3.germanVerb = (function($, _){
                 return base + 't';
             case 'p1':
             case 'p3':
+            default:
                 return p3;
         }
     };
 
+    /**
+     *
+     * @param {String} p3
+     * @param {String} person
+     * @param {String} type
+     * @param {*} present
+     * @return {*}
+     */
     function present(p3, person, type, present){
         if (present) {
             switch (person) {
