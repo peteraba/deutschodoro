@@ -1,4 +1,4 @@
-d3.germanVerb = (function($, _){
+d3.german.verb = (function($, _){
     var verbTypes = {}, persons, prefixes;
 
     /**
@@ -105,7 +105,7 @@ d3.germanVerb = (function($, _){
                 base = getBase(word);
 
                 if (base.indexOf('e') > -1) {
-                    if (!d3.wordHelper.findLastChars(base, charSets)) {
+                    if (!d3.helper.word.findLastChars(base, charSets)) {
                         word = word.replace(/e/, 'i');
                     }
                 }
@@ -150,7 +150,7 @@ d3.germanVerb = (function($, _){
                 }
 
                 if (search) {
-                    if (!charSets || !d3.wordHelper.findLastChars(base, charSets)) {
+                    if (!charSets || !d3.helper.word.findLastChars(base, charSets)) {
                         word = word.replace(search, replace);
                     }
                 }
@@ -197,7 +197,7 @@ d3.germanVerb = (function($, _){
                 }
 
                 if (search) {
-                    if (!charSets || !d3.wordHelper.findLastChars(base, charSets)) {
+                    if (!charSets || !d3.helper.word.findLastChars(base, charSets)) {
                         word = word.replace(search, replace);
 
                         person = 's2';
@@ -251,7 +251,7 @@ d3.germanVerb = (function($, _){
                 }
 
                 if (search) {
-                    if (!charSets || !d3.wordHelper.findLastChars(base, charSets)) {
+                    if (!charSets || !d3.helper.word.findLastChars(base, charSets)) {
                         word = word.replace(search, replace);
 
                         defaultForm = prefix ? (prefix + word) : word;
@@ -292,7 +292,7 @@ d3.germanVerb = (function($, _){
      * @return {*}
      */
     function present(defaultForm, person, type, present){
-        personIndex = persons.indexOf(person);
+        var personIndex = persons.indexOf(person);
 
         if (personIndex == -1) {
             throw 'Given person is not allowed';

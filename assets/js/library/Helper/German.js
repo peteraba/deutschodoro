@@ -1,4 +1,4 @@
-d3.germanHelper = (function($, _){
+d3.helper.german = (function($, _){
     /**
      *
      * @param {String} word
@@ -9,7 +9,7 @@ d3.germanHelper = (function($, _){
 
         charSet = [['au'], ['a', 'o', 'u']];
 
-        indexToChange = d3.wordHelper.findLastChars(word, charSet);
+        indexToChange = d3.helper.word.findLastChars(word, charSet);
 
         charToChange = word.substr(indexToChange, 1);
 

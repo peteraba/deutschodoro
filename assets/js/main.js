@@ -1,1 +1,5 @@
-var d3 = {};
+var d3 = {
+    helper: {},
+    english: {},
+    german: {}
+};

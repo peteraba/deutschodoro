@@ -1,4 +1,4 @@
-d3.englishVerb = (function($, _){
+d3.english.verb = (function($, _){
     var persons, irregularVerbs;
 
     /**
@@ -47,7 +47,7 @@ d3.englishVerb = (function($, _){
         switch (person) {
             case 's3':
                 shortendVerb = defaultForm.substr(0, defaultForm.length - 1);
-                if (d3.englishHelper.checkConsonantEnding(shortendVerb)) {
+                if (d3.helper.english.checkConsonantEnding(shortendVerb)) {
                     if (defaultForm[defaultForm.length-1] == 'y') {
                         return shortendVerb + 'ies';
 

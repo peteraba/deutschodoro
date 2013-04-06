@@ -1,4 +1,4 @@
-d3.wordHelper = (function($, _){
+d3.helper.word = (function($, _){
 
     /**
      * Example 'ausgezeichnet', [['ie', 'ei], 'a', ['e', et']] --> 20

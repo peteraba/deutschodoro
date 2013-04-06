@@ -1,4 +1,4 @@
-d3.englishHelper = (function($, _){
+d3.helper.english = (function($, _){
     var consonantEnding;
 
     consonantEnding = [
