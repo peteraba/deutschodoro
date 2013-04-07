@@ -1,5 +1,5 @@
 d3.english.verb = (function($, _){
-    var persons, irregularVerbs;
+    var persons, irregularVerbs, englishHelper;
 
     /**
      * @type {Array}
@@ -17,6 +17,31 @@ d3.english.verb = (function($, _){
         }
     };
 
+    /**
+     *
+     * @param {Object} helper
+     */
+    function setEnglishHelper(helper) {
+        englishHelper = helper;
+    }
+
+    /**
+     *
+     * @return {Object}
+     */
+    function getEnglishHelper() {
+        if (englishHelper) {
+            englishHelper = d3.helper.english;
+        }
+        return englishHelper
+    }
+
+    /**
+     *
+     * @param {String} verb
+     * @param {String} person
+     * @return {Object}
+     */
     function irregularPresent(verb, person) {
         var result = false, personIndex;
 
@@ -47,7 +72,7 @@ d3.english.verb = (function($, _){
         switch (person) {
             case 's3':
                 shortendVerb = defaultForm.substr(0, defaultForm.length - 1);
-                if (d3.helper.english.checkConsonantEnding(shortendVerb)) {
+                if (getEnglishHelper().checkConsonantEnding(shortendVerb)) {
                     if (defaultForm[defaultForm.length-1] == 'y') {
                         return shortendVerb + 'ies';
 
@@ -88,6 +113,7 @@ d3.english.verb = (function($, _){
     }
 
     return {
-        present: present
+        present: present,
+        setEnglishHelper: setEnglishHelper
     };
 })(jQuery, _);

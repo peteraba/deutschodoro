@@ -1,5 +1,5 @@
 d3.german.verb = (function($, _){
-    var verbTypes = {}, persons, prefixes;
+    var verbTypes = {}, persons, prefixes, germanHelper;
 
     /**
      * @type {Array}
@@ -13,6 +13,25 @@ d3.german.verb = (function($, _){
      * @type {Array}
      */
     persons = ['s1', 's2', 's3', 'p1', 'p2', 'p3'];
+
+    /**
+     *
+     * @param {Object} helper
+     */
+    function setGermanHelper(helper) {
+        germanHelper = helper;
+    }
+
+    /**
+     *
+     * @return {Object}
+     */
+    function getGermanHelper() {
+        if (germanHelper) {
+            germanHelper = d3.helper.english;
+        }
+        return germanHelper
+    }
 
     /**
      *
@@ -105,7 +124,7 @@ d3.german.verb = (function($, _){
                 base = getBase(word);
 
                 if (base.indexOf('e') > -1) {
-                    if (!d3.helper.word.findLastChars(base, charSets)) {
+                    if (!getGermanHelper().findLastChars(base, charSets)) {
                         word = word.replace(/e/, 'i');
                     }
                 }
@@ -150,7 +169,7 @@ d3.german.verb = (function($, _){
                 }
 
                 if (search) {
-                    if (!charSets || !d3.helper.word.findLastChars(base, charSets)) {
+                    if (!charSets || !getGermanHelper().findLastChars(base, charSets)) {
                         word = word.replace(search, replace);
                     }
                 }
@@ -197,7 +216,7 @@ d3.german.verb = (function($, _){
                 }
 
                 if (search) {
-                    if (!charSets || !d3.helper.word.findLastChars(base, charSets)) {
+                    if (!charSets || !getGermanHelper().findLastChars(base, charSets)) {
                         word = word.replace(search, replace);
 
                         person = 's2';
@@ -251,7 +270,7 @@ d3.german.verb = (function($, _){
                 }
 
                 if (search) {
-                    if (!charSets || !d3.helper.word.findLastChars(base, charSets)) {
+                    if (!charSets || !getGermanHelper().findLastChars(base, charSets)) {
                         word = word.replace(search, replace);
 
                         defaultForm = prefix ? (prefix + word) : word;
@@ -330,6 +349,7 @@ d3.german.verb = (function($, _){
     }
 
     return {
-        present: present
+        present: present,
+        setGermanHelper: setGermanHelper
     };
 })(jQuery, _);

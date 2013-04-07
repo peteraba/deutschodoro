@@ -1,5 +1,16 @@
 d3.app = (function($, _){
-    var importances;
+    var importances, games;
+
+    function getGames() {
+        if (!games) {
+            games = d3.game;
+        }
+        return games;
+    }
+
+    function setGames(tmpGames) {
+        games = tmpGames;
+    }
 
     function getGamesSum() {
         var result;
@@ -46,6 +57,7 @@ d3.app = (function($, _){
     }
 
     return {
-        run: run
+        run: run,
+        setGames: setGames
     };
 })(jQuery, _);
