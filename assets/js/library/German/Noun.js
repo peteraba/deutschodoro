@@ -15,7 +15,7 @@ d3.german.noun = (function($, _){
 
     /**
      *
-     * @param {Object}newGermanHelper
+     * @param {Object} newGermanHelper
      * @return {Object}
      */
     function setGermanHelper(newGermanHelper) {
@@ -47,6 +47,7 @@ d3.german.noun = (function($, _){
     /**
      *
      * @param {String} articleBase
+     * @param {Boolean} plural
      * @param {String} indefiniteWord
      * @param {String} nounCase one of nom, acc, dat, gen
      * @return {String}
@@ -110,6 +111,7 @@ d3.german.noun = (function($, _){
     /**
      *
      * @param {String} articleBase
+     * @param {Boolean} plural
      * @param {String} nounCase one of nom, acc, dat, gen
      * @return {String}
      */

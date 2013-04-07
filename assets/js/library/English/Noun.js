@@ -1,5 +1,5 @@
 d3.english.noun = (function($, _){
-    var irregularNouns;
+    var irregularNouns, englishHelper = null;
 
     /**
      *
@@ -11,11 +11,34 @@ d3.english.noun = (function($, _){
 
     /**
      *
+     * @return {Object}
+     */
+    function getEnglishHelper() {
+        if (null == englishHelper) {
+            englishHelper = d3.helper.english;
+        }
+
+        return englishHelper;
+    }
+
+    /**
+     *
+     * @param {Object} newEnglishHelper
+     * @return {Object}
+     */
+    function setEnglishHelper(newEnglishHelper) {
+        englishHelper = newEnglishHelper;
+
+        return d3.english.noun;
+    }
+
+    /**
+     *
      * @param singular
      * @return {*}
      */
     function irregularPlural(singular) {
-        if (typeof irregularNouns[singular] == 'undefined') {
+        if (typeof irregularNouns[singular] != 'undefined') {
             return irregularNouns[singular];
         }
 
@@ -27,7 +50,7 @@ d3.english.noun = (function($, _){
      * @param {String} singular
      * @return {String}
      */
-    function regularPlural(singular){
+    function regularPlural(singular) {
         var shortenedVerb;
 
         shortenedVerb = singular.substr(0, singular.length - 1);
@@ -41,7 +64,7 @@ d3.english.noun = (function($, _){
             }
         }
 
-        return defaultForm + 's';
+        return singular + 's';
     }
 
     /**
@@ -49,7 +72,7 @@ d3.english.noun = (function($, _){
      * @param {String} singular
      * @return {String}
      */
-    function getPlural(singular){
+    function getPlural(singular) {
         var word;
 
         word = irregularPlural(singular);
@@ -63,32 +86,53 @@ d3.english.noun = (function($, _){
 
     /**
      *
-     * @param {String} singular
+     * @param {String} indefiniteWord
+     * @param {String} nounCase
      * @return {String}
      */
-    function getGenitive(singular){
-        return getPlural(singular);
+    function getIndefiniteArticle(indefiniteWord, nounCase) {
+        if (nounCase == 'dat') {
+            switch (indefiniteWord) {
+                case 'my':
+                    return 'mine';
+                case 'your':
+                    return 'yours';
+                case 'his':
+                    return 'his';
+                case 'her':
+                    return 'hers';
+                case 'our':
+                    return 'ours';
+                case 'their':
+                    return 'theirs';
+            }
+        }
+        return indefiniteWord;
     }
 
     /**
      *
-     * @param {String} articleBase
-     * @param {String} plural
-     * @param {String} indefiniteWord
+     * @param {String} noun
+     * @param {String|Boolean} indefiniteWord
      * @param {String} nounCase one of nom, acc, dat, gen
      * @return {String}
      */
-    function getArticle(articleBase, plural, indefiniteWord, nounCase) {
+    function getArticle(noun, indefiniteWord, nounCase) {
         if (indefiniteWord) {
-            return getIndefiniteArticle(articleBase, plural, indefiniteWord, nounCase);
+            if (true === indefiniteWord) {
+                if (getEnglishHelper().checkConsonantBeginning(noun)) {
+                    return 'a';
+                }
+                return 'an';
+            }
+            return getIndefiniteArticle(indefiniteWord, nounCase);
         }
 
-        return getDefiniteArticle(articleBase, plural, nounCase);
+        return 'the';
     }
 
     return {
         getPlural: getPlural,
-        getGenitive: getGenitive,
         getArticle: getArticle
     };
 })(jQuery, _);

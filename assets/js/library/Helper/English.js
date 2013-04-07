@@ -13,7 +13,15 @@ d3.helper.english = (function($, _){
         return consonantEnding.indexOf(word[word.length-1]) > -1;
     }
 
+    function checkConsonantBeginning(word) {
+        if (['h'].indexOf(word[0]) > -1) {
+            word = word.substr(1);
+        }
+        return consonantEnding.indexOf(word[0]) > -1;
+    }
+
     return {
-        checkConsonantEnding: checkConsonantEnding
+        checkConsonantEnding: checkConsonantEnding,
+        checkConsonantBeginning: checkConsonantBeginning
     };
 })(jQuery, _);

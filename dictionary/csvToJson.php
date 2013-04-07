@@ -82,5 +82,3 @@ fclose($handle);
 $content = 'var dict = ' . json_encode($dictionary) . ";\n";
 
 file_put_contents(__DIR__ . '/dict.js', $content);
-
-echo "\n";
