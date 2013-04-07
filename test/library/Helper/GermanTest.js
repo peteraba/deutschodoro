@@ -1,15 +1,4 @@
 describe('helper.german', function() {
-    var dict = [
-        {english: 'eng1', german: 'ger1', type: 'verb'},
-        {english: 'eng2', german: 'ger2', type: 'verb'},
-        {english: 'eng3', german: 'ger3', type: 'noun'},
-        {english: 'eng4', german: 'ger4', type: 'noun'},
-        {english: 'eng5', german: 'ger5', type: 'noun'},
-        {english: 'eng4', german: 'ger6', type: 'noun'},
-        {english: 'eng5', german: 'ger7', type: 'adj'},
-        {english: 'eng5', german: 'ger8', type: 'adj'}
-    ];
-
     describe('#modify()', function() {
         it('should return modified word only if it does not start with a tilde', function(){
             expect(d3.helper.german.modifyWord('praktisch', 'meest praktisch')).to.be('meest praktisch');
@@ -28,21 +17,6 @@ describe('helper.german', function() {
             expect(d3.helper.german.modifyWord('Raum', '⍨e')).to.be('Räume');
             expect(d3.helper.german.modifyWord('Umzug', '⍨e')).to.be('Umzüge');
             expect(d3.helper.german.modifyWord('Maus', '⍨e')).to.be('Mäuse');
-        });
-    });
-
-    describe('#findFirstWord()', function() {
-        it('should find the first word matching the search options', function(){
-            expect(d3.helper.german.findFirstWord(dict, {})).to.be(dict[0]);
-            expect(d3.helper.german.findFirstWord(dict, {english: 'eng4'})).to.be(dict[3]);
-            expect(d3.helper.german.findFirstWord(dict, {english: 'eng4', german: 'ger6'})).to.be(dict[5]);
-        });
-    });
-
-    describe('#findRandomWord()', function() {
-        it('should return a random word matching the search options', function(){
-            expect(d3.helper.german.findFirstWord(dict, {english: 'eng4'}).english).to.be('eng4');
-            expect(d3.helper.german.findFirstWord(dict, {english: 'eng4'}).german).to.be.in(['ger4', 'ger6']);
         });
     });
 });

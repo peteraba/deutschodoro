@@ -1,5 +1,8 @@
 var d3 = {
     helper: {},
     english: {},
-    german: {}
+    german: {},
+    dictionary: {},
+    game: {},
+    stats: {}
 };

@@ -53,6 +53,7 @@ function getRow(array $data)
                 'english' => $data[7]
             );
     }
+    $row['hash'] = md5(print_r($data, true));
     return $row;
 }
 

@@ -1,0 +1,2 @@
+describe('stat', function() {
+});
