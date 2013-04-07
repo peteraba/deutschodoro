@@ -30,10 +30,10 @@ d3.english.verb = (function($, _){
      * @return {Object}
      */
     function getEnglishHelper() {
-        if (englishHelper) {
+        if (!englishHelper) {
             englishHelper = d3.helper.english;
         }
-        return englishHelper
+        return englishHelper;
     }
 
     /**
