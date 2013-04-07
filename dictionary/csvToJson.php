@@ -8,49 +8,51 @@ if ($handle == false) {
 
 function getRow(array $data)
 {
-    switch ($data[4]) {
+    switch ($data[5]) {
         case 'noun':
             $row = array(
                 'article' => $data[0],
-                'german' => $data[1],
-                'genitive' => $data[2],
-                'plural' => $data[3],
+                'german' => $data[2],
+                'genitive' => $data[3],
+                'plural' => $data[4],
                 'type' => 'noun',
-                'category' => $data[5],
-                'level' => $data[6],
-                'english' => $data[7]
+                'category' => $data[6],
+                'level' => $data[7],
+                'english' => $data[8]
             );
             break;
         case 'adj':
             $row = array(
                 'info' => $data[0],
-                'german' => $data[1],
-                'comparative' => $data[2],
-                'superlative' => $data[3],
+                'german' => $data[2],
+                'comparative' => $data[3],
+                'superlative' => $data[4],
                 'type' => 'adj',
-                'category' => $data[5],
-                'level' => $data[6],
-                'english' => $data[7]
+                'category' => $data[6],
+                'level' => $data[7],
+                'english' => $data[8]
             );
             break;
         case 'verb':
             $row = array(
                 'info' => $data[0],
-                'german' => $data[1],
-                'present' => $data[2],
-                'past' => $data[3],
+                'prefix' => $data[1],
+                'german' => $data[2],
+                'present' => $data[3],
+                'past' => $data[4],
                 'type' => 'verb',
-                'category' => $data[5],
-                'level' => $data[6],
-                'english' => $data[7]
+                'category' => $data[6],
+                'level' => $data[7],
+                'english' => $data[8]
             );
+            break;
         default:
             $row = array(
                 'german' => $data[1],
-                'type' => $data[4],
-                'category' => $data[5],
-                'level' => $data[6],
-                'english' => $data[7]
+                'type' => $data[5],
+                'category' => $data[6],
+                'level' => $data[7],
+                'english' => $data[8]
             );
     }
     $row['hash'] = md5(print_r($data, true));

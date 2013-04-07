@@ -68,13 +68,13 @@ d3.english.verb = (function($, _){
      * @return {String}
      */
     function personalize(defaultForm, person){
-        var shortendVerb;
+        var shortenedVerb;
         switch (person) {
             case 's3':
-                shortendVerb = defaultForm.substr(0, defaultForm.length - 1);
-                if (getEnglishHelper().checkConsonantEnding(shortendVerb)) {
+                shortenedVerb = defaultForm.substr(0, defaultForm.length - 1);
+                if (getEnglishHelper().checkConsonantEnding(shortenedVerb)) {
                     if (defaultForm[defaultForm.length-1] == 'y') {
-                        return shortendVerb + 'ies';
+                        return shortenedVerb + 'ies';
 
                     } else if (defaultForm[defaultForm.length-1] == 'o') {
                         return defaultForm + 'es';
