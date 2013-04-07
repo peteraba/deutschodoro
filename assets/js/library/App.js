@@ -50,7 +50,7 @@ d3.app = (function($, _){
         var game = getRandomGame();
 
         if (game) {
-            return game.run();
+            return game.create();
         }
 
         return false;

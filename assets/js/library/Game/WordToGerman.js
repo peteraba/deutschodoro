@@ -1,24 +1,39 @@
 d3.game.wordToGerman = (function($, _){
-    var dictionary;
+    var dictionary = null;
 
+    /**
+     *
+     * @param {Object} dict
+     * @return {Object}
+     */
     function setDictionary(dict) {
         dictionary = dict;
+
+        return d3.game.wordToGerman;
     }
 
+    /**
+     *
+     * @return {Object}
+     */
     function getDictionary() {
-        if (typeof dictionary == 'undefined') {
+        if (null == dictionary) {
             dictionary = d3.dictionary;
         }
 
         return dictionary;
     }
 
-    function run() {
+    /**
+     *
+     * @return {Boolean}
+     */
+    function create() {
         return true;
     }
 
     return {
-        run: run,
+        create: create,
         importance: 50,
         setDictionary: setDictionary
     };

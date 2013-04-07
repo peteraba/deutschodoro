@@ -36,73 +36,7 @@ d3.helper.word = (function($, _){
         return result;
     }
 
-    /**
-     *
-     * @param {String} word
-     * @param {String} expression
-     * @param {String} key
-     * @return {Boolean}
-     */
-    function checkItemKey(word, expression, key) {
-        var arrayResult;
-
-        if (typeof word[key] == 'undefined') {
-            return false;
-        } else if (_.isArray(word[key])) {
-            arrayResult = false;
-            _.every(word[key], function(element){
-                if (element == expression) {
-                    arrayResult = true;
-                    return false;
-                }
-                return true;
-            });
-            return arrayResult;
-        }
-
-        return word[key] == expression;
-    }
-
-    /**
-     *
-     * @param {String} word
-     * @param {Object} searchData
-     * @return {Boolean}
-     */
-    function checkItem(word, searchData) {
-        var found = true;
-
-        _.every(searchData, function(value, key) {
-            if (!checkItemKey(word, value, key)) {
-                found = false;
-                return false;
-            }
-            return true;
-        });
-
-        return found;
-    }
-
-    /**
-     *
-     * @param {Object} dict
-     * @param {Object} searchData
-     * @return {Array}
-     */
-    function findAllWords(dict, searchData) {
-        var results = {};
-
-        _.each(dict, function(word, key) {
-            if (checkItem(word, searchData)) {
-                results[key] = word;
-            }
-        });
-
-        return results;
-    }
-
     return {
-        findLastChars: findLastChars,
-        findAllWords: findAllWords
+        findLastChars: findLastChars
     };
 })(jQuery, _);

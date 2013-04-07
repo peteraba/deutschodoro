@@ -16,14 +16,4 @@ describe('helper.word', function() {
             expect(d3.helper.word.findLastChars('Raum', [['au'],['a', 'o', 'u']])).to.be(1);
         });
     });
-
-    describe('#findAllWords()', function() {
-        it('should return all words matching the search options', function(){
-            expect(d3.helper.word.findAllWords(dict, {english: 'eng4'})).to.eql({d: dict.d, f: dict.f});
-        });
-
-        it('should return empty array when there is no result', function(){
-            expect(d3.helper.word.findAllWords(dict, {english: 'asd'})).to.eql({});
-        });
-    });
 });
