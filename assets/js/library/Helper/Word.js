@@ -85,49 +85,24 @@ d3.helper.word = (function($, _){
 
     /**
      *
-     * @param {Array} dict
+     * @param {Object} dict
      * @param {Object} searchData
-     * @return {Boolean|Object}
+     * @return {Array}
      */
-    function findFirstWord(dict, searchData) {
-        var result = false;
+    function findAllWords(dict, searchData) {
+        var results = {};
 
-        _.every(dict, function(word) {
+        _.each(dict, function(word, key) {
             if (checkItem(word, searchData)) {
-                result = word;
-                return false;
-            }
-            return true;
-        });
-
-        return result;
-    }
-
-    /**
-     *
-     * @param {Array} dict
-     * @param {Object} searchData
-     * @return {Object}
-     */
-    function findRandomWord(dict, searchData) {
-        var results = [];
-
-        _.each(dict, function(word) {
-            if (checkItem(word, searchData)) {
-                results.push(word);
+                results[key] = word;
             }
         });
 
-        if (results.length) {
-            return results[_.random(results.length - 1)];
-        }
-
-        return false;
+        return results;
     }
 
     return {
         findLastChars: findLastChars,
-        findFirstWord: findFirstWord,
-        findRandomWord: findRandomWord
+        findAllWords: findAllWords
     };
 })(jQuery, _);
