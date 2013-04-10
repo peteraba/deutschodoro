@@ -1,13 +1,13 @@
 d3.game.derDieDas = (function($, _){
-    var dictionary = null;
+    var wordFinder = null;
 
     /**
      *
-     * @param {Object} dict
+     * @param {Object} newWordFinder
      * @return {Object}
      */
-    function setDictionary(dict) {
-        dictionary = dict;
+    function setWordFinder(newWordFinder) {
+        wordFinder = newWordFinder;
 
         return d3.game.derDieDas;
     }
@@ -16,12 +16,12 @@ d3.game.derDieDas = (function($, _){
      *
      * @return {Object}
      */
-    function getDictionary() {
-        if (null == dictionary) {
-            dictionary = d3.dictionary;
+    function getWordFinder() {
+        if (null == wordFinder) {
+            wordFinder = d3.wordFinder;
         }
 
-        return dictionary;
+        return wordFinder;
     }
 
     /**
@@ -35,6 +35,6 @@ d3.game.derDieDas = (function($, _){
     return {
         create: create,
         importance: 100,
-        setDictionary: setDictionary
+        setWordFinder: setWordFinder
     };
 })(jQuery, _);

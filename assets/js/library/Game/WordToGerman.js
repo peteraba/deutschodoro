@@ -1,27 +1,27 @@
 d3.game.wordToGerman = (function($, _){
-    var dictionary = null;
+    var wordFinder = null;
 
     /**
      *
-     * @param {Object} dict
+     * @param {Object} newWordFinder
      * @return {Object}
      */
-    function setDictionary(dict) {
-        dictionary = dict;
+    function setWordFinder(newWordFinder) {
+        wordFinder = newWordFinder;
 
-        return d3.game.wordToGerman;
+        return d3.game.derDieDas;
     }
 
     /**
      *
      * @return {Object}
      */
-    function getDictionary() {
-        if (null == dictionary) {
-            dictionary = d3.dictionary;
+    function getWordFinder() {
+        if (null == wordFinder) {
+            wordFinder = d3.wordFinder;
         }
 
-        return dictionary;
+        return wordFinder;
     }
 
     /**
@@ -34,7 +34,7 @@ d3.game.wordToGerman = (function($, _){
 
     return {
         create: create,
-        importance: 50,
-        setDictionary: setDictionary
+        importance: 100,
+        setWordFinder: setWordFinder
     };
 })(jQuery, _);

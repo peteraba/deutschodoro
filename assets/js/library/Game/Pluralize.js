@@ -1,4 +1,4 @@
-d3.game.wordToEnglish = (function($, _){
+d3.game.pluralize = (function($, _){
     var wordFinder = null;
 
     /**
