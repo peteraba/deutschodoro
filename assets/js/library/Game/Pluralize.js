@@ -32,8 +32,38 @@ d3.game.pluralize = (function($, _){
         return true;
     }
 
+    /**
+     *
+     * @return {String}
+     */
+    function getHtml() {
+        var html = [];
+
+        return html.join('');
+    }
+
+    /**
+     *
+     * @param {String} answer
+     * @return {Boolean}
+     */
+    function checkResult(answer) {
+        return false;
+    }
+
+    /**
+     *
+     * @return {Array}
+     */
+    function getUsedWords() {
+        return [pickedWord];
+    }
+
     return {
         create: create,
+        getHtml: getHtml,
+        checkResult: checkResult,
+        getUsedWords: getUsedWords,
         importance: 100,
         setWordFinder: setWordFinder
     };

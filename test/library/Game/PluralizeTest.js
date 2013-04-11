@@ -1,8 +1,8 @@
-describe('game.wordToGerman', function() {
-    var game = d3.game.wordToEnglish;
+describe('game.pluralize', function() {
+    var game = d3.game.pluralize;
 
     describe('#checkResult()', function() {
-        it('should check if result is the correct German word', function(){
+        it('should check if result is the correct pluralized German word', function(){
             expect(game.getHtml()).to.fail();
         });
     });

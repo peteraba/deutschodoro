@@ -27,6 +27,7 @@ describe('wordFinder', function() {
 
         it('should return the word with the lowest score matching the search options.', function(){
             expect(d3.wordFinder.getWord({})).to.be(dict[0]);
+            expect(d3.wordFinder.getWord({english: 'no'})).to.be(dict[1]);
         });
     });
 });
