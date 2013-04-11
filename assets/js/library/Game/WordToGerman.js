@@ -1,5 +1,5 @@
 d3.game.wordToGerman = (function($, _){
-    var wordFinder = null;
+    var wordFinder = null, question = '';
 
     /**
      *
@@ -38,6 +38,11 @@ d3.game.wordToGerman = (function($, _){
      */
     function getHtml() {
         var html = [];
+
+        html.push('<h1>Word to German</h1>');
+        html.push('<p>What is the translation of `' + question + '`?</p>');
+        html.push('<ul>');
+        html.push('</ul>');
 
         return html.join('');
     }

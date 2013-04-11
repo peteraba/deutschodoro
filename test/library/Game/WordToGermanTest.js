@@ -1,16 +1,18 @@
 describe('game.wordToGerman', function() {
-    var game = d3.game.wordToEnglish;
+    var game = d3.game.wordToEnglish, apple;
+
+    apple = {article:"der",german:"Apfel",genitive:"~s",plural:"⍨",type:"noun",category:"food",level:"1",english:"apple",hash:"01d8fcbee530ff2cc52f7e0e1040a8e1"};
 
     describe('#checkResult()', function() {
         it('should check if result is the correct German word', function(){
-            expect(game.getHtml()).to.fail();
+            expect(game.checkResult()).to.be(false);
         });
     });
 
     describe('#getHtml()', function() {
         it('should return html', function(){
             var wordFinder = {
-                getWord: function(){return {"article":"der", "german":"Apfel"};}
+                getWord: function(){return apple;}
             };
 
             game.setWordFinder(wordFinder);
