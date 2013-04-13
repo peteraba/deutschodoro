@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mocha Tests</title>
+    <link rel="stylesheet" href="../../vendor/js/mocha/mocha.css" />
+</head>
+<body>
+<div id="mocha"></div>
+<script src="../../vendor/js/jquery-1.9.1.min.js"></script>
+<script src="../../vendor/js/underscore-min.js"></script>
+<script src="../../vendor/js/mocha/expect.js"></script>
+<script src="../../vendor/js/mocha/expect.ext.js"></script>
+<script src="../../vendor/js/mocha/mocha.js"></script>
+<!--[if lte IE 7]>
+<script src="../../vendor/js/json2.js"></script>
+<![endif]-->
+<script>mocha.setup('bdd')</script>
+
+<script src="../../app/controller/main.js"></script>
+
+<script src="../../app/library/helper/word.js"></script>
+<script src="library/helper/wordTest.js"></script>
+
+<script src="../../app/library/helper/german.js"></script>
+<script src="library/helper/germanTest.js"></script>
+
+<script src="../../app/library/helper/english.js"></script>
+<script src="library/helper/englishTest.js"></script>
+
+<script src="../../app/library/german/verb.js"></script>
+<script src="library/german/verbTest.js"></script>
+
+<script src="../../app/library/german/noun.js"></script>
+<script src="library/german/nounTest.js"></script>
+
+<script src="../../app/library/english/noun.js"></script>
+<script src="library/english/nounTest.js"></script>
+
+<script src="../../app/library/english/verb.js"></script>
+<script src="library/english/verbTest.js"></script>
+
+<script src="../../app/library/dictionary.js"></script>
+<script src="library/dictionaryTest.js"></script>
+
+<script src="../../app/library/stat.js"></script>
+<script src="library/statTest.js"></script>
+
+<script src="../../app/library/wordFinder.js"></script>
+<script src="library/wordFinderTest.js"></script>
+
+<script src="../../app/library/app.js"></script>
+<script src="library/appTest.js"></script>
+
+<script src="../../app/library/game/derDieDas.js"></script>
+<script src="library/game/derDieDasTest.js"></script>
+
+<script src="../../app/library/game/pluralize.js"></script>
+<script src="library/game/pluralizeTest.js"></script>
+
+<script src="../../app/library/game/wordToEnglish.js"></script>
+<script src="library/game/wordToEnglishTest.js"></script>
+
+<script src="../../app/library/game/wordToGerman.js"></script>
+<script src="library/game/wordToGermanTest.js"></script>
+
+<script>
+    mocha.checkLeaks();
+    mocha.globals(['jQuery']);
+    mocha.run();
+</script>
+</body>
+</html>

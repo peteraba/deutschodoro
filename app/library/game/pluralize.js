@@ -69,10 +69,10 @@ d3.game.pluralize = (function($, _){
         var html = [], html2 = [], words = [pickedWord.plural, pickedWord.plural, pickedWord.plural];
 
         while (words[1] == pickedWord.plural) {
-            words[1] = getGermanNoun().getPlural(pickedWord.german, plurals[_.random(plurals.length)]);
+            words[1] = getGermanNoun().getPlural(pickedWord.german, plurals[_.random(plurals.length-1)]);
         }
         while (words[2] == pickedWord.plural || words[1] == words[2]) {
-            words[2] = getGermanNoun().getPlural(pickedWord.german, plurals[_.random(plurals.length)]);
+            words[2] = getGermanNoun().getPlural(pickedWord.german, plurals[_.random(plurals.length-1)]);
         }
 
         words = _.shuffle(words);
