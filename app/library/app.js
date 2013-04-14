@@ -1,88 +1,69 @@
-d3.app = (function($, _){
-    var importances, games = null;
+define(
+    ['games', 'vendor/underscore'],
+    function(games){
+        var importances;
 
-    /**
-     *
-     * @return {Object}
-     */
-    function getGames() {
-        if (null === games) {
-            games = d3.game;
+        /**
+         *
+         * @return {Number}
+         */
+        function getGamesSum() {
+            var result;
+
+            importances = {};
+
+            _.each(games, function(game, key){
+                importances[key] = game.importance;
+            });
+
+            result = _.reduce(importances, function(memo, importance){return memo + importance;}, 0);
+
+            return result;
         }
 
-        return games;
-    }
+        /**
+         *
+         * @return {Boolean|Object}
+         */
+        function getRandomGame() {
+            var sum, rand, game = null;
 
-    /**
-     *
-     * @param {Object} tmpGames
-     * @return {Object}
-     */
-    function setGames(tmpGames) {
-        games = tmpGames;
+            sum = getGamesSum();
+            rand = _.random(sum);
 
-        return d3.app;
-    }
+            _.every(importances, function(value, key){
+                rand = rand - value;
+                if (rand <= 0) {
+                    game = key;
+                    return false;
+                }
+                return true;
+            });
 
-    /**
-     *
-     * @return {Number}
-     */
-    function getGamesSum() {
-        var result;
-        importances = {};
-
-        _.each(getGames(), function(game, key){
-            importances[key] = game.importance;
-        });
-
-        result = _.reduce(importances, function(memo, importance){return memo + importance;}, 0);
-
-        return result;
-    }
-
-    /**
-     *
-     * @return {Boolean|Object}
-     */
-    function getRandomGame() {
-        var sum, rand, game = null;
-
-        sum = getGamesSum();
-        rand = _.random(sum);
-        
-        _.every(importances, function(value, key){
-            rand = rand - value;
-            if (rand <= 0) {
-                game = key;
-                return false;
+            if (game) {
+                return games[game];
             }
-            return true;
-        });
 
-        if (game) {
-            return d3.game[game];
+            return false;
         }
 
-        return false;
-    }
+        /**
+         *
+         * @return {Boolean}
+         */
+        function run() {
+            var game = getRandomGame();
 
-    /**
-     *
-     * @return {Boolean}
-     */
-    function run() {
-        var game = getRandomGame();
+            if (game) {
+                return game.create();
+            }
 
-        if (game) {
-            return game.create();
+            return false;
         }
 
-        return false;
+        return {
+            run: run,
+            setGames: setGames
+        };
     }
-
-    return {
-        run: run,
-        setGames: setGames
-    };
-})(jQuery, _);
+);

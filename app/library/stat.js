@@ -1,178 +1,171 @@
-d3.stat = (function($, _){
-    var data = {}, storage = null, ts = null, DATA_KEY = 'stats';
+define(
+    ['vendor/underscore'],
+    function(){
+        var data = {}, storage = null, ts = null, DATA_KEY = 'stats';
 
-    /**
-     *
-     * @param {Object} newStorage
-     * @return {Object}
-     */
-    function setStorage(newStorage) {
-        storage = newStorage;
-
-        return d3.stat;
-    }
-
-    /**
-     *
-     * @return {Object}
-     */
-    function getStorage() {
-        if (null === storage) {
-            if (typeof localStorage == 'undefined') {
-                storage = {getItem: function(){}, setItem: function(){}};
-            } else {
-                storage = localStorage;
-            }
+        /**
+         *
+         * @param {Object} newStorage
+         * @return {Object}
+         */
+        function setStorage(newStorage) {
+            storage = newStorage;
         }
 
-        return storage;
-    }
-
-    /**
-     *
-     * @return {Number}
-     */
-    function getTimestamp() {
-        if (null === ts) {
-            ts = Math.round((new Date()).getTime() / 1000);
-        }
-
-        return ts;
-    }
-
-    /**
-     *
-     * @return {Number} newTs
-     */
-    function setTimestamp(newTs) {
-        ts = newTs;
-
-        return d3.stat;
-    }
-
-    /**
-     *
-     * @return {Object}
-     */
-    function loadData() {
-        var jsonData;
-
-        jsonData = getStorage().getItem(DATA_KEY);
-        data = JSON.parse(jsonData);
-
-        return d3.stat;
-    }
-
-    /**
-     *
-     * @param {Object} newData
-     * @return {Object}
-     */
-    function setData(newData) {
-        data = newData;
-
-        return d3.stat;
-    }
-
-    /**
-     *
-     * @return {Object}
-     */
-    function saveData() {
-        getStorage().setItem(DATA_KEY, JSON.stringify(data));
-
-        return d3.stat;
-    }
-
-    /**
-     *
-     * @param {Object} hashes
-     * @param {Boolean} result
-     * @return {*}
-     */
-    function saveResult(hashes, result) {
-        var ts = getTimestamp();
-
-        result = result > 0 ? 1 : 0;
-
-        _.each(hashes, function(hash){
-            if (typeof data[hash] == 'undefined') {
-                data[hash] = [[result, ts]];
-            } else {
-                data[hash].unshift([result, ts]);
-
-                if (data[hash].length > 10) {
-                    data[hash] = data[hash].slice(0, 10);
+        /**
+         *
+         * @return {Object}
+         */
+        function getStorage() {
+            if (null === storage) {
+                if (typeof localStorage == 'undefined') {
+                    storage = {getItem: function(){}, setItem: function(){}};
+                } else {
+                    storage = localStorage;
                 }
             }
-        });
 
-        return saveData();
-    }
+            return storage;
+        }
 
-    /**
-     *
-     * @param {Object} hash
-     * @return {Number}
-     */
-    function getWordScore(hash) {
-        var score = 0, timePenalty = 100, ts = getTimestamp(), multiplier, word;
+        /**
+         *
+         * @return {Number}
+         */
+        function getTimestamp() {
+            if (null === ts) {
+                ts = Math.round((new Date()).getTime() / 1000);
+            }
 
-        if (typeof data[hash] != 'undefined') {
-            word       = data[hash];
-            multiplier = _.size(word);
+            return ts;
+        }
 
-            _.each(word, function(wordStat){
-                if (wordStat[0] == 1) {
-                    score += multiplier;
+        /**
+         *
+         * @return {Number} newTs
+         */
+        function setTimestamp(newTs) {
+            ts = newTs;
+        }
+
+        /**
+         *
+         * @return {Object}
+         */
+        function loadData() {
+            var jsonData;
+
+            jsonData = getStorage().getItem(DATA_KEY);
+            data = JSON.parse(jsonData);
+        }
+
+        /**
+         *
+         * @param {Object} newData
+         * @return {Object}
+         */
+        function setData(newData) {
+            data = newData;
+        }
+
+        /**
+         *
+         * @return {Object}
+         */
+        function saveData() {
+            getStorage().setItem(DATA_KEY, JSON.stringify(data));
+        }
+
+        /**
+         *
+         * @param {Object} hashes
+         * @param {Boolean} result
+         * @return {*}
+         */
+        function saveResult(hashes, result) {
+            var ts = getTimestamp();
+
+            result = result > 0 ? 1 : 0;
+
+            _.each(hashes, function(hash){
+                if (typeof data[hash] == 'undefined') {
+                    data[hash] = [[result, ts]];
                 } else {
-                    score -= multiplier;
+                    data[hash].unshift([result, ts]);
+
+                    if (data[hash].length > 10) {
+                        data[hash] = data[hash].slice(0, 10);
+                    }
                 }
             });
 
-            timePenalty = Math.floor((ts - word[word.length-1][1]) / 86400);
-            timePenalty = Math.min(timePenalty, 100);
+            return saveData();
         }
 
-        return score - timePenalty;
-    }
+        /**
+         *
+         * @param {Object} hash
+         * @return {Number}
+         */
+        function getWordScore(hash) {
+            var score = 0, timePenalty = 100, ts = getTimestamp(), multiplier, word;
 
-    /**
-     *
-     * @param {Object} wordList
-     * @return {Object}
-     */
-    function pickWord(wordList) {
-        var hashes = [], lowestScore = Number.MAX_VALUE, randomHash;
+            if (typeof data[hash] != 'undefined') {
+                word       = data[hash];
+                multiplier = _.size(word);
 
-        _.each(wordList, function(word, hash) {
-            var score = getWordScore(hash);
+                _.each(word, function(wordStat){
+                    if (wordStat[0] == 1) {
+                        score += multiplier;
+                    } else {
+                        score -= multiplier;
+                    }
+                });
 
-            if (score == lowestScore) {
-                hashes.push(hash);
-            } else if (score < lowestScore) {
-                lowestScore = score;
-                hashes = [hash];
+                timePenalty = Math.floor((ts - word[word.length-1][1]) / 86400);
+                timePenalty = Math.min(timePenalty, 100);
             }
-        });
 
-        if (hashes.length == 0) {
-            return false;
+            return score - timePenalty;
         }
 
-        randomHash = hashes[_.random(hashes.length-1)];
+        /**
+         *
+         * @param {Object} wordList
+         * @return {Object}
+         */
+        function pickWord(wordList) {
+            var hashes = [], lowestScore = Number.MAX_VALUE, randomHash;
 
-        return wordList[randomHash];
+            _.each(wordList, function(word, hash) {
+                var score = getWordScore(hash);
+
+                if (score == lowestScore) {
+                    hashes.push(hash);
+                } else if (score < lowestScore) {
+                    lowestScore = score;
+                    hashes = [hash];
+                }
+            });
+
+            if (hashes.length == 0) {
+                return false;
+            }
+
+            randomHash = hashes[_.random(hashes.length-1)];
+
+            return wordList[randomHash];
+        }
+
+        loadData();
+
+        return {
+            setStorage: setStorage,
+            setData: setData,
+            setTimestamp: setTimestamp,
+            saveResult: saveResult,
+            pickWord: pickWord,
+            DATA_KEY: DATA_KEY
+        };
     }
-
-    loadData();
-
-    return {
-        setStorage: setStorage,
-        setData: setData,
-        setTimestamp: setTimestamp,
-        saveResult: saveResult,
-        pickWord: pickWord,
-        DATA_KEY: DATA_KEY
-    };
-})(jQuery, _);
+);

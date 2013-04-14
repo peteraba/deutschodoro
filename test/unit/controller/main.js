@@ -1,3 +1,14 @@
+requirejs.config({
+    baseUrl: '../library',
+    paths: {
+        vendor: '../../vendor/js',
+        dict: '../../dictionary'
+    },
+    shim: {
+        'vendor/jquery-layout/jquery.layout-latest.min': ['vendor/jquery']
+    }
+});
+
 // Start the main app logic.
 requirejs(
     ['vendor/jquery', 'vendor/jquery-layout/jquery.layout-latest.min'],
