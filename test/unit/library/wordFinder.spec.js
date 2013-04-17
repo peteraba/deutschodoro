@@ -1,84 +1,37 @@
 define(
-    ['vendor/Squire'],
-    function(Squire) {
-        describe('wordFinder', function() {
-            describe('#getWord()', function() {
-                var dict, statData, ts, context = {};
+    ['vendor/underscore'],
+    function (_) {
+        var dict, stubs, context, loaded = false;
 
-                dict = [
-                    {level: 1, english: 'yes', german: 'ja', hash: 'a'},
-                    {level: 1, english: 'no', german: 'nein', hash: 'b'},
-                    {level: 2, english: 'similar', german: 'ähnlich', hash: 'c'},
-                    {level: 3, english: 'enthusiastic', german: 'begeistert', hash: 'd'},
-                    {level: 100, english: '', german: 'Vorsitz', hash: 'e'}
-                ];
+        dict = {
+            a: {level: 1, english: 'yes', german: 'ja', hash: 'a'},
+            b: {level: 1, english: 'no', german: 'nein', hash: 'b'},
+            c: {level: 2, english: 'similar', german: 'ähnlich', hash: 'c'},
+            d: {level: 3, english: 'enthusiastic', german: 'begeistert', hash: 'd'},
+            e: {level: 100, english: '', german: 'Vorsitz', hash: 'e'}
+        };
 
-                statData = {
-                    a: [[0, 0]],
-                    b: [[1, 0]],
-                    c: [[1, 0]],
-                    d: [[1, 0]],
-                    e: [[1, 0]]
-                };
+        stubs = {
+            dictionary: {findWords: sinon.stub().returns({a: dict.a, b: dict.b})},
+            stat: {pickWord: sinon.stub().returns(dict.a)}
+        };
 
-                ts = Math.round((new Date('2013-04-14')).getTime() / 1000);
+        context = createContext(stubs, _);
 
-                beforeEach(function(done) {
-                    var doneCount = 0;
-
-                    function setDictionary(){
-                        if (doneCount == 2) {
-                            context.injector3 = new Squire();
-                            context.injector3
-                                //.mock('dictionary', context.dictionary)
-                                //.mock('stat', context.stat)
-                                .mock({
-                                    dictionary: context.dictionary,
-                                    stat: context.stat
-                                })
-                                .require(['wordFinder'], function(wordFinder) {
-                                    context.wordFinder = wordFinder;
-                                    done();
-                                });
-                        }
-                    }
-
-                    context.injector = new Squire();
-                    context.injector
-                        //.mock('dict/dict', dict)
-                        .mock({
-                            'dict/dict': dict,
-                            rawDictionary: dict
-                        })
-                        .require(['dictionary'], function(dictionary) {
-                            context.dictionary = dictionary;
-                            doneCount++;
-                            console.log(dictionary);
-                            setDictionary();
-                        });
-
-                    context.injector2 = new Squire();
-                    context.injector2
-                        .require(['stat'], function(stat) {
-                            stat.setData(statData);
-                            stat.setTimestamp(ts);
-                            //stat.setStorage();
-                            context.stat = stat;
-                            doneCount++;
-                            setDictionary();
-                        });
-
-                });
-
-                it('should return the word with the lowest score matching the search options.', function(){
-                    expect(context.wordFinder.getWord({})).to.equal(dict[0]);
-                    //expect(context.wordFinder.getWord({english: 'no'})).to.equal(dict[1]);
+        context(['wordFinder'], function (wordFinder) {
+            describe('wordFinder', function() {
+                describe('#getWord() - not empty', function() {
+                    it('should return a word returned by stat', function(){
+                        expect(wordFinder.getWord({})).to.equal(dict.a);
+                    });
                 });
             });
+
+            loaded = true;
         });
 
         return {
-            name: "wordFinder"
-        };
+            isLoaded: function(){return loaded;}
+        }
     }
 );

@@ -1,12 +1,33 @@
 define(
-    ['helper/english'],
-    function(englishHelper) {
-        describe('app', function() {
-            describe('#run()', function() {
-                it('should return true if game is found', function(){
-                    expect(d3.app.run()).to.be(true);
+    ['vendor/underscore'],
+    function (_) {
+        var stubs, context, loaded = false, createResult = 'hello';
+
+        stubs = {
+            games: {
+                game1: {
+                    importance: 100,
+                    create: sinon.stub().returns(createResult)
+                }
+            }
+        };
+
+        context = createContext(stubs, _);
+
+        context(['app'], function (app) {
+            describe('app', function() {
+                describe('#run()', function() {
+                    it('should return `' + createResult + '` if game is found', function(){
+                        expect(app.run()).to.equal(createResult);
+                    });
                 });
             });
+
+            loaded = true;
         });
+
+        return {
+            isLoaded: function(){return loaded;}
+        }
     }
 );

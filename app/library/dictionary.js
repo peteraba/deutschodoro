@@ -1,7 +1,11 @@
 define(
     ['dict/dict', 'vendor/underscore'],
-    function(rawDictionary){
-        var level, usedDictionary, MAX_LEVEL = 99;
+    function(rawDictionary, _){
+        var level, usedDictionary = {}, MAX_LEVEL = 99;
+
+        function getDictionary() {
+            return usedDictionary;
+        }
 
         /**
          *
@@ -93,7 +97,7 @@ define(
             setLevel: setLevel,
             findWords: findWords,
             rawDictionary: rawDictionary,
-            getDictionary: function(){return rawDictionary;}
+            getDictionary: getDictionary
         };
     }
 );

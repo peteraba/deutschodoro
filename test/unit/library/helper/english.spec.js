@@ -9,5 +9,9 @@ define(
                 });
             });
         });
+
+        return {
+            isLoaded: function(){return true;}
+        }
     }
 );

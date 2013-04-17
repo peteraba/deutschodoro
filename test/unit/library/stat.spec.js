@@ -1,81 +1,96 @@
 define(
-    ['helper/english'],
-    function(englishHelper) {
-        describe('stat', function() {
-            describe('#pickWord()', function() {
-                it('should pick the word with the lowest score', function(){
-                    var words, ts, statData;
+    ['vendor/underscore'],
+    function (_) {
+        var stubs, context, loaded = false;
 
-                    words = {
-                        a: {hash: 'a'},
-                        b: {hash: 'b'},
-                        c: {hash: 'c'},
-                        d: {hash: 'd'}
-                    };
+        stubs = {
+        };
 
-                    ts = Math.round((new Date()).getTime() / 1000);
+        context = createContext(stubs, _);
 
-                    statData = {
-                        a: [[1, ts-86401], [0, ts-172801], [0, ts-864001]],
-                        b: [[1, ts-86401], [0, ts-172801]],
-                        d: [[0, 0]]
-                    };
+        context(['stat'], function (stat) {
+            describe('stat', function() {
+                describe('#pickWord()', function() {
+                    it('should pick the word with the lowest score', function(){
+                        var words, ts, statData;
 
-                    d3.stat.setData(statData);
-
-                    expect(d3.stat.pickWord(words)).to.eql(words.d);
-
-                    delete words.d;
-                    expect(d3.stat.pickWord(words)).to.eql(words.c);
-
-                    delete words.c;
-                    expect(d3.stat.pickWord(words)).to.eql(words.a);
-
-                    delete words.a;
-                    expect(d3.stat.pickWord(words)).to.eql(words.b);
-
-                    delete words.b;
-                    expect(d3.stat.pickWord(words)).to.be(false);
-                });
-            });
-
-            describe('#saveResult()', function() {
-                it('should call storage.setItem', function(){
-                    var dummyStorage, ts, hashes, expectedResult;
-
-                    dummyStorage = (function(){
-                        var dataSaved = {};
-                        function setItem(key, dataString){
-                            dataSaved = JSON.parse(dataString);
-                        }
-                        function getDataSaved(){
-                            return dataSaved;
-                        }
-                        return {
-                            getDataSaved: getDataSaved,
-                            setItem: setItem
+                        words = {
+                            a: {hash: 'a'},
+                            b: {hash: 'b'},
+                            c: {hash: 'c'},
+                            d: {hash: 'd'}
                         };
-                    })();
 
-                    ts = Math.round((new Date()).getTime() / 1000);
+                        ts = Math.round((new Date()).getTime() / 1000);
 
-                    hashes = ['a', 'b', 'c'];
+                        statData = {
+                            a: [[1, ts-86401], [0, ts-172801], [0, ts-864001]],
+                            b: [[1, ts-86401], [0, ts-172801]],
+                            d: [[0, 0]]
+                        };
 
-                    d3.stat.setStorage(dummyStorage);
-                    d3.stat.setTimestamp(ts);
-                    d3.stat.setData({});
+                        stat.setData(statData);
 
-                    d3.stat.saveResult(hashes, 1);
+                        expect(stat.pickWord(words)).to.equal(words.d);
 
-                    expectedResult = {
-                        a: [[1, ts]],
-                        b: [[1, ts]],
-                        c: [[1, ts]]
-                    };
+                        delete words.d;
+                        expect(stat.pickWord(words)).to.equal(words.c);
 
-                    expect(dummyStorage.getDataSaved()).to.eql(expectedResult);
+                        delete words.c;
+                        expect(stat.pickWord(words)).to.equal(words.a);
+
+                        delete words.a;
+                        expect(stat.pickWord(words)).to.equal(words.b);
+
+                        delete words.b;
+                        expect(stat.pickWord(words)).to.equal(false);
+                    });
+                });
+
+                describe('#saveResult()', function() {
+                    it('should call storage.setItem', function(){
+                        var dummyStorage, ts, hashes, expectedResult;
+
+                        dummyStorage = (function(){
+                            var dataSaved = {};
+                            function setItem(key, dataString){
+                                dataSaved = JSON.parse(dataString);
+                            }
+                            function getDataSaved(){
+                                return dataSaved;
+                            }
+                            return {
+                                getDataSaved: getDataSaved,
+                                setItem: setItem
+                            };
+                        })();
+
+                        ts = Math.round((new Date()).getTime() / 1000);
+
+                        hashes = ['a', 'b', 'c'];
+
+                        stat.setStorage(dummyStorage);
+                        stat.setTimestamp(ts);
+                        stat.setData({});
+
+                        stat.saveResult(hashes, 1);
+
+                        expectedResult = {
+                            a: [[1, ts]],
+                            b: [[1, ts]],
+                            c: [[1, ts]]
+                        };
+
+                        expect(dummyStorage.getDataSaved()).to.eql(expectedResult);
+                    });
                 });
             });
+
+            loaded = true;
         });
+
+        return {
+            isLoaded: function(){return loaded;}
+        }
     }
 );

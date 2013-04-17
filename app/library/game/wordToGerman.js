@@ -1,6 +1,6 @@
 define(
-    ['wordFinder', 'vendor/underscore'],
-    function(wordFinder){
+    ['vendor/underscore'],
+    function(_){
         var question = '';
 
         /**

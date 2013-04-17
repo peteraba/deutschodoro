@@ -62,8 +62,7 @@ define(
         }
 
         return {
-            run: run,
-            setGames: setGames
+            run: run
         };
     }
 );

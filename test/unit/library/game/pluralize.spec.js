@@ -1,35 +1,40 @@
 define(
-    ['vendor/Squire', 'game/pluralize'],
-    function(Squire, pluralize) {
-        describe('game.pluralize', function() {
-            var wordFinder, context = {};
+    ['vendor/underscore'],
+    function (_) {
+        var noun, stubs, context, loaded = false;
 
-            wordFinder = {
-                getWord: function(){return {plural:"⍨", german:"Apfel"};}
-            };
+        noun = {plural:"⍨", german:"Apfel"};
 
-            beforeEach(function(done) {
-                context.injector = new Squire();
-                context.injector.mock('wordFinder', wordFinder).require(['game/pluralize'], function(game) {
-                    context.game = game;
-                    done();
+        stubs = {
+            wordFinder: {getWord: sinon.stub().returns(noun)}
+        };
+
+        context = createContext(stubs, _);
+
+        context(['game/pluralize'], function (pluralize) {
+            describe('game.pluralize', function() {
+                describe('#checkResult()', function() {
+                    it('should check if result is the correct pluralized German word', function(){
+                        expect(pluralize.create()).to.equal(true);
+                        expect(pluralize.checkResult('Äpfel')).to.equal(true);
+                        expect(pluralize.checkResult('Apfels')).to.equal(false);
+                    });
                 });
-            });
 
-            describe('#checkResult()', function() {
-                it('should check if result is the correct pluralized German word', function(){
-                    expect(context.game.create()).to.equal(true);
-                    expect(context.game.checkResult('Äpfel')).to.equal(true);
-                    expect(context.game.checkResult('Apfels')).to.equal(false);
+                describe('#getHtml()', function() {
+                    it('should return html', function(){
+                        expect(pluralize.create()).to.equal(true);
+                        expect(pluralize.getHtml()).to.contain('<h1>');
+                    });
                 });
-            });
 
-            describe('#getHtml()', function() {
-                it('should return html', function(){
-                    expect(context.game.create()).to.equal(true);
-                    expect(context.game.getHtml()).to.contain('<h1>');
-                });
+                loaded = true;
             });
         });
+
+
+        return {
+            isLoaded: function(){return loaded;}
+        }
     }
 );

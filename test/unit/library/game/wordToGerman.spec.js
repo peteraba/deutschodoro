@@ -1,29 +1,31 @@
 define(
-    ['vendor/Squire', 'game/wordToGerman'],
-    function(Squire, wordToGerman) {
-        describe('game.wordToGerman', function() {
-            var context = {};
+    ['vendor/underscore'],
+    function (_) {
+        var stubs, context, loaded = false;
 
-            beforeEach(function(done) {
-                context.injector = new Squire();
-                context.injector.require(['game/wordToGerman'], function(game) {
-                    context.game = game;
-                    done();
-                });
-            });
+        stubs = {};
 
+        context = createContext(stubs, _);
+
+        context(['game/wordToGerman'], function (wordToGerman) {
             describe('#checkResult()', function() {
                 it('should check if result is the correct German word', function(){
-                    expect(context.game.checkResult()).to.equal(false);
+                    expect(wordToGerman.checkResult()).to.equal(false);
                 });
             });
 
             describe('#getHtml()', function() {
                 it('should return html', function(){
-                    expect(context.game.create()).to.equal(true);
-                    expect(context.game.getHtml()).to.contain('<h1>');
+                    expect(wordToGerman.create()).to.equal(true);
+                    expect(wordToGerman.getHtml()).to.contain('<h1>');
                 });
             });
+
+            loaded = true;
         });
+
+        return {
+            isLoaded: function(){return loaded;}
+        }
     }
 );
