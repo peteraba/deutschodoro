@@ -1,7 +1,7 @@
 define(
-    ['games', 'vendor/underscore'],
-    function(games){
-        var importances;
+    ['gui', 'games', 'stat', 'vendor/jquery', 'vendor/underscore'],
+    function(gui, games, stat, $){
+        var importances, currentGame, currentAnswer, canReRun = false;
 
         /**
          *
@@ -49,20 +49,84 @@ define(
 
         /**
          *
-         * @return {Boolean}
+         * @return {Boolean|Object}
          */
         function run() {
-            var game = getRandomGame();
+            var game = getRandomGame(), html, submit;
 
-            if (game) {
-                return game.create();
+            canReRun = false;
+            currentGame = game;
+            currentAnswer = null;
+
+            if (game && game.create()) {
+                html = $(game.getHtml());
+                $('#submit', html).click(checkResult);
+                gui.displayGame(html);
             }
 
-            return false;
+            return game;
+        }
+
+        function checkResult(event) {
+            var radioBtns, answer;
+
+            event.preventDefault();
+
+            radioBtns = $('.options input').attr('disabled', true);
+            answer = $('span', radioBtns.filter(':checked').parent());
+            currentAnswer = answer;
+
+            if (currentGame.checkResult(answer.text())) {
+                handleSuccess(answer);
+            } else {
+                handleFailure(answer);
+            }
+        }
+
+        function handleFailure(answer) {
+            var hashes = [];
+
+            _.each(currentGame.getUsedWords(), function(word){
+                hashes.push(word.hash);
+            });
+
+            answer.addClass('failure');
+
+            stat.saveResult(hashes, false);
+
+            reRun();
+        }
+
+        function handleSuccess(answer) {
+            var hashes = [];
+
+            _.each(currentGame.getUsedWords(), function(word){
+                hashes.push(word.hash);
+            });
+
+            answer.addClass('success');
+
+            stat.saveResult(hashes, true);
+
+            reRun();
+        }
+
+        function reRun() {
+            canReRun = true;
+            setTimeout(function(){
+                if (canReRun) {
+                    run();
+                }
+            }, 3000);
+        }
+
+        function isReady(){
+            return gui.isReady();
         }
 
         return {
-            run: run
+            run: run,
+            isReady: isReady
         };
     }
 );

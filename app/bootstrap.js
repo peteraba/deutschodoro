@@ -10,7 +10,7 @@ requirejs.config({
         'vendor/jquery'
     ],
     shim: {
-        'underscore': {
+        'vendor/underscore': {
             exports: '_'
         },
         'vendor/jquery': {
@@ -22,7 +22,7 @@ requirejs.config({
             ]
         }
     }
-    //,urlArgs: "bust=" +  (new Date()).getTime()
+    ,urlArgs: "bust=" +  (new Date()).getTime()
 });
 
 // Start the main app logic.

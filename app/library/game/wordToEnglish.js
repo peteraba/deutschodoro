@@ -43,12 +43,21 @@ define(
             return [pickedWord];
         }
 
+        /**
+         *
+         * @return {Object}
+         */
+        function getAnswer() {
+            return answer;
+        }
+
         return {
             create: create,
             getHtml: getHtml,
             checkResult: checkResult,
             getUsedWords: getUsedWords,
-            importance: 100
+            getAnswer: getAnswer,
+            importance: 0
         };
     }
 );

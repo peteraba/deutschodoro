@@ -22,11 +22,31 @@ define(
 
             html.push('<h1>Der, die, das</h1>');
             html.push('<p>What is the article of `' + pickedWord.german + '`?</p>');
-            html.push('<ul>');
-            html.push('<li><label for="der">der <input type="radio" name="article" value="der" id="der"></label></li>');
-            html.push('<li><label for="die">die <input type="radio" name="article" value="die" id="die"></label></li>');
-            html.push('<li><label for="das">das <input type="radio" name="article" value="das" id="das"></label></li>');
+            html.push('<ul class="options">');
+
+            html.push('<li>');
+            html.push('<label for="der">');
+            html.push('<span>der</span>');
+            html.push('<input type="radio" name="article" value="der" id="der">');
+            html.push('</label>');
+            html.push('</li>');
+
+            html.push('<li>');
+            html.push('<label for="die">');
+            html.push('<span>die</span>');
+            html.push('<input type="radio" name="article" value="die" id="die">');
+            html.push('</label>');
+            html.push('</li>');
+
+            html.push('<li>');
+            html.push('<label for="das">');
+            html.push('<span>das</span>');
+            html.push('<input type="radio" name="article" value="das" id="das">');
+            html.push('</label>');
+            html.push('</li>');
+
             html.push('</ul>');
+            html.push('<p><button id="submit">Submit</button></p>');
 
             return html.join('');
         }
@@ -48,11 +68,20 @@ define(
             return [pickedWord];
         }
 
+        /**
+         *
+         * @return {Object}
+         */
+        function getAnswer() {
+            return answer;
+        }
+
         return {
             create: create,
             getHtml: getHtml,
             checkResult: checkResult,
             getUsedWords: getUsedWords,
+            getAnswer: getAnswer,
             importance: 100
         };
     }

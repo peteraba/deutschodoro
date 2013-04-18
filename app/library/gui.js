@@ -2,31 +2,51 @@ define(
     ['vendor/jquery', 'vendor/jquery-layout/jquery.layout-latest.min'],
     function($){
 
-        var loaded = false;
+        var ready = false, layout, $doc = $(document), $window = $(window), domCache = {};
 
         function init(){
-            $(document).ready(function(){
-                var $doc = $(document);
-                $doc.ready(function () {
-                    var layout = $('body').layout({ applyDefaultStyles: true });
-                    $(this).data('layout', layout);
-                });
-                $('#toggler').click(function() {
-                    $doc.data('layout').toggle('east');
-                });
+            layout = $('body').layout({ applyDefaultStyles: true });
 
-                loaded = true;
+            $('#toggler').click(function() {
+                layout.toggle('east');
             });
+
+            ready = true;
         }
 
-        function isLoaded() {
-            return loaded;
+        function resize(){
+            var minEastWidth = Math.min(300, Math.floor($doc.width()/4));
+
+            layout.sizePane("east", minEastWidth);
         }
 
-        init();
+        function getDom(selector) {
+            if (!domCache[selector]) {
+                domCache[selector] = $(selector);
+            }
+            return domCache[selector];
+        }
+
+        function isReady() {
+            return ready;
+        }
+
+        function displayGame(html) {
+            if (isReady()) {
+                getDom('#center').empty().append(html);
+            }
+        }
+
+        $doc.ready(function(){
+            init();
+            $window.resize();
+        });
+
+        $window.resize(resize);
 
         return {
-            isLoaded: isLoaded
+            isReady: isReady,
+            displayGame: displayGame
         }
     }
 );

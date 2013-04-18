@@ -9,6 +9,10 @@ define(
                     importance: 100,
                     create: sinon.stub().returns(createResult)
                 }
+            },
+            gui: {
+                isReady: sinon.stub().returns(true),
+                displayGame: sinon.stub()
             }
         };
 

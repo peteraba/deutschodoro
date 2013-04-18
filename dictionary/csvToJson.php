@@ -79,6 +79,7 @@ while (($data = fgetcsv($handle, 1000, ";")) !== false) {
 }
 fclose($handle);
 
-$content = 'var dict = ' . json_encode($dictionary) . ";\n";
+$content = 'define(
+    {dict: ' . json_encode($dictionary) . "}\n);\n";
 
 file_put_contents(__DIR__ . '/dict.js', $content);

@@ -1,6 +1,6 @@
 define(
     ['dict/dict', 'vendor/underscore'],
-    function(rawDictionary, _){
+    function(rawDictionary){
         var level, usedDictionary = {}, MAX_LEVEL = 99;
 
         function getDictionary() {
@@ -20,7 +20,7 @@ define(
             level = newLevel;
 
             usedDictionary = {};
-            _.each(rawDictionary, function(word){
+            _.each(rawDictionary.dict, function(word){
                 if (typeof word.level !== 'undefined' && word.level <= newLevel) {
                     usedDictionary[word.hash] = word;
                 }
@@ -96,7 +96,7 @@ define(
         return {
             setLevel: setLevel,
             findWords: findWords,
-            rawDictionary: rawDictionary,
+            rawDictionary: rawDictionary.dict,
             getDictionary: getDictionary
         };
     }

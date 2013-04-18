@@ -6,7 +6,6 @@ define(
         /**
          *
          * @param {Object} newStorage
-         * @return {Object}
          */
         function setStorage(newStorage) {
             storage = newStorage;
@@ -40,45 +39,32 @@ define(
             return ts;
         }
 
-        /**
-         *
-         * @return {Number} newTs
-         */
         function setTimestamp(newTs) {
             ts = newTs;
         }
 
-        /**
-         *
-         * @return {Object}
-         */
         function loadData() {
             var jsonData;
 
             jsonData = getStorage().getItem(DATA_KEY);
-            data = JSON.parse(jsonData);
+            data = jsonData ? JSON.parse(jsonData) : {};
         }
 
         /**
          *
          * @param {Object} newData
-         * @return {Object}
          */
         function setData(newData) {
             data = newData;
         }
 
-        /**
-         *
-         * @return {Object}
-         */
         function saveData() {
             getStorage().setItem(DATA_KEY, JSON.stringify(data));
         }
 
         /**
          *
-         * @param {Object} hashes
+         * @param {Array} hashes
          * @param {Boolean} result
          * @return {*}
          */
