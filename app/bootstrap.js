@@ -1,9 +1,9 @@
 requirejs.config({
-    baseUrl: '.',
+    baseUrl: './app/library',
     paths: {
-        vendor: '../vendor/js',
-        dict: '../dictionary',
-        unit: '../test/unit'
+        vendor: '../../vendor/js',
+        controller: '../controller',
+        dict: '../../dictionary'
     },
     deps: [
         'vendor/underscore',
@@ -21,6 +21,14 @@ requirejs.config({
                 'vendor/jquery'
             ]
         }
-    },
-    urlArgs: "bust=" +  (new Date()).getTime()
+    }
+    //,urlArgs: "bust=" +  (new Date()).getTime()
 });
+
+// Start the main app logic.
+require(
+    ['controller/main'],
+    function(mainController) {
+        mainController.indexAction();
+    }
+);

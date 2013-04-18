@@ -1,16 +1,10 @@
 // Start the main app logic.
-requirejs(
-    ['vendor/jquery', 'vendor/jquery-layout/jquery.layout-latest.min'],
+define(
+    ['gui'],
     function() {
-        $(document).ready(function(){
-            var $doc = $(document);
-            $doc.ready(function () {
-                var layout = $('body').layout({ applyDefaultStyles: true });
-                $(this).data('layout', layout);
-            });
-            $('#toggler').click(function() {
-                $doc.data('layout').toggle('east');
-            });
-        });
+        return {
+            indexAction: function(){
+            }
+        }
     }
 );
