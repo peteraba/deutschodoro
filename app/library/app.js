@@ -72,14 +72,17 @@ define(
 
             event.preventDefault();
 
-            radioBtns = $('.options input').attr('disabled', true);
+            radioBtns = $('.options input');
             answer = $('span', radioBtns.filter(':checked').parent());
             currentAnswer = answer;
 
-            if (currentGame.checkResult(answer.text())) {
-                handleSuccess(answer);
-            } else {
-                handleFailure(answer);
+            if (answer.length) {
+                radioBtns.attr('disabled', true);
+                if (currentGame.checkResult(answer.text())) {
+                    handleSuccess(answer);
+                } else {
+                    handleFailure(answer);
+                }
             }
         }
 

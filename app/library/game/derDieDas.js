@@ -26,22 +26,22 @@ define(
 
             html.push('<li>');
             html.push('<label for="der">');
-            html.push('<span>der</span>');
             html.push('<input type="radio" name="article" value="der" id="der">');
+            html.push(' <span>der</span>');
             html.push('</label>');
             html.push('</li>');
 
             html.push('<li>');
             html.push('<label for="die">');
-            html.push('<span>die</span>');
             html.push('<input type="radio" name="article" value="die" id="die">');
+            html.push(' <span>die</span>');
             html.push('</label>');
             html.push('</li>');
 
             html.push('<li>');
             html.push('<label for="das">');
-            html.push('<span>das</span>');
             html.push('<input type="radio" name="article" value="das" id="das">');
+            html.push(' <span>das</span>');
             html.push('</label>');
             html.push('</li>');
 
@@ -82,7 +82,7 @@ define(
             checkResult: checkResult,
             getUsedWords: getUsedWords,
             getAnswer: getAnswer,
-            importance: 100
+            importance: 0
         };
     }
 );

@@ -35,7 +35,7 @@ define(
                     newChar = 'Ü';
                     break;
                 default:
-                    newChar = '';
+                    return false;
             }
 
             result = '';
@@ -55,6 +55,8 @@ define(
          * @return {*}
          */
         function modifyWord(base, modified) {
+            var umlauterResult;
+
             if (modified == '' || modified == '–') {
                 return false;
             }
@@ -62,7 +64,8 @@ define(
                 return base + modified.substr(1);
             }
             if (modified.substr(0, 1) == '⍨') {
-                return umlauter(base) + modified.substr(1);
+                umlauterResult = umlauter(base);
+                return false === umlauterResult ? false: umlauterResult + modified.substr(1);
             }
 
             return modified;

@@ -8,6 +8,9 @@ if ($handle == false) {
 
 function getRow(array $data)
 {
+    if ($data[7]>=100) {
+        return false;
+    }
     switch ($data[5]) {
         case 'noun':
             $row = array(
@@ -75,7 +78,10 @@ while (($data = fgetcsv($handle, 1000, ";")) !== false) {
             }
         }
     }
-    $dictionary[] = getRow($data);
+    $rowData = getRow($data);
+    if (false !== $rowData) {
+        $dictionary[] = getRow($data);
+    }
 }
 fclose($handle);
 
