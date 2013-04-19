@@ -1,6 +1,27 @@
 define(
     ['helper/word'],
     function(wordHelper){
+        var consonantEnding;
+
+        consonantEnding = [
+            'b', 'c', 'd', 'f', 'g',
+            'h', 'j', 'k', 'l', 'm',
+            'n', 'p', 'q', 'r', 's',
+            't', 'v', 'w', 'x', 'y',
+            'z', 'ß'
+        ];
+
+        function checkConsonantEnding(word) {
+            return consonantEnding.indexOf(word[word.length-1]) > -1;
+        }
+
+        function checkConsonantBeginning(word) {
+            if (['h'].indexOf(word[0]) > -1) {
+                word = word.substr(1);
+            }
+            return consonantEnding.indexOf(word[0]) > -1;
+        }
+
         /**
          *
          * @param {String} word
@@ -72,6 +93,8 @@ define(
         }
 
         return {
+            checkConsonantEnding: checkConsonantEnding,
+            checkConsonantBeginning: checkConsonantBeginning,
             modifyWord: modifyWord
         };
     }

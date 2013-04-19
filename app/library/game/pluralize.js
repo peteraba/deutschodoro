@@ -1,42 +1,28 @@
 define(
     ['wordFinder', 'german/noun', 'vendor/underscore'],
     function(wordFinder, germanNoun){
-        var pickedWord = null, answer = null, words, plurals;
-
-        plurals = ['~n', '~e', '~en', '~', '⍨', '⍨e', '~er', '~s'];
+        var pickedWord = null, answer = null, words;
 
         /**
          *
          * @return {Boolean}
          */
         function create() {
-            var pickedPlural;
-
-            pickedWord = wordFinder.getWord({type:"noun"});
+            pickedWord = wordFinder.getWord({type:"noun", plural:'!–'});
 
             answer = germanNoun.getPlural(pickedWord.german, pickedWord.plural);
+            console.log(answer);
 
             if (answer === false) {
                 throw 'Picked word: `' + pickedWord.german + '` was not pluralizable.';
             }
 
-            words = [answer, false, false];
+            words = [answer];
 
-            console.log('PICKED WORD: ' + pickedWord.german);
-            console.log('word1');
-            while (words[1] == answer || false === words[1]) {
-                pickedPlural = plurals[_.random(plurals.length-1)];
-                console.log(pickedPlural);
-                words[1] = germanNoun.getPlural(pickedWord.german, pickedPlural);
-            }
-            console.log('word2');
-            while (words[2] == answer || words[1] == words[2] || false === words[2]) {
-                pickedPlural = plurals[_.random(plurals.length-1)];
-                console.log(pickedPlural);
-                words[2] = germanNoun.getPlural(pickedWord.german, pickedPlural);
-            }
+            words.push(germanNoun.getPluralWrongPlural(pickedWord.german, words));
 
-            console.log(words);
+            words.push(germanNoun.getPluralWrongPlural(pickedWord.german, words));
+
             words = _.shuffle(words);
 
             return true;

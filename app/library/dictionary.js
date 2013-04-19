@@ -35,14 +35,20 @@ define(
          * @return {Boolean}
          */
         function checkItemKey(word, expression, key) {
-            var arrayResult;
+            var arrayResult, negate;
 
             if (typeof word[key] == 'undefined') {
                 return false;
             } else if (_.isArray(word[key])) {
                 arrayResult = false;
                 _.every(word[key], function(element){
-                    if (element == expression) {
+                    negate = element[0]=='!';
+
+                    if (negate) {
+                        expression = expression.substr(1);
+                    }
+
+                    if (!negate && element == expression || negate && element != expression) {
                         arrayResult = true;
                         return false;
                     }
@@ -51,7 +57,12 @@ define(
                 return arrayResult;
             }
 
-            return word[key] == expression;
+            negate = expression[0]=='!';
+            if (negate) {
+                expression = expression.substr(1);
+            }
+
+            return negate ? word[key] != expression : word[key] == expression;
         }
 
         /**

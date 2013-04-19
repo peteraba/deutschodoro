@@ -81,19 +81,28 @@ define(
                 if (currentGame.checkResult(answer.text())) {
                     handleSuccess(answer);
                 } else {
-                    handleFailure(answer);
+                    handleFailure(answer, radioBtns);
                 }
             }
         }
 
-        function handleFailure(answer) {
-            var hashes = [];
+        function handleFailure(answer, radioBtns) {
+            var hashes = [], rightAnswer, i, span;
 
             _.each(currentGame.getUsedWords(), function(word){
                 hashes.push(word.hash);
             });
 
             answer.addClass('failure');
+
+            rightAnswer = currentGame.getAnswer();
+            for (i = 0; i < radioBtns.length; i++) {
+                span = $('span', radioBtns.eq(i).parent());
+                if (span.text() == rightAnswer) {
+                    span.addClass('rightAnswer');
+                    break;
+                }
+            }
 
             stat.saveResult(hashes, false);
 

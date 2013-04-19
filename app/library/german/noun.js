@@ -1,6 +1,12 @@
 define(
     ['helper/german', 'vendor/underscore'],
     function(germanHelper){
+        var pluralModifiers;
+
+        pluralModifiers = {
+            consonant: ['~n', '~', '⍨', '⍨e', '~er', '~s'],
+            vowel: ['~n', '~', '⍨', '~s']
+        };
 
         /**
          *
@@ -10,6 +16,26 @@ define(
          */
         function getPlural(singular, modifier) {
             return germanHelper.modifyWord(singular, modifier);
+        }
+
+        /**
+         *
+         * @param {String} singular
+         * @param {Array}  skipWords
+         * @return {String}
+         */
+        function getPluralWrongPlural(singular, skipWords) {
+            var currentModifiers = pluralModifiers.vowel, pickedModifier = null, result = null;
+
+            if (germanHelper.checkConsonantEnding(singular)) {
+                currentModifiers = pluralModifiers.consonant;
+            }
+
+            while (!result || skipWords.indexOf(result) > -1) {
+                pickedModifier = currentModifiers[_.random(currentModifiers.length-1)];
+                result = germanHelper.modifyWord(singular, pickedModifier);
+            }
+            return result;
         }
 
         /**
@@ -172,6 +198,7 @@ define(
 
         return {
             getPlural: getPlural,
+            getPluralWrongPlural: getPluralWrongPlural,
             getGenitive: getGenitive,
             getArticle: getArticle
         };

@@ -34,6 +34,10 @@ function checkRequire(args, ts) {
     var i, result, ts2;
 
     for (i = 0; i < args.length; i++) {
+        if (!args[i] || typeof args[i].isLoaded == 'undefined') {
+            console.error(i, args[i]);
+            continue;
+        }
         result = args[i].isLoaded();
 
         if (!result) {
