@@ -1,22 +1,22 @@
 define(
     ['vendor/underscore'],
     function (_) {
-        var stubs, context, loaded = false, dict, level1Dictionary, level2Dictionary, validDictionary;
+        var stubs, context, loaded = false, rawDict, level1Dictionary, level2Dictionary, validDictionary;
 
-        dict = [
+        rawDict = {dict: [
             {level: 1, english: 'yes', german: 'ja', hash: 'a'},
             {level: 1, english: 'no', german: 'nein', hash: 'b'},
             {level: 2, english: 'similar', german: 'ähnlich', hash: 'c'},
             {level: 3, english: 'enthusiastic', german: 'begeistert', hash: 'd'},
             {level: 100, english: '', german: 'Vorsitz', hash: 'e'},
-        ];
+        ]};
 
-        level1Dictionary = {a: dict[0], b: dict[1]};
-        level2Dictionary = {a: dict[0], b: dict[1], c: dict[2]};
-        validDictionary  = {a: dict[0], b: dict[1], c: dict[2], d: dict[3]};
+        level1Dictionary = {a: rawDict.dict[0], b: rawDict.dict[1]};
+        level2Dictionary = {a: rawDict.dict[0], b: rawDict.dict[1], c: rawDict.dict[2]};
+        validDictionary  = {a: rawDict.dict[0], b: rawDict.dict[1], c: rawDict.dict[2], d: rawDict.dict[3]};
 
         stubs = {
-            'dict/dict': dict
+            'dict/dict': rawDict
         };
 
         context = createContext(stubs, _);
@@ -25,6 +25,7 @@ define(
             describe('dictionary', function() {
                 describe('#getDictionary()', function() {
                     it('should return the dictionary including all words with levels by default', function(){
+                        console.log(dictionary.getDictionary(), validDictionary);
                         expect(dictionary.getDictionary()).to.eql(validDictionary);
                     });
                     it('should return the dictionary with the applied level filter', function(){
@@ -38,7 +39,7 @@ define(
 
                 describe('#findWords()', function() {
                     it('should return all words matching the search options', function(){
-                        expect(dictionary.findWords({english: 'yes'})).to.eql({a: dict[0]});
+                        expect(dictionary.findWords({english: 'yes'})).to.eql({a: rawDict.dict[0]});
                     });
 
                     it('should return empty array when there is no result', function(){

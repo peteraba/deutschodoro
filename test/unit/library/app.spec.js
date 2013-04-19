@@ -7,7 +7,8 @@ define(
             games: {
                 game1: {
                     importance: 100,
-                    create: sinon.stub().returns(createResult)
+                    create: sinon.stub().returns(createResult),
+                    getHtml: sinon.stub().returns('<h1>' + createResult + '</h1>')
                 }
             },
             gui: {
@@ -21,8 +22,8 @@ define(
         context(['app'], function (app) {
             describe('app', function() {
                 describe('#run()', function() {
-                    it('should return `' + createResult + '` if game is found', function(){
-                        expect(app.run()).to.equal(createResult);
+                    it('should return a game', function(){
+                        expect(app.run()).to.be.an('object');
                     });
                 });
             });
