@@ -1,13 +1,77 @@
 define(
-    ['vendor/underscore'],
-    function(){
-        var question = '';
+    ['wordFinder', 'german/noun', 'english/noun', 'vendor/underscore'],
+    function(wordFinder, germanNoun, englishNoun){
+        var question = ''
+            , answer
+            , pickedWord
+            , words
+            , PLURAL_CHANCE = 50
+            , ENGLISH_NOUN_PREFIX = 'the '
+            , GERMAN_PLURAL_PREFIX = 'die ';
 
         /**
          *
          * @return {Boolean}
          */
         function create() {
+            var type, word2, word3, english;
+
+            pickedWord = wordFinder.getWord();
+
+            type = _.isArray(pickedWord.type) ? pickedWord.type[0] : pickedWord.type;
+            english = _.isArray(pickedWord.english) ? pickedWord.english[0] : pickedWord.english;
+
+            word2 = wordFinder.getRandomWord({type: type}, [pickedWord.german]);
+            word3 = wordFinder.getRandomWord({type: type}, [pickedWord.german, word2.german]);
+
+            switch (type) {
+                case 'noun':
+                    if (pickedWord.plural != '–' && _.random(100) < PLURAL_CHANCE) {
+                        answer = ENGLISH_NOUN_PREFIX + englishNoun.getPlural(english);
+                        question = germanNoun.getPlural(pickedWord.german, pickedWord.plural);
+                        question = GERMAN_PLURAL_PREFIX + question;
+
+                        words = [answer];
+
+                        english = _.isArray(word2.english) ? word2.english[0] : word2.english;
+                        words.push(ENGLISH_NOUN_PREFIX + englishNoun.getPlural(english, words));
+
+                        english = _.isArray(word3.english) ? word3.english[0] : word3.english;
+                        words.push(ENGLISH_NOUN_PREFIX + englishNoun.getPlural(english, words));
+                    } else {
+                        answer = ENGLISH_NOUN_PREFIX + english;
+                        if (pickedWord.german != '–') {
+                            question = pickedWord.article + ' ' + pickedWord.german;
+                        } else {
+                            question = GERMAN_PLURAL_PREFIX + pickedWord.german;
+                        }
+
+                        words = [answer];
+
+                        english = _.isArray(word2.english) ? word2.english[0] : word2.english;
+                        words.push(ENGLISH_NOUN_PREFIX + english);
+
+                        english = _.isArray(word3.english) ? word3.english[0] : word3.english;
+                        words.push(ENGLISH_NOUN_PREFIX + english);
+                    }
+                    break;
+                default:
+                    answer = english;
+                    question = pickedWord.german;
+
+                    words = [answer];
+
+                    english = _.isArray(word2.english) ? word2.english[0] : word2.english;
+                    words.push(english);
+
+                    english = _.isArray(word3.english) ? word3.english[0] : word3.english;
+                    words.push(english);
+            }
+
+            console.log([words, answer, question]);
+
+            words = _.shuffle(words);
+
             return true;
         }
 
@@ -16,23 +80,34 @@ define(
          * @return {String}
          */
         function getHtml() {
-            var html = [];
+            var html = [], html2 = [], i;
+
+            for (i = 0; i < 3; i++) {
+                html2.push('<li>');
+                html2.push('<label for="' + words[i] + '">');
+                html2.push('<input type="radio" name="word" value="' + words[i] + '" id="' + words[i] + '">');
+                html2.push(' <span>' + words[i] + '</span>');
+                html2.push('</label>');
+                html2.push('</li>');
+            }
 
             html.push('<h1>Word to English</h1>');
             html.push('<p>What is the translation of `' + question + '`?</p>');
-            html.push('<ul>');
+            html.push('<ul class="options">');
+            html.push(html2.join(''));
             html.push('</ul>');
+            html.push('<p><button id="submit">Submit</button></p>');
 
             return html.join('');
         }
 
         /**
          *
-         * @param {String} answer
+         * @param {String} word
          * @return {Boolean}
          */
-        function checkResult(answer) {
-            return false;
+        function checkResult(word) {
+            return word == answer;
         }
 
         /**
@@ -45,7 +120,7 @@ define(
 
         /**
          *
-         * @return {Object}
+         * @return {String}
          */
         function getAnswer() {
             return answer;
@@ -57,7 +132,7 @@ define(
             checkResult: checkResult,
             getUsedWords: getUsedWords,
             getAnswer: getAnswer,
-            importance: 0
+            importance: 100
         };
     }
 );

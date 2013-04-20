@@ -4,7 +4,7 @@ define(
         var pluralModifiers;
 
         pluralModifiers = {
-            consonant: ['~n', '~', '⍨', '⍨e', '~er', '~s'],
+            consonant: ['~en', '~', '⍨', '⍨e', '~er', '~s'],
             vowel: ['~n', '~', '⍨', '~s']
         };
 

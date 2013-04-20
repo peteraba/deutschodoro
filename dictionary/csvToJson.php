@@ -51,7 +51,7 @@ function getRow(array $data)
             break;
         default:
             $row = array(
-                'german' => $data[1],
+                'german' => $data[2],
                 'type' => $data[5],
                 'category' => $data[6],
                 'level' => $data[7],

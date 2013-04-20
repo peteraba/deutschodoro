@@ -10,6 +10,8 @@ define(
         function create() {
             pickedWord = wordFinder.getWord({type:"noun"});
 
+            console.log([pickedWord]);
+
             return true;
         }
 
@@ -73,7 +75,7 @@ define(
          * @return {Object}
          */
         function getAnswer() {
-            return answer;
+            return pickedWord.article;
         }
 
         return {
@@ -82,7 +84,7 @@ define(
             checkResult: checkResult,
             getUsedWords: getUsedWords,
             getAnswer: getAnswer,
-            importance: 0
+            importance: 100
         };
     }
 );
