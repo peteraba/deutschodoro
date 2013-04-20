@@ -5,7 +5,6 @@ define(
             , answer = null
             , question = null
             , words
-            , ENGLISH_NOUN_PREFIX = 'the '
             , GERMAN_PLURAL_PREFIX = 'die ';
 
         /**
@@ -21,11 +20,13 @@ define(
                 throw 'Picked word: `' + pickedWord.german + '` was not pluralizable.';
             }
 
-            answer = GERMAN_PLURAL_PREFIX + answer;
-
             words = [answer];
-            words.push(GERMAN_PLURAL_PREFIX + germanNoun.getPluralWrongPlural(pickedWord.german, words));
-            words.push(GERMAN_PLURAL_PREFIX + germanNoun.getPluralWrongPlural(pickedWord.german, words));
+            words.push(germanNoun.getPluralWrongPlural(pickedWord.german, words));
+            words.push(germanNoun.getPluralWrongPlural(pickedWord.german, words));
+
+            words[0] = GERMAN_PLURAL_PREFIX + words[0];
+            words[1] = GERMAN_PLURAL_PREFIX + words[1];
+            words[2] = GERMAN_PLURAL_PREFIX + words[2];
 
             words = _.shuffle(words);
 
@@ -93,7 +94,7 @@ define(
             checkResult: checkResult,
             getUsedWords: getUsedWords,
             getAnswer: getAnswer,
-            importance: 100
+            importance: 1000000
         };
     }
 );

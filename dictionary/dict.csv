@@ -1,7 +1,7 @@
 ;;abhängig;;;adj;med;2;addicted, dependent
 ;;acht;;;art, pron;num;1;eight
 die;;Achtung;~;–;noun;expr;1;warning, esteem
-der;;Administrator;~s;~n;noun;job, pers;1;admin
+der;;Administrator;~s;~en;noun;job, pers;1;admin
 w;;ähneln;;;verb;;3;to resemble
 ;;ähnlich;;;adj;;2;similar
 ;;aktiv;;;adj;;1;active
@@ -263,7 +263,7 @@ der;;Meter;~s;~;noun;conc;2;meter
 die;;Milch;~;~en, ~e;noun;dri;1;milk
 die;;Milliarde;~;~n;noun;num;2;billion
 die;;Million;~;~en;noun;num;2;million
-der;;Mini;;;noun;clot;2;mini skirt
+der;;Mini;~s;~s;noun;clot;2;mini skirt
 ;;mit;;;prep;;2;with
 der;;Mitarbeiter;~s;~;noun;job, pers;2;employee
 das;;Mitglied;~s, ~es;~er;noun;pers;3;member
@@ -417,7 +417,7 @@ der;;Vogel;~s;⍨;noun;anim;1;bird
 ;;voll;~er;~sten;adj;;3;full
 ;;vollständig;~er;~sten;adj;;3;complete, entire
 ;;vorgesehen;;;;;100;
-;;vorhanden;–;–;ajd;vorhanden;3;available
+;;vorhanden;–;–;adj;;3;available
 der;;Vorname;~s;~en;noun;conc;1;given name
 der;;Vorsitz;;;noun;;100;
 der;;Vorsitzende;~n;~;noun;job, pers;3;chairman
