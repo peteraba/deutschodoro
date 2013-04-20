@@ -24,6 +24,7 @@ define(
             words.push(germanNoun.getPluralWrongPlural(pickedWord.german, words));
             words.push(germanNoun.getPluralWrongPlural(pickedWord.german, words));
 
+            answer = GERMAN_PLURAL_PREFIX + answer;
             words[0] = GERMAN_PLURAL_PREFIX + words[0];
             words[1] = GERMAN_PLURAL_PREFIX + words[1];
             words[2] = GERMAN_PLURAL_PREFIX + words[2];
@@ -94,7 +95,7 @@ define(
             checkResult: checkResult,
             getUsedWords: getUsedWords,
             getAnswer: getAnswer,
-            importance: 1000000
+            importance: 100
         };
     }
 );
