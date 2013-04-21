@@ -66,16 +66,19 @@ define(
             context(['game/wordToGerman'], function (wordToGerman) {
                 describe('game.wordToGerman - verb', function() {
                     describe('#checkResult()', function() {
-                        it('should check if result is the correct English word', function(){
-                            var results = [];
-
+                        it('should check if result is the correct English singular noun', function(){
+                            wordToGerman.setRandom(0);
                             expect(wordToGerman.create()).to.equal(true);
 
-                            results.push(wordToGerman.checkResult('der Apfel') ? 'yes' : 'no');
-                            results.push(wordToGerman.checkResult('die Äpfel') ? 'yes' : 'no');
+                            expect(wordToGerman.checkResult('der Apfel')).to.equal(true);
+                            expect(wordToGerman.checkResult('der Administrator')).to.equal(false);
+                            expect(wordToGerman.checkResult('die Administratoren')).to.equal(false);
+                        });
+                        it('should check if result is the correct English plural noun', function(){
+                            wordToGerman.setRandom(100);
+                            expect(wordToGerman.create()).to.equal(true);
 
-                            expect(results.indexOf('yes')).to.be.greaterThan(-1);
-                            expect(results.indexOf('no')).to.be.greaterThan(-1);
+                            expect(wordToGerman.checkResult('die Äpfel')).to.equal(true);
                             expect(wordToGerman.checkResult('Administrator')).to.equal(false);
                             expect(wordToGerman.checkResult('Administratoren')).to.equal(false);
                         });

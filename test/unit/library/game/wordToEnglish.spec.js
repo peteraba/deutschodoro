@@ -66,16 +66,21 @@ define(
             context(['game/wordToEnglish'], function (wordToEnglish) {
                 describe('game.wordToEnglish - verb', function() {
                     describe('#checkResult()', function() {
-                        it('should check if result is the correct English word', function(){
-                            var results = [];
-
+                        it('should check if result is the correct English singular noun', function(){
+                            wordToEnglish.setRandom(0);
                             expect(wordToEnglish.create()).to.equal(true);
 
-                            results.push(wordToEnglish.checkResult('apple') ? 'yes' : 'no');
-                            results.push(wordToEnglish.checkResult('apples') ? 'yes' : 'no');
+                            expect(wordToEnglish.checkResult('the apple')).to.equal(true);
+                            expect(wordToEnglish.checkResult('the admin')).to.equal(false);
+                            expect(wordToEnglish.checkResult('the admins')).to.equal(false);
+                        });
+                        it('should check if result is the correct English plural noun', function(){
+                            wordToEnglish.setRandom(100);
+                            expect(wordToEnglish.create()).to.equal(true);
 
-                            expect(wordToEnglish.checkResult('admin')).to.equal(false);
-                            expect(wordToEnglish.checkResult('admins')).to.equal(false);
+                            expect(wordToEnglish.checkResult('the apples')).to.equal(true);
+                            expect(wordToEnglish.checkResult('the admin')).to.equal(false);
+                            expect(wordToEnglish.checkResult('the admins')).to.equal(false);
                         });
                     });
 

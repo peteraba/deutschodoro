@@ -5,9 +5,18 @@ define(
             , answer
             , pickedWord
             , words
+            , useRandom = null
             , PLURAL_CHANCE = 50
             , ENGLISH_NOUN_PREFIX = 'the '
             , GERMAN_PLURAL_PREFIX = 'die ';
+
+        function getRandom() {
+            return null===useRandom ? _.random(100) : useRandom;
+        }
+
+        function setRandom(random) {
+            useRandom = random;
+        }
 
         /**
          *
@@ -26,7 +35,7 @@ define(
 
             switch (type) {
                 case 'noun':
-                    if (pickedWord.plural != '–' && _.random(100) < PLURAL_CHANCE) {
+                    if (pickedWord.plural != '–' && getRandom() > PLURAL_CHANCE) {
                         createPluralNoun(english, word2, word3);
                     } else {
                         createSingularNoun(english, word2, word3);
@@ -160,7 +169,8 @@ define(
             checkResult: checkResult,
             getUsedWords: getUsedWords,
             getAnswer: getAnswer,
-            importance: 100
+            importance: 100,
+            setRandom: setRandom
         };
     }
 );
