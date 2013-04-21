@@ -9,40 +9,73 @@ define(
             logLevel = NONE,
             filter = function(){return true};
 
+        /**
+         *
+         * @param {Number} newLogLevel
+         */
         function setLogLevel(newLogLevel){
             logLevel = newLogLevel;
         }
 
+        /**
+         *
+         * @param {*} message
+         * @param {string} key
+         */
         function debug(message, key){
             if (logLevel <= DEBUG && filter(message, key)) {
                 console.debug(message);
             }
         }
 
+        /**
+         *
+         * @param {*} message
+         * @param {string} key
+         */
         function info(message, key){
             if (logLevel <= INFO && filter(message,key)) {
                 console.info(message);
             }
         }
 
+        /**
+         *
+         * @param {*} message
+         * @param {string} key
+         */
         function log(message, key){
             if (logLevel <= INFO && filter(message, key)) {
                 console.log(message);
             }
         }
 
+        /**
+         *
+         * @param {*} message
+         * @param {string} key
+         */
         function warn(message, key){
             if (logLevel <= WARNING && filter(message, key)) {
                 console.warn(message);
             }
         }
 
+        /**
+         *
+         * @param {*} message
+         * @param {string} key
+         */
         function error(message, key){
             if (logLevel <= ERROR && filter(message, key)) {
                 console.error(message);
             }
         }
 
+        /**
+         *
+         * @param {Function} newFilter
+         */
         function setFilter(newFilter){
             filter = newFilter;
         }
