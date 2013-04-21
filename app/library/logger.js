@@ -1,13 +1,14 @@
 define(
     function(){
         var
-            NONE  = 100,
+            NONE  = 0,
             DEBUG = 10,
             INFO = 20,
             WARNING = 30,
             ERROR = 40,
             logLevel = NONE,
-            filter = function(){return true};
+            filter = function(){return true},
+            usedConsole = null;
 
         /**
          *
@@ -17,15 +18,28 @@ define(
             logLevel = newLogLevel;
         }
 
+        function setConsole(newConsole){
+            usedConsole = newConsole;
+        }
+
+        function getConsole(newConsole){
+            if (null === usedConsole) {
+                usedConsole = console;
+            }
+            return usedConsole;
+        }
+
         /**
          *
          * @param {*} message
          * @param {string} key
          */
         function debug(message, key){
-            if (logLevel <= DEBUG && filter(message, key)) {
-                console.debug(message);
+            if (logLevel >= DEBUG && filter(message, key)) {
+                getConsole().debug(message);
+                return true;
             }
+            return false;
         }
 
         /**
@@ -34,9 +48,11 @@ define(
          * @param {string} key
          */
         function info(message, key){
-            if (logLevel <= INFO && filter(message,key)) {
-                console.info(message);
+            if (logLevel >= INFO && filter(message,key)) {
+                getConsole().info(message);
+                return true;
             }
+            return false;
         }
 
         /**
@@ -45,9 +61,11 @@ define(
          * @param {string} key
          */
         function log(message, key){
-            if (logLevel <= INFO && filter(message, key)) {
-                console.log(message);
+            if (logLevel >= INFO && filter(message, key)) {
+                getConsole().log(message);
+                return true;
             }
+            return false;
         }
 
         /**
@@ -56,9 +74,11 @@ define(
          * @param {string} key
          */
         function warn(message, key){
-            if (logLevel <= WARNING && filter(message, key)) {
-                console.warn(message);
+            if (logLevel >= WARNING && filter(message, key)) {
+                getConsole().warn(message);
+                return true;
             }
+            return false;
         }
 
         /**
@@ -67,9 +87,11 @@ define(
          * @param {string} key
          */
         function error(message, key){
-            if (logLevel <= ERROR && filter(message, key)) {
-                console.error(message);
+            if (logLevel >= ERROR && filter(message, key)) {
+                getConsole().error(message);
+                return true;
             }
+            return false;
         }
 
         /**
@@ -82,12 +104,18 @@ define(
 
         return {
             setLogLevel: setLogLevel,
-            log: log,
             error: error,
             debug: debug,
             info: info,
+            log: log,
             warn: warn,
-            setFilter: setFilter
+            setFilter: setFilter,
+            setConsole: setConsole,
+            NONE: NONE,
+            DEBUG: DEBUG,
+            INFO: INFO,
+            WARNING: WARNING,
+            ERROR: ERROR
         }
     }
 );

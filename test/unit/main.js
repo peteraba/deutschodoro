@@ -123,6 +123,7 @@ require([
     'unit/wordFinder.spec',
     'unit/dictionary.spec',
     'unit/stat.spec',
+    'unit/logger.spec',
     'unit/app.spec'
 ], function(){
     checkRequire(_.toArray(arguments), getTs());
