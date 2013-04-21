@@ -86,7 +86,7 @@ define(
             }
             if (modified.substr(0, 1) == '⍨') {
                 umlauterResult = umlauter(base);
-                return false === umlauterResult ? false: umlauterResult + modified.substr(1);
+                return false === umlauterResult ? false : umlauterResult + modified.substr(1);
             }
 
             return modified;

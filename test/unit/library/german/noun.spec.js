@@ -15,7 +15,7 @@ define(
                     var result, possibities;
 
                     result = germanNoun.getPluralWrongPlural('Apfel', ['Äpfel']);
-                    possibities = ['Apfeln', 'Apfel', 'Äpfele', 'Apfeler', 'Apfels'];
+                    possibities = ['Apfelen', 'Apfel', 'Äpfele', 'Apfeler', 'Apfels'];
 
                     expect(result).to.not.equal('Äpfel');
                     expect(result).to.be.a('string');

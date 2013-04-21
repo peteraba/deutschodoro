@@ -25,7 +25,7 @@ define(
          * @return {String}
          */
         function getPluralWrongPlural(singular, skipWords) {
-            var currentModifiers = pluralModifiers.vowel, pickedModifier = null, result = null;
+            var currentModifiers = pluralModifiers.vowel, pickedModifier = false, result = null;
 
             if (germanHelper.checkConsonantEnding(singular)) {
                 currentModifiers = pluralModifiers.consonant;
@@ -35,6 +35,7 @@ define(
                 pickedModifier = currentModifiers[_.random(currentModifiers.length-1)];
                 result = germanHelper.modifyWord(singular, pickedModifier);
             }
+
             return result;
         }
 
