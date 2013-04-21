@@ -27,52 +27,62 @@ define(
             switch (type) {
                 case 'noun':
                     if (pickedWord.plural != '–' && _.random(100) < PLURAL_CHANCE) {
-                        answer = ENGLISH_NOUN_PREFIX + englishNoun.getPlural(english);
-                        question = germanNoun.getPlural(pickedWord.german, pickedWord.plural);
-                        question = GERMAN_PLURAL_PREFIX + question;
-
-                        words = [answer];
-
-                        english = _.isArray(word2.english) ? word2.english[0] : word2.english;
-                        words.push(ENGLISH_NOUN_PREFIX + englishNoun.getPlural(english, words));
-
-                        english = _.isArray(word3.english) ? word3.english[0] : word3.english;
-                        words.push(ENGLISH_NOUN_PREFIX + englishNoun.getPlural(english, words));
+                        createPluralNoun(english, word2, word3);
                     } else {
-                        answer = ENGLISH_NOUN_PREFIX + english;
-                        if (pickedWord.german != '–') {
-                            question = pickedWord.article + ' ' + pickedWord.german;
-                        } else {
-                            question = GERMAN_PLURAL_PREFIX + pickedWord.german;
-                        }
-
-                        words = [answer];
-
-                        english = _.isArray(word2.english) ? word2.english[0] : word2.english;
-                        words.push(ENGLISH_NOUN_PREFIX + english);
-
-                        english = _.isArray(word3.english) ? word3.english[0] : word3.english;
-                        words.push(ENGLISH_NOUN_PREFIX + english);
+                        createSingularNoun(english, word2, word3);
                     }
                     break;
                 default:
-                    answer = english;
-                    question = pickedWord.german;
-
-                    words = [answer];
-
-                    english = _.isArray(word2.english) ? word2.english[0] : word2.english;
-                    words.push(english);
-
-                    english = _.isArray(word3.english) ? word3.english[0] : word3.english;
-                    words.push(english);
+                    createDefault(english, word2, word3);
             }
-
-            console.log([words, answer, question]);
 
             words = _.shuffle(words);
 
             return true;
+        }
+
+        function createPluralNoun(english, word2, word3) {
+            answer = ENGLISH_NOUN_PREFIX + englishNoun.getPlural(english);
+            question = germanNoun.getPlural(pickedWord.german, pickedWord.plural);
+            question = GERMAN_PLURAL_PREFIX + question;
+
+            words = [answer];
+
+            english = _.isArray(word2.english) ? word2.english[0] : word2.english;
+            words.push(ENGLISH_NOUN_PREFIX + englishNoun.getPlural(english, words));
+
+            english = _.isArray(word3.english) ? word3.english[0] : word3.english;
+            words.push(ENGLISH_NOUN_PREFIX + englishNoun.getPlural(english, words));
+        }
+
+        function createSingularNoun(english, word2, word3) {
+            answer = ENGLISH_NOUN_PREFIX + english;
+            if (pickedWord.german != '–') {
+                question = pickedWord.article + ' ' + pickedWord.german;
+            } else {
+                question = GERMAN_PLURAL_PREFIX + pickedWord.german;
+            }
+
+            words = [answer];
+
+            english = _.isArray(word2.english) ? word2.english[0] : word2.english;
+            words.push(ENGLISH_NOUN_PREFIX + english);
+
+            english = _.isArray(word3.english) ? word3.english[0] : word3.english;
+            words.push(ENGLISH_NOUN_PREFIX + english);
+        }
+
+        function createDefault(english, word2, word3) {
+            answer = english;
+            question = pickedWord.german;
+
+            words = [answer];
+
+            english = _.isArray(word2.english) ? word2.english[0] : word2.english;
+            words.push(english);
+
+            english = _.isArray(word3.english) ? word3.english[0] : word3.english;
+            words.push(english);
         }
 
         /**

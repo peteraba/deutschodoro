@@ -118,8 +118,8 @@ require([
     'unit/english/verb.spec',
     'unit/game/derDieDas.spec',
     'unit/game/pluralize.spec',
-    'unit/game/wordToEnglish.spec',/*
-    'unit/game/wordToGerman.spec',*/
+    'unit/game/wordToEnglish.spec',
+    'unit/game/wordToGerman.spec',
     'unit/wordFinder.spec',
     'unit/dictionary.spec',
     'unit/stat.spec',

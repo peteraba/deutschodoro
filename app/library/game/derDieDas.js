@@ -10,8 +10,6 @@ define(
         function create() {
             pickedWord = wordFinder.getWord({type:"noun"});
 
-            console.log([pickedWord]);
-
             return true;
         }
 

@@ -33,8 +33,6 @@ define(
 
             question = pickedWord.article + ' ' + pickedWord.german;
 
-            console.log([words, answer, question]);
-
             return true;
         }
 

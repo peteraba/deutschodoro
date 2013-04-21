@@ -7,7 +7,7 @@ define(
             var stubs, context, verb1, verb2;
 
             verb1 = {type:'verb',german:"arbeiten",english:"to work"};
-            verb2 = {type:'verb',german:"Administrator",english:["to bring","to fetch"]};
+            verb2 = {type:'verb',german:"bringen",english:["to bring","to fetch"]};
 
             stubs = {
                 wordFinder: {
@@ -44,8 +44,8 @@ define(
         function context2() {
             var stubs, context, noun1, noun2;
 
-            noun1 = {type:'noun',plural:"⍨", german:"Apfel",english:"apple"};
-            noun2 = {type:'noun',plural:"~en", german:"Administrator",english:"admin"};
+            noun1 = {type:'noun',article:"der",plural:"⍨", german:"Apfel",english:"apple"};
+            noun2 = {type:'noun',article:"der",plural:"~en", german:"Administrator",english:"admin"};
 
             stubs = {
                 wordFinder: {
@@ -74,9 +74,8 @@ define(
                             results.push(wordToEnglish.checkResult('apple') ? 'yes' : 'no');
                             results.push(wordToEnglish.checkResult('apples') ? 'yes' : 'no');
 
-                            expect(results.indexOf('yes')).to.be.greaterThan(-1);
-                            expect(wordToEnglish.checkResult('Administrator')).to.equal(false);
-                            expect(wordToEnglish.checkResult('Administratoren')).to.equal(false);
+                            expect(wordToEnglish.checkResult('admin')).to.equal(false);
+                            expect(wordToEnglish.checkResult('admins')).to.equal(false);
                         });
                     });
 

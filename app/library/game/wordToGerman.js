@@ -36,8 +36,6 @@ define(
                     createDefault(english, word2, word3);
             }
 
-            console.log(words, answer, question);
-
             words = _.shuffle(words);
 
             return true;

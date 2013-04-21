@@ -16,8 +16,8 @@ define(
                 describe('#checkResult()', function() {
                     it('should check if result is the correct pluralized German word', function(){
                         expect(pluralize.create()).to.equal(true);
-                        expect(pluralize.checkResult('Äpfel')).to.equal(true);
-                        expect(pluralize.checkResult('Apfels')).to.equal(false);
+                        expect(pluralize.checkResult('die Äpfel')).to.equal(true);
+                        expect(pluralize.checkResult('die Apfels')).to.equal(false);
                     });
                 });
 
