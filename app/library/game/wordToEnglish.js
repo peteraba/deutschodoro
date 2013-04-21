@@ -41,6 +41,12 @@ define(
             return true;
         }
 
+        /**
+         *
+         * @param {String} english
+         * @param {Object} word2
+         * @param {Object} word3
+         */
         function createPluralNoun(english, word2, word3) {
             answer = ENGLISH_NOUN_PREFIX + englishNoun.getPlural(english);
             question = germanNoun.getPlural(pickedWord.german, pickedWord.plural);
@@ -55,6 +61,12 @@ define(
             words.push(ENGLISH_NOUN_PREFIX + englishNoun.getPlural(english, words));
         }
 
+        /**
+         *
+         * @param {String} english
+         * @param {Object} word2
+         * @param {Object} word3
+         */
         function createSingularNoun(english, word2, word3) {
             answer = ENGLISH_NOUN_PREFIX + english;
             if (pickedWord.german != '–') {
@@ -72,6 +84,12 @@ define(
             words.push(ENGLISH_NOUN_PREFIX + english);
         }
 
+        /**
+         *
+         * @param {String} english
+         * @param {Object} word2
+         * @param {Object} word3
+         */
         function createDefault(english, word2, word3) {
             answer = english;
             question = pickedWord.german;
