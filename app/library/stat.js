@@ -1,6 +1,6 @@
 define(
-    ['vendor/underscore'],
-    function(){
+    ['logger', 'vendor/underscore'],
+    function(logger){
         var data = {}, storage = null, ts = null, DATA_KEY = 'stats';
 
         /**
@@ -83,6 +83,9 @@ define(
                         data[hash] = data[hash].slice(0, 10);
                     }
                 }
+                if (data[hash].length > 2) {
+                    logger.debug(data[hash]);
+                }
             });
 
             return saveData();
@@ -110,6 +113,10 @@ define(
 
                 timePenalty = Math.floor((ts - word[word.length-1][1]) / 86400);
                 timePenalty = Math.min(timePenalty, 100);
+            }
+
+            if (score - timePenalty != -100) {
+                logger.debug(score - timePenalty);
             }
 
             return score - timePenalty;
