@@ -1,7 +1,7 @@
 define(
     ['logger', 'vendor/underscore'],
     function(logger){
-        var data = {}, storage = null, ts = null, DATA_KEY = 'stats';
+        var data = {}, storage = null, ts = null, DATA_KEY = 'stats', totalScore;
 
         /**
          *
@@ -45,9 +45,11 @@ define(
 
         function loadData() {
             var jsonData;
+            logger.debug('LOAD_DATA');
 
             jsonData = getStorage().getItem(DATA_KEY);
             data = jsonData ? JSON.parse(jsonData) : {};
+            logger.debug(data);
         }
 
         /**
@@ -59,7 +61,9 @@ define(
         }
 
         function saveData() {
+            logger.debug('SAVE_DATA');
             getStorage().setItem(DATA_KEY, JSON.stringify(data));
+            logger.debug(data);
         }
 
         /**
@@ -75,8 +79,10 @@ define(
 
             _.each(hashes, function(hash){
                 if (typeof data[hash] == 'undefined') {
+                    logger.debug('New result hash: ' + hash);
                     data[hash] = [[result, ts]];
                 } else {
+                    logger.debug('Add result to hash: ' + hash);
                     data[hash].unshift([result, ts]);
 
                     if (data[hash].length > 10) {
@@ -115,11 +121,7 @@ define(
                 timePenalty = Math.min(timePenalty, 100);
             }
 
-            if (score - timePenalty != -100) {
-                logger.debug(score - timePenalty);
-            }
-
-            return score - timePenalty;
+            return score - timePenalty + 100;
         }
 
         /**
@@ -130,6 +132,8 @@ define(
         function pickWord(wordList) {
             var hashes = [], lowestScore = Number.MAX_VALUE, randomHash;
 
+            totalScore = 0;
+
             _.each(wordList, function(word, hash) {
                 var score = getWordScore(hash);
 
@@ -139,7 +143,11 @@ define(
                     lowestScore = score;
                     hashes = [hash];
                 }
+
+                totalScore += score;
             });
+
+            totalScore = Math.round(totalScore / _.size(wordList));
 
             if (hashes.length == 0) {
                 return false;
@@ -150,6 +158,11 @@ define(
             return wordList[randomHash];
         }
 
+        function getTotalScore() {
+            return totalScore;
+        }
+
+        //logger.setLogLevel(logger.DEBUG);
         loadData();
 
         return {
@@ -158,6 +171,7 @@ define(
             setTimestamp: setTimestamp,
             saveResult: saveResult,
             pickWord: pickWord,
+            getTotalScore: getTotalScore,
             DATA_KEY: DATA_KEY
         };
     }

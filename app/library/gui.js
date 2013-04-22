@@ -37,6 +37,12 @@ define(
             }
         }
 
+        function updateScore(score) {
+            if (isReady()) {
+                getDom('#east').empty().append('<p>Score: ' + score + '</p>');
+            }
+        }
+
         $doc.ready(function(){
             init();
             $window.resize();
@@ -46,7 +52,8 @@ define(
 
         return {
             isReady: isReady,
-            displayGame: displayGame
+            displayGame: displayGame,
+            updateScore: updateScore
         }
     }
 );
