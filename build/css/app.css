@@ -5,11 +5,15 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 html {height: 100%;}
 body {height: 100%;}
 
-.gui {position: relative; height: 100%; min-height: 400px; min-width: 600px; background: #dfd;}
-.ui-layout-center, .ui-layout-south, .ui-layout-east {}
-.ui-layout-center {background: #ffe;}
-.ui-layout-south {position: fixed; bottom: 0; left: 0; height: 30px; width: 100%; background: #fdf}
-.ui-layout-east {position: fixed; right: 0; top: 0; width: 30%; height: 100%; background: #dff;}
+.gui {position: relative; height: 100%; min-height: 400px; min-width: 600px; background: #F9FAD9;}
+.ui-layout-center, .ui-layout-south, .ui-layout-east {overflow: hidden;}
+.ui-layout-center {padding: 1em; background: #F9FAD9; color: #27202E;}
+.ui-layout-south {position: fixed; bottom: 0; left: 0; height: 30px; width: 100%; line-height: 30px; border-top: 5px solid #98BF43; background: #BCCC99}
+.ui-layout-east {position: fixed; right: 0; top: 0; width: 30%; height: 100%; border-left: 5px solid #6B597A; background: #27202E; color: #fff;}
+
+.gui h1 {font-size: 1.3em; margin: 1em 0;}
+.gui p {font-size: 1.1em; margin: 0.6em 0;}
+.gui button {background-color: #98BF43; border: 1px solid #27202E; color: #27202E;}
 
 .failure {background-color: #e1a4a4; border: 2px solid #ff0000;}
 .success {background-color: #c8ffc8; border: 2px solid #00c200;}
