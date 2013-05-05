@@ -1,6 +1,6 @@
 define(
     ['helper/english', 'vendor/underscore'],
-    function(englishHelper){
+    function(englishHelper, _){
         /**
          *
          * @type {Object} irregularNouns

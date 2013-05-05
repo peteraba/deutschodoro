@@ -15,11 +15,6 @@ requirejs.config({
         },
         'vendor/jquery': {
             exports: '$'
-        },
-        'vendor/jquery-layout/jquery.layout-latest.min': {
-            deps: [
-                'vendor/jquery'
-            ]
         }
     }
     ,urlArgs: "bust=" +  (new Date()).getTime()

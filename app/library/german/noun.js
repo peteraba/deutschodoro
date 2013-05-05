@@ -1,6 +1,6 @@
 define(
     ['helper/german', 'vendor/underscore'],
-    function(germanHelper){
+    function(germanHelper, _){
         var pluralModifiers;
 
         pluralModifiers = {

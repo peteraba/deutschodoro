@@ -1,6 +1,6 @@
 define(
     ['helper/word', 'vendor/underscore'],
-    function(wordHelper){
+    function(wordHelper, _){
         var verbTypes = {}, persons, prefixes;
 
         /**

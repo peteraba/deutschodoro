@@ -1,6 +1,6 @@
 define(
     ['gui', 'games', 'stat', 'vendor/jquery', 'vendor/underscore'],
-    function(gui, games, stat, $){
+    function(gui, games, stat, $, _){
         var importances, currentGame, currentAnswer, canReRun = false;
 
         /**

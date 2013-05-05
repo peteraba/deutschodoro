@@ -1,6 +1,6 @@
 define(
     ['wordFinder', 'vendor/underscore'],
-    function(wordFinder){
+    function(wordFinder, _){
         var pickedWord = null;
 
         /**

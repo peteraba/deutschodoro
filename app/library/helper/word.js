@@ -1,6 +1,6 @@
 define(
     ['vendor/underscore'],
-    function(){
+    function(_){
         /**
          * Example 'ausgezeichnet', [['ie', 'ei], 'a', ['e', et']] --> 20
          *

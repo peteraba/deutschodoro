@@ -1,6 +1,6 @@
 define(
     ['dict/dict', 'vendor/underscore'],
-    function(rawDictionary){
+    function(rawDictionary, _){
         var level, usedDictionary = {}, MAX_LEVEL = 99;
 
         function getDictionary() {

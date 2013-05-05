@@ -1,23 +1,14 @@
 define(
-    ['vendor/jquery', 'vendor/jquery-layout/jquery.layout-latest.min'],
+    ['vendor/jquery'],
     function($){
-
         var ready = false, layout, $doc = $(document), $window = $(window), domCache = {};
 
         function init(){
-            layout = $('body').layout({ applyDefaultStyles: true });
-
             $('#toggler').click(function() {
-                layout.toggle('east');
+                toggle('#east');
             });
 
             ready = true;
-        }
-
-        function resize(){
-            var minEastWidth = Math.min(300, Math.floor($doc.width()/4));
-
-            layout.sizePane("east", minEastWidth);
         }
 
         function getDom(selector) {
@@ -34,6 +25,22 @@ define(
         function displayGame(html) {
             if (isReady()) {
                 getDom('#center').empty().append(html);
+            }
+        }
+
+        function toggle(selector) {
+            getDom(selector).toggle();
+        }
+
+        function resize(){
+            var east, width;
+
+            east = getDom('#east');
+
+            if (east.is(":visible")) {
+                width = Math.min(300, Math.floor($doc.width()/4));
+
+                east.width(width);
             }
         }
 

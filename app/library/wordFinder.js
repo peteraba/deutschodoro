@@ -1,6 +1,6 @@
 define(
     ['dictionary', 'stat', 'vendor/underscore'],
-    function(dictionary, stat){
+    function(dictionary, stat, _){
 
         /**
          *

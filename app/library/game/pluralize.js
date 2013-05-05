@@ -1,6 +1,6 @@
 define(
     ['wordFinder', 'german/noun', 'vendor/underscore'],
-    function(wordFinder, germanNoun){
+    function(wordFinder, germanNoun, _){
         var pickedWord = null
             , answer = null
             , question = null

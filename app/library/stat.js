@@ -1,6 +1,6 @@
 define(
     ['logger', 'vendor/underscore'],
-    function(logger){
+    function(logger, _){
         var data = {}, storage = null, ts = null, DATA_KEY = 'stats';
 
         /**

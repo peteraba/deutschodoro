@@ -1,0 +1,16 @@
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+/* Deutschodoro */
+html {height: 100%;}
+body {height: 100%;}
+
+.gui {position: relative; height: 100%; min-height: 400px; min-width: 600px; background: #dfd;}
+.ui-layout-center, .ui-layout-south, .ui-layout-east {}
+.ui-layout-center {background: #ffe;}
+.ui-layout-south {position: fixed; bottom: 0; left: 0; height: 30px; width: 100%; background: #fdf}
+.ui-layout-east {position: fixed; right: 0; top: 0; width: 30%; height: 100%; background: #dff;}
+
+.failure {background-color: #e1a4a4; border: 2px solid #ff0000;}
+.success {background-color: #c8ffc8; border: 2px solid #00c200;}
+.rightAnswer {background-color: #e5e5e5; border: 2px solid #bbbbbb;}
