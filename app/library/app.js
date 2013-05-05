@@ -84,6 +84,8 @@ define(
                     handleFailure(answer, radioBtns);
                 }
             }
+
+            updateScore();
         }
 
         function handleFailure(answer, radioBtns) {
@@ -121,6 +123,10 @@ define(
             stat.saveResult(hashes, true);
 
             reRun();
+        }
+
+        function updateScore() {
+            gui.updateScore(stat.getTotalScore());
         }
 
         function reRun() {
