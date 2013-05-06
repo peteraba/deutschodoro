@@ -46,7 +46,7 @@ define(
 
         function updateScore(score) {
             if (isReady()) {
-                getDom('#east').empty().append('<p>Score: ' + score + '</p>');
+                //getDom('#east').empty().append('<p>Score: ' + score + '</p>');
             }
         }
 
