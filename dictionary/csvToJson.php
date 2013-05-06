@@ -8,7 +8,7 @@ if ($handle == false) {
 
 function getRow(array $data)
 {
-    if ($data[7]>=100) {
+    if ($data[7] >= 100) {
         return false;
     }
     switch ($data[5]) {
@@ -18,7 +18,6 @@ function getRow(array $data)
                 'german' => $data[2],
                 'genitive' => $data[3],
                 'plural' => $data[4],
-                'type' => 'noun',
                 'category' => $data[6],
                 'level' => $data[7],
                 'english' => $data[8]
@@ -30,7 +29,6 @@ function getRow(array $data)
                 'german' => $data[2],
                 'comparative' => $data[3],
                 'superlative' => $data[4],
-                'type' => 'adj',
                 'category' => $data[6],
                 'level' => $data[7],
                 'english' => $data[8]
@@ -43,7 +41,6 @@ function getRow(array $data)
                 'german' => $data[2],
                 'present' => $data[3],
                 'past' => $data[4],
-                'type' => 'verb',
                 'category' => $data[6],
                 'level' => $data[7],
                 'english' => $data[8]
@@ -52,13 +49,13 @@ function getRow(array $data)
         default:
             $row = array(
                 'german' => $data[2],
-                'type' => $data[5],
                 'category' => $data[6],
                 'level' => $data[7],
                 'english' => $data[8]
             );
     }
-    $row['hash'] = md5(print_r($data, true));
+    $row['type'] = $data[5];
+    $row['hash'] = md5(json_encode($data));
     return $row;
 }
 
@@ -85,7 +82,6 @@ while (($data = fgetcsv($handle, 1000, ";")) !== false) {
 }
 fclose($handle);
 
-$content = 'define(
-    {dict: ' . json_encode($dictionary) . "}\n);\n";
+$content = "define(\n{dict: " . json_encode($dictionary) . "}\n);\n";
 
 file_put_contents(__DIR__ . '/dict.js', $content);
