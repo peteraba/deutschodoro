@@ -54,10 +54,10 @@ define(
             var html = [];
 
             if (gameHelp) {
-                html.push('<h2>Game help</h2>');
+                html.push('<h3>Game help</h3>');
                 html.push('<p>' + gameHelp + '</p>');
 
-                return '<div class="gameHelp">' +  html.join('') + '</div>';
+                return '<div class="game-help">' +  html.join('') + '</div>';
             }
 
             return '';
@@ -79,7 +79,7 @@ define(
                     html.push('</ul>');
                 }
 
-                return '<div class="dictionaryHelp">' +  html.join('') + '</div>';
+                return '<div class="dictionary-help">' +  html.join('') + '</div>';
             }
 
             return '';

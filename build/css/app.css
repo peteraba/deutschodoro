@@ -20,8 +20,13 @@ body {height: 100%;}
 .ui-layout-east li {line-height: 1.6em; list-style: disc outside; margin-left: 20px;}
 .ui-layout-east a {color: #F9FAD9}
 
-.dictionaryHelp {margin: 2em 0;}
-.gameHelp {margin: 2em 0;}
+.dictionary-help {margin: 2em 0;}
+.game-help {margin: 2em 0;}
+
+.deutschodoro-link {float: right;}
+.deutschodoro-link p {margin: 0 3px;}
+.deutschodoro-link a {text-decoration: none; color: #27202E;}
+.deutschodoro-link a:hover {text-decoration: underline;}
 
 .failure {background-color: #e1a4a4; border: 2px solid #ff0000;}
 .success {background-color: #BCCC99; border: 2px solid #98BF43;}
