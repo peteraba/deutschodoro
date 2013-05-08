@@ -70,10 +70,20 @@ define(
 
         /**
          *
-         * @return {Object}
+         * @return {String}
          */
         function getAnswer() {
             return pickedWord.article;
+        }
+
+        /**
+         *
+         * @return {String}
+         */
+        function getHelp() {
+            var english = _.isArray(pickedWord.english) ? pickedWord.english.join() : pickedWord.english;
+
+            return 'Original word: ' + english;
         }
 
         return {
@@ -81,6 +91,7 @@ define(
             getHtml: getHtml,
             checkResult: checkResult,
             getUsedWords: getUsedWords,
+            getHelp: getHelp,
             getAnswer: getAnswer,
             importance: 100
         };

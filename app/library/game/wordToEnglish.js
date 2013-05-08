@@ -163,11 +163,20 @@ define(
             return answer;
         }
 
+        /**
+         *
+         * @return {String}
+         */
+        function getHelp() {
+            return '';
+        }
+
         return {
             create: create,
             getHtml: getHtml,
             checkResult: checkResult,
             getUsedWords: getUsedWords,
+            getHelp: getHelp,
             getAnswer: getAnswer,
             importance: 100,
             setRandom: setRandom

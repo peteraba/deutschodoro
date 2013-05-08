@@ -11,9 +11,17 @@ body {height: 100%;}
 .ui-layout-south {position: fixed; bottom: 0; left: 0; height: 30px; width: 100%; line-height: 30px; border-top: 5px solid #98BF43; background-color: #BCCC99}
 .ui-layout-east {position: fixed; right: 0; top: 0; width: 30%; height: 100%; padding: 1em; border-left: 5px solid #6B597A; background-color: #27202E; color: #fff;}
 
-.gui h1 {font-size: 1.3em; margin: 1em 0;}
+.gui h1 {margin: 1em 0; font-size: 1.5em; font-weight: bold;}
+.gui h2 {margin: 0.8em 0; font-size: 1.3em; font-weight: bold;}
+.gui h3 {margin: 0.8em 0 0.4em; font-size: 1.1em; font-weight: bold;}
 .gui p {font-size: 1.1em; margin: 0.6em 0;}
-.gui button {background-color: #98BF43; border: 1px solid #27202E; color: #27202E;}
+.gui button {background-color: #98BF43; border: 1px solid #27202E; color: #27202E; border-radius: 4px;}
+
+.ui-layout-east li {line-height: 1.6em; list-style: disc outside; margin-left: 20px;}
+.ui-layout-east a {color: #F9FAD9}
+
+.dictionaryHelp {}
+.gameHelp {}
 
 .failure {background-color: #e1a4a4; border: 2px solid #ff0000;}
 .success {background-color: #BCCC99; border: 2px solid #98BF43;}

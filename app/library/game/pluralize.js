@@ -87,11 +87,22 @@ define(
             return answer;
         }
 
+        /**
+         *
+         * @return {String}
+         */
+        function getHelp() {
+            var english = _.isArray(pickedWord.english) ? pickedWord.english.join() : pickedWord.english;
+
+            return 'Original word: ' + english;
+        }
+
         return {
             create: create,
             getHtml: getHtml,
             checkResult: checkResult,
             getUsedWords: getUsedWords,
+            getHelp: getHelp,
             getAnswer: getAnswer,
             importance: 100
         };

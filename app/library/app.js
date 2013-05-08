@@ -62,6 +62,8 @@ define(
                 html = $(game.getHtml());
                 $('#submit', html).click(checkResult);
                 gui.displayGame(html);
+
+                gui.displayHelp(game.getHelp(), game.getUsedWords());
             }
 
             return game;
