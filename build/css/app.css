@@ -17,8 +17,14 @@ body {height: 100%;}
 .gui p {font-size: 1.1em; margin: 0.6em 0;}
 .gui button {background-color: #98BF43; border: 1px solid #27202E; color: #27202E; border-radius: 4px;}
 
+.ui-layout-east {display: none;}
 .ui-layout-east li {line-height: 1.6em; list-style: disc outside; margin-left: 20px;}
 .ui-layout-east a {color: #F9FAD9}
+
+.ui-layout-south ul {float: left;}
+.ui-layout-south li {display: inline-block;}
+.ui-layout-south a, .ui-layout-south .a {text-decoration: none; cursor: pointer}
+.ui-layout-south a:hover, .ui-layout-south .a:hover {text-decoration: underline;}
 
 .dictionary-help {margin: 2em 0;}
 .game-help {margin: 2em 0;}

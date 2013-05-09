@@ -1,14 +1,20 @@
 define(
     ['vendor/jquery'],
     function($){
-        var ready = false, layout, $doc = $(document), $window = $(window), domCache = {};
+        var ready = false,
+            $doc = $(document),
+            $window = $(window),
+            domCache = {},
+            eastPanes = ['#help', '#stat'];
 
         function init(){
-            getDom('#east').toggle();
-
-            $('#toggler').click(function() {
-                toggle('#east');
+            $('#helpToggler').click(function() {
+                toggle(eastPanes, 0);
             });
+            $('#statToggler').click(function() {
+                toggle(eastPanes, 1);
+            });
+            $('#feedback').click(newWindow);
 
             ready = true;
         }
@@ -45,7 +51,7 @@ define(
                 html.push(getGameHelpHtml(gameHelp));
                 html.push(getDictionaryHelpHtml(words));
 
-                east = getDom('#east').empty().append(html.join(''));
+                east = getDom('#help').empty().append(html.join(''));
                 $('a', east).click(newWindow);
             }
         }
@@ -85,25 +91,31 @@ define(
             return '';
         }
 
-        function toggle(selector) {
-            getDom(selector).toggle();
+        function toggle(selectors, toggleIndex) {
+            var i;
+
+            if (getDom(selectors[toggleIndex]).is(':visible')) {
+                getDom(selectors[toggleIndex]).hide();
+            } else {
+                for (i = 0; i < selectors.length; i++) {
+                    getDom(selectors[i]).hide();
+                }
+
+                getDom(selectors[toggleIndex]).show();
+            }
         }
 
         function resize(){
-            var east, width;
+            var width;
 
-            east = getDom('#east');
+            width = Math.min(300, Math.floor($doc.width()/4));
 
-            if (east.is(":visible")) {
-                width = Math.min(300, Math.floor($doc.width()/4));
-
-                east.width(width);
-            }
+            getDom('.ui-layout-eas').width(width);
         }
 
         function updateScore(score) {
             if (isReady()) {
-                //getDom('#east').empty().append('<p>Score: ' + score + '</p>');
+                //getDom('#help').empty().append('<p>Score: ' + score + '</p>');
             }
         }
 
