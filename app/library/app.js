@@ -62,19 +62,23 @@ define(
             currentAnswer = null;
 
             if (game && game.create()) {
-                timer.end('game.init');
-                html = $(game.getHtml());
-                $('#submit', html).click(checkResult);
-
-                timer.start('game.display');
-                gui.displayGame(html);
-                gui.displayHelp(game.getHelp(), game.getUsedWords());
-                timer.end('game.display');
-            } else {
-                timer.end('game.init');
+                displayGame(game);
             }
 
+            timer.end('game.init');
+
             return game;
+        }
+
+        function displayGame(game) {
+            var html = $(game.getHtml());
+
+            $('#submit', html).click(checkResult);
+
+            timer.start('game.display');
+            gui.displayGame(html);
+            gui.displayHelp(game.getHelp(), game.getUsedWords());
+            timer.end('game.display');
         }
 
         function checkResult(event) {
@@ -117,6 +121,8 @@ define(
             }
 
             stat.saveResult(hashes, false);
+
+            gui.showErrorReportBtn();
 
             reRun();
         }

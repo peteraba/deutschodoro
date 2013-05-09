@@ -119,6 +119,16 @@ define(
             }
         }
 
+        function showErrorReportBtn(game, questions, answer) {
+            var errorReportBtn;
+
+            errorReportBtn = $('<a id="report" href="">Report a problem</a>')
+                .attr('href', 'https://groups.google.com/forum/#!forum/deutschodoro')
+                .click(newWindow);
+
+            errorReportBtn.insertAfter('#submit');
+        }
+
         $doc.ready(function(){
             init();
             $window.resize();
@@ -130,6 +140,7 @@ define(
             isReady: isReady,
             displayGame: displayGame,
             displayHelp: displayHelp,
+            showErrorReportBtn: showErrorReportBtn,
             updateScore: updateScore
         }
     }
