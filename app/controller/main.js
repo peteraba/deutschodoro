@@ -4,7 +4,7 @@ define(
     function(app) {
         function init() {
             if (!app.isReady()) {
-                setTimeout(function(){checkLoading();}, 100);
+                setTimeout(function(){init();}, 100);
             } else {
                 app.run();
             }
