@@ -116,9 +116,13 @@ define(
         function updateStats(stats) {
             var html = [], totalScore = 0, totalCount = 0, percentage;
 
-            html.push('<table><thead>');
+            html.push('<table>');
+
+            html.push('<thead>');
             html.push('<tr><th>hit rate</th><th>count</th></tr>');
-            html.push('</thead><tbody>');
+            html.push('</thead>');
+
+            html.push('<tbody>');
             if (isReady()) {
                 _.each(stats, function(value, index){
                     percentage = (index * 10);
@@ -128,10 +132,16 @@ define(
                     totalCount += value;
                 });
             }
-            html.push('</tbody><tfoot>');
-            percentage = Math.floor(totalScore / totalCount * 100) / 100;
-            html.push('<tr><th>' + percentage + '%</th><th>' + totalCount + '</th></tr>');
-            html.push('</tfoot></table>');
+            html.push('</tbody>');
+
+            if (totalCount) {
+                percentage = Math.floor(totalScore / totalCount * 100) / 100;
+                html.push('<tfoot>');
+                html.push('<tr><th>' + percentage + '%</th><th>' + totalCount + '</th></tr>');
+                html.push('</tfoot>');
+            }
+
+            html.push('</table>');
 
             getDom('#stat').html(html.join(''));
         }

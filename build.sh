@@ -43,6 +43,7 @@ function buildChromeExtensionZip {
 
 
 doTag=0
+doZip=0
 doEchoVersion=0
 doUnitTest=0
 while test $# -gt 0; do
@@ -51,6 +52,11 @@ while test $# -gt 0; do
             shift
             doTag=1
             newVersion=$1
+            shift
+            ;;
+        -zip)
+            shift
+            doZip=1
             shift
             ;;
         -v)
@@ -73,6 +79,7 @@ done
 
 url="http://$server/test/unit/index.html"
 
+
 if test $doTag -gt 0; then
     if [ -z "$newVersion" ]; then
         echo "New version is not specified."
@@ -91,7 +98,10 @@ if test $doTag -gt 0; then
     updateDictionary
 
     buildJs
+fi
 
+
+if test $doZip -gt 0; then
     buildChromeExtensionZip
 fi
 
