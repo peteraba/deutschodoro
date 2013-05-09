@@ -1,7 +1,11 @@
-version=$(grep -o '"version": "[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*"' build/manifest.json)
-version=${VERSION:12:-1}
-tag=
+oldVersion=$(grep -o '"version": "[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*"' build/manifest.json)
+oldVersion=${oldVersion:12:-1}
 server="d3.apache"
+
+if [ -z "$oldVersion" ]; then
+    echo "Old version is not found."
+    exit 1
+fi
 
 function verifyUnitTests {
     # Testing with mocha-phantomjs
@@ -25,7 +29,7 @@ function updateDictionary {
 }
 
 function buildJs {
-    node r.js -o build.js
+    node r.js -o rOptions.js
     echo "JavaScript rebuilt"
 }
 
@@ -46,7 +50,7 @@ while test $# -gt 0; do
         -tag)
             shift
             doTag=1
-            tag=$1
+            newVersion=$1
             shift
             ;;
         -v)
@@ -70,8 +74,8 @@ done
 url="http://$server/test/unit/index.html"
 
 if test $doTag -gt 0; then
-    if [ -z "$tag" ]; then
-        echo "no tag specified."
+    if [ -z "$newVersion" ]; then
+        echo "New version is not specified."
         exit 1
     fi
 
@@ -82,7 +86,7 @@ if test $doTag -gt 0; then
     fi
     echo "Tests are ok."
 
-    replaceVersionTags version $1
+    replaceVersionTags $oldVersion $newVersion
 
     updateDictionary
 
@@ -93,7 +97,7 @@ fi
 
 
 if test $doEchoVersion -gt 0; then
-    echo "version found: $version"
+    echo "version found: $oldVersion"
 fi
 
 
