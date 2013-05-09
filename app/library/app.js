@@ -1,6 +1,6 @@
 define(
-    ['gui', 'games', 'stat', 'vendor/jquery', 'vendor/underscore'],
-    function(gui, games, stat, $, _){
+    ['gui', 'games', 'stat', 'timer', 'vendor/jquery', 'vendor/underscore'],
+    function(gui, games, stat, timer, $, _){
         var importances, currentGame, currentAnswer, canReRun = false;
 
         /**
@@ -52,18 +52,26 @@ define(
          * @return {Boolean|Object}
          */
         function run() {
-            var game = getRandomGame(), html, submit;
+            var game, html, submit;
+
+            timer.start('game.init');
+            game = getRandomGame();
 
             canReRun = false;
             currentGame = game;
             currentAnswer = null;
 
             if (game && game.create()) {
+                timer.end('game.init');
                 html = $(game.getHtml());
                 $('#submit', html).click(checkResult);
-                gui.displayGame(html);
 
+                timer.start('game.display');
+                gui.displayGame(html);
                 gui.displayHelp(game.getHelp(), game.getUsedWords());
+                timer.end('game.display');
+            } else {
+                timer.end('game.init');
             }
 
             return game;

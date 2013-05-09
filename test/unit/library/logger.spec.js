@@ -43,8 +43,8 @@ define(
                     logger.setLogLevel(logger.NONE);
                     expect(logger.info()).to.equal(false);
                 });
-                it('should not log at debug level', function(){
-                    logger.setLogLevel(logger.DEBUG);
+                it('should not log at error level', function(){
+                    logger.setLogLevel(logger.ERROR);
                     expect(logger.info()).to.equal(false);
                 });
                 it('should log from info level', function(){
@@ -64,8 +64,8 @@ define(
                     logger.setLogLevel(logger.NONE);
                     expect(logger.log()).to.equal(false);
                 });
-                it('should not log at debug level', function(){
-                    logger.setLogLevel(logger.DEBUG);
+                it('should not log at error level', function(){
+                    logger.setLogLevel(logger.ERROR);
                     expect(logger.log()).to.equal(false);
                 });
                 it('should log from info level', function(){
@@ -85,8 +85,8 @@ define(
                     logger.setLogLevel(logger.NONE);
                     expect(logger.warn()).to.equal(false);
                 });
-                it('should not log at info level', function(){
-                    logger.setLogLevel(logger.INFO);
+                it('should not log at error level', function(){
+                    logger.setLogLevel(logger.ERROR);
                     expect(logger.warn()).to.equal(false);
                 });
                 it('should log from warning level', function(){
@@ -106,11 +106,7 @@ define(
                     logger.setLogLevel(logger.NONE);
                     expect(logger.error()).to.equal(false);
                 });
-                it('should not log at warning level', function(){
-                    logger.setLogLevel(logger.WARNING);
-                    expect(logger.error()).to.equal(false);
-                });
-                it('should log from info level', function(){
+                it('should log from error level', function(){
                     logger.setLogLevel(logger.ERROR);
                     expect(logger.error()).to.equal(true);
                 });

@@ -1,11 +1,12 @@
 define(
     function(){
         var
-            NONE  = 0,
-            DEBUG = 10,
-            INFO = 20,
-            WARNING = 30,
-            ERROR = 40,
+            DEBUG    = 40,
+            INFO     = 30,
+            WARNING  = 20,
+            ERROR    = 10,
+            NONE     = 0,
+            MAX      = DEBUG,
             logLevel = NONE,
             filter = function(){return true},
             usedConsole = null;
@@ -15,7 +16,9 @@ define(
          * @param {Number} newLogLevel
          */
         function setLogLevel(newLogLevel){
-            logLevel = newLogLevel;
+            logLevel = Math.max(Math.min(parseInt(newLogLevel), MAX), 0);
+
+            return logLevel;
         }
 
         function setConsole(newConsole){
