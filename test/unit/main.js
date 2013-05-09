@@ -46,7 +46,11 @@ function checkRequire(args, ts) {
     }
 
     if (result || getTs()-ts > 10) {
-        mocha.run();
+        if (window.mochaPhantomJS) {
+            mochaPhantomJS.run();
+        } else {
+            mocha.run();
+        }
     } else {
         setTimeout(function(){checkRequire(args, ts);}, 50);
     }
