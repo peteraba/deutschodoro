@@ -128,6 +128,7 @@ require([
     'unit/dictionary.spec',
     'unit/stat.spec',
     'unit/logger.spec',
+    'unit/timer.spec',
     'unit/app.spec'
 ], function(){
     checkRequire(_.toArray(arguments), getTs());

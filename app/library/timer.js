@@ -4,22 +4,29 @@ define(
         var timers = {};
 
         function start(key) {
-            if (!key) throw "Key for starting timer is not defined";
+            if (!key) throw new Error("Key for starting timer is not defined");
+            if (typeof timers[key] != 'undefined') throw new Error("Timer for given key already exists");
 
             timers[key] = new Date();
+
+            return true;
         }
 
         function end(key) {
             var diff, now;
 
-            if (!key) throw "Key for ending timer is not defined";
-            if (!timers[key]) throw "Timer for given key does not exist";
+            if (typeof key == 'undefined') throw "Key for ending timer is not defined";
+            if (typeof timers[key] == 'undefined') throw "Timer for given key does not exist";
 
             now = new Date();
 
             diff = now.getTime() - timers[key].getTime();
 
             logger.info('Timer for `' + key + '` finished: ' + diff + 'ms');
+
+            delete timers[key];
+
+            return diff;
         }
 
         return {
