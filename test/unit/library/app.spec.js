@@ -8,12 +8,15 @@ define(
                 game1: {
                     importance: 100,
                     create: sinon.stub().returns(createResult),
-                    getHtml: sinon.stub().returns('<h1>' + createResult + '</h1>')
+                    getHtml: sinon.stub().returns('<h1>' + createResult + '</h1>'),
+                    getHelp: sinon.stub(),
+                    getUsedWords: sinon.stub()
                 }
             },
             gui: {
                 isReady: sinon.stub().returns(true),
-                displayGame: sinon.stub()
+                displayGame: sinon.stub(),
+                displayHelp: sinon.stub()
             }
         };
 
