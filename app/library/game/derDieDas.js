@@ -8,7 +8,7 @@ define(
          * @return {Boolean}
          */
         function create() {
-            pickedWord = wordFinder.getWord({type:"noun"});
+            pickedWord = wordFinder.getWord({type:"noun", plural:'!–'});
 
             return true;
         }

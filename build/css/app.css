@@ -15,22 +15,28 @@ body {height: 100%;}
 .gui h2 {margin: 0.8em 0; font-size: 1.3em; font-weight: bold;}
 .gui h3 {margin: 0.8em 0 0.4em; font-size: 1.1em; font-weight: bold;}
 .gui p {font-size: 1.1em; margin: 0.6em 0;}
-.gui button {background-color: #98BF43; border: 1px solid #27202E; color: #27202E; border-radius: 4px;}
+.gui button {background-color: #98BF43; border: 2px solid #27202E; font-size: 0.8em; color: #27202E;}
+
+.ui-layout-center li {margin: 5px 0;}
+.ui-layout-center span {display: inline-block; padding: 1px 3px; border: 2px solid #F9FAD9;}
 
 .ui-layout-east {display: none;}
 .ui-layout-east li {line-height: 1.6em; list-style: disc outside; margin-left: 20px;}
 .ui-layout-east a {color: #F9FAD9}
+.ui-layout-east table {min-width: 50%; margin: 0 auto; border: 3px solid #6B597A;}
+.ui-layout-east td, .ui-layout-east th {padding: 2px 5px; border: 2px solid #6B597A; text-align: center;}
+.ui-layout-east th {font-weight: bold; border: 2px solid #6B597A;}
 
 .ui-layout-south ul {float: left;}
-.ui-layout-south li {display: inline-block;}
-.ui-layout-south a, .ui-layout-south .a {text-decoration: none; cursor: pointer}
+.ui-layout-south li {display: inline-block; padding: 0 5px;}
+.ui-layout-south a, .ui-layout-south .a {text-decoration: none; cursor: pointer; color: #27202E;}
 .ui-layout-south a:hover, .ui-layout-south .a:hover {text-decoration: underline;}
 
 .dictionary-help {margin: 2em 0;}
 .game-help {margin: 2em 0;}
 
 .deutschodoro-link {float: right;}
-.deutschodoro-link p {margin: 0 3px;}
+.deutschodoro-link p {margin: 0 5px;}
 .deutschodoro-link a {text-decoration: none; color: #27202E;}
 .deutschodoro-link a:hover {text-decoration: underline;}
 

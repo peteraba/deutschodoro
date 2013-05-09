@@ -113,10 +113,27 @@ define(
             getDom('.ui-layout-eas').width(width);
         }
 
-        function updateScore(score) {
+        function updateStats(stats) {
+            var html = [], totalScore = 0, totalCount = 0, percentage;
+
+            html.push('<table><thead>');
+            html.push('<tr><th>hit rate</th><th>count</th></tr>');
+            html.push('</thead><tbody>');
             if (isReady()) {
-                //getDom('#help').empty().append('<p>Score: ' + score + '</p>');
+                _.each(stats, function(value, index){
+                    percentage = (index * 10);
+                    percentage = percentage==100 ? percentage : (percentage + ' - ' + (percentage + 10))
+                    html.push('<tr><td>' + percentage + '%</td><td>' + value + '</td></tr>');
+                    totalScore += (value * 10 * index);
+                    totalCount += value;
+                });
             }
+            html.push('</tbody><tfoot>');
+            percentage = Math.floor(totalScore / totalCount * 100) / 100;
+            html.push('<tr><th>' + percentage + '%</th><th>' + totalCount + '</th></tr>');
+            html.push('</tfoot></table>');
+
+            getDom('#stat').html(html.join(''));
         }
 
         function showErrorReportBtn(game, questions, answer) {
@@ -141,7 +158,7 @@ define(
             displayGame: displayGame,
             displayHelp: displayHelp,
             showErrorReportBtn: showErrorReportBtn,
-            updateScore: updateScore
+            updateStats: updateStats
         }
     }
 );

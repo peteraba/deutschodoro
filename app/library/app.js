@@ -1,6 +1,6 @@
 define(
-    ['gui', 'games', 'stat', 'timer', 'vendor/jquery', 'vendor/underscore'],
-    function(gui, games, stat, timer, $, _){
+    ['gui', 'games', 'stat', 'timer', 'dictionary', 'vendor/jquery', 'vendor/underscore'],
+    function(gui, games, stat, timer, dictionary, $, _){
         var importances, currentGame, currentAnswer, canReRun = false;
 
         /**
@@ -99,7 +99,7 @@ define(
                 }
             }
 
-            updateScore();
+            updateStats();
         }
 
         function handleFailure(answer, radioBtns) {
@@ -141,8 +141,13 @@ define(
             reRun();
         }
 
-        function updateScore() {
-            gui.updateScore(stat.getTotalScore());
+        function updateStats() {
+            var dict, stats;
+
+            dict = dictionary.getDictionary();
+            stats = stat.getStats(dict);
+
+            gui.updateStats(stats);
         }
 
         function reRun() {
@@ -155,7 +160,11 @@ define(
         }
 
         function isReady(){
-            return gui.isReady();
+            if (gui.isReady()) {
+                updateStats();
+                return true;
+            }
+            return false;
         }
 
         return {

@@ -99,7 +99,7 @@ define(
 
         /**
          *
-         * @param {Object} hash
+         * @param {String} hash
          * @return {Number}
          */
         function getWordScore(hash) {
@@ -122,6 +122,28 @@ define(
             }
 
             return score - timePenalty + 100;
+        }
+
+        /**
+         *
+         * @param {String} hash
+         * @return {Array}
+         */
+        function getWordStat(hash) {
+            var result = [0, 0], wordData;
+
+            if (typeof data[hash] != 'undefined') {
+                wordData = data[hash];
+
+                _.each(wordData, function(wordStat){
+                    if (wordStat[0] == 1) {
+                        result[0]++;
+                    }
+                    result[1]++;
+                });
+            }
+
+            return result;
         }
 
         /**
@@ -158,8 +180,36 @@ define(
             return wordList[randomHash];
         }
 
+        /**
+         *
+         * @returns {Number}
+         */
         function getTotalScore() {
             return totalScore;
+        }
+
+        /**
+         *
+         * @param {Object} wordList
+         * @returns {Array}
+         */
+        function getStats(wordList) {
+            var allStats = [], i;
+
+            _.each(wordList, function(word, hash) {
+                var wordStat = getWordStat(hash), roundedStat;
+
+                if (wordStat[1] > 0) {
+                    roundedStat = Math.floor(wordStat[0] / wordStat[1] * 10);
+                    if (typeof allStats[roundedStat] == 'undefined') {
+                        allStats[roundedStat] = 1;
+                    } else {
+                        allStats[roundedStat] += 1;
+                    }
+                }
+            });
+
+            return allStats;
         }
 
         //logger.setLogLevel(logger.DEBUG);
@@ -172,6 +222,7 @@ define(
             saveResult: saveResult,
             pickWord: pickWord,
             getTotalScore: getTotalScore,
+            getStats: getStats,
             DATA_KEY: DATA_KEY
         };
     }

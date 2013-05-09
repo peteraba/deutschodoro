@@ -16,7 +16,14 @@ define(
             gui: {
                 isReady: sinon.stub().returns(true),
                 displayGame: sinon.stub(),
-                displayHelp: sinon.stub()
+                displayHelp: sinon.stub(),
+                updateStats: sinon.stub()
+            },
+            dictionary: {
+                getDictionary: sinon.stub()
+            },
+            stat: {
+                getStats: sinon.stub()
             }
         };
 

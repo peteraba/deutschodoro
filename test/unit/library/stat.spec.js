@@ -84,6 +84,37 @@ define(
                         expect(dummyStorage.getDataSaved()).to.eql(expectedResult);
                     });
                 });
+
+                describe('#getStats()', function() {
+                    it('should return an object with point keys and values of word count', function(){
+                        var words, ts, statData, expectedResult;
+
+                        words = {
+                            a: {hash: 'a'},
+                            b: {hash: 'b'},
+                            c: {hash: 'c'},
+                            d: {hash: 'd'}
+                        };
+
+                        ts = Math.round((new Date()).getTime() / 1000);
+
+                        statData = {
+                            a: [[1, ts-86401], [0, ts-172801], [0, ts-864001]],
+                            b: [[1, ts-86401], [0, ts-172801]],
+                            d: [[0, 0]]
+                        };
+
+                        expectedResult = {
+                            0: 1,
+                            '3': 1,
+                            '5': 1
+                        };
+
+                        stat.setData(statData);
+
+                        expect(stat.getStats(words)).to.eql(expectedResult);
+                    });
+                });
             });
 
             loaded = true;
