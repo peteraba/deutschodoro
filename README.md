@@ -20,4 +20,4 @@ The primary platform of the application is and will be the chrome extension plat
 
 Pull requests, feature request are welcome.
 
-Non-technical people can also help by downloading the dictionaries and improving it. You can send those to my gmail address for which my username is thoer81. ;)
+Non-technical people can also help by downloading the dictionary and improving it, as that is easier to review. Please use the csv file for it You can send those to my gmail address for which my username is thoer81. ;)
