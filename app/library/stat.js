@@ -45,8 +45,8 @@ define(
 
         function loadData() {
             var jsonData;
-            logger.debug('LOAD_DATA');
 
+            logger.debug('LOAD_DATA');
             jsonData = getStorage().getItem(DATA_KEY);
             data = jsonData ? JSON.parse(jsonData) : {};
             logger.debug(data);

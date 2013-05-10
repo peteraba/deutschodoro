@@ -5,9 +5,9 @@
         controller: '../controller',
         dict: '../../dictionary'
     },
-    include: "../bootstrap",
+    include: "../settingsBootstrap",
     name: "../../almond",
-    out: "build/deutschodoro.js",
+    out: "build/options.js",
     shim: {
         'vendor/underscore': {
             exports: '_'

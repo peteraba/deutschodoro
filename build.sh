@@ -1,6 +1,6 @@
 oldVersion=$(grep -o '"version": "[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*"' build/manifest.json)
 oldVersion=${oldVersion:12:-1}
-server="d3.apache"
+url="http://d3.apache/test/unit/index.html"
 
 if [ -z "$oldVersion" ]; then
     echo "Old version is not found."
@@ -30,7 +30,8 @@ function updateDictionary {
 }
 
 function buildJs {
-    node r.js -o rOptions.js
+    node r.js -o rIndex.js
+    node r.js -o rSettings.js
     echo "JavaScript rebuilt"
 }
 
@@ -48,6 +49,7 @@ function gitTag {
 }
 
 doTag=0
+doRebuild=0
 doZip=0
 doEchoVersion=0
 doUnitTest=0
@@ -57,6 +59,12 @@ while test $# -gt 0; do
             shift
             doTag=1
             newVersion=$1
+            doRebuild=1
+            shift
+            ;;
+        -rebuild)
+            shift
+            doRebuild=1
             shift
             ;;
         -zip)
@@ -76,13 +84,19 @@ while test $# -gt 0; do
             ;;
         -server)
             shift
-            server=$1
+            url="http://$1/test/unit/index.html"
             shift
             ;;
     esac
 done
 
-url="http://$server/test/unit/index.html"
+
+if test $doRebuild -gt 0; then
+    updateDictionary
+
+    buildJs
+fi
+
 
 if test $doTag -gt 0; then
     if [ -z "$newVersion" ]; then
@@ -98,10 +112,6 @@ if test $doTag -gt 0; then
     echo "Tests are ok."
 
     replaceVersionTags $oldVersion $newVersion
-
-    updateDictionary
-
-    buildJs
 
     if [ "$newVersion" != "$oldVersion" ]; then
         gitTag $newVersion

@@ -8,7 +8,9 @@ define(
             , useRandom = null
             , PLURAL_CHANCE = 50
             , ENGLISH_NOUN_PREFIX = 'the '
-            , GERMAN_PLURAL_PREFIX = 'die ';
+            , GERMAN_PLURAL_PREFIX = 'die '
+            , importance = 100
+            , level = 1;
 
         function getRandom() {
             return null===useRandom ? _.random(100) : useRandom;
@@ -171,6 +173,36 @@ define(
             return '';
         }
 
+        /**
+         *
+         * @returns {Number}
+         */
+        function getImportance() {
+            return importance;
+        }
+
+        /**
+         *
+         * @param {Number} newImportance
+         * @returns {Number}
+         */
+        function setImportance(newImportance) {
+            var importance = newImportance;
+
+            return importance;
+        }
+
+        /**
+         *
+         * @param {Number} newLevel
+         * @returns {Number}
+         */
+        function setLevel(newLevel) {
+            var level = newLevel;
+
+            return level;
+        }
+
         return {
             create: create,
             getHtml: getHtml,
@@ -178,8 +210,9 @@ define(
             getUsedWords: getUsedWords,
             getHelp: getHelp,
             getAnswer: getAnswer,
-            importance: 100,
-            setRandom: setRandom
+            getImportance: getImportance,
+            setImportance: setImportance,
+            setLevel: setLevel
         };
     }
 );

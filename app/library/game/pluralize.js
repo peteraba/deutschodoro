@@ -5,7 +5,9 @@ define(
             , answer = null
             , question = null
             , words
-            , GERMAN_PLURAL_PREFIX = 'die ';
+            , GERMAN_PLURAL_PREFIX = 'die '
+            , importance = 100
+            , level = 1;
 
         /**
          *
@@ -97,6 +99,36 @@ define(
             return 'Original word: ' + english;
         }
 
+        /**
+         *
+         * @returns {Number}
+         */
+        function getImportance() {
+            return importance;
+        }
+
+        /**
+         *
+         * @param {Number} newImportance
+         * @returns {Number}
+         */
+        function setImportance(newImportance) {
+            var importance = newImportance;
+
+            return importance;
+        }
+
+        /**
+         *
+         * @param {Number} newLevel
+         * @returns {Number}
+         */
+        function setLevel(newLevel) {
+            var level = newLevel;
+
+            return level;
+        }
+
         return {
             create: create,
             getHtml: getHtml,
@@ -104,7 +136,9 @@ define(
             getUsedWords: getUsedWords,
             getHelp: getHelp,
             getAnswer: getAnswer,
-            importance: 100
+            getImportance: getImportance,
+            setImportance: setImportance,
+            setLevel: setLevel
         };
     }
 );

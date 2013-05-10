@@ -44,6 +44,10 @@ define(
             window.open(url, 'deutschodoro-help');
         }
 
+        function displaySettingsPage(html) {
+            east = getDom('#center').html(html);
+        }
+
         function displayHelp(gameHelp, words) {
             var html = [], east;
             if (isReady()) {
@@ -168,7 +172,9 @@ define(
             displayGame: displayGame,
             displayHelp: displayHelp,
             showErrorReportBtn: showErrorReportBtn,
-            updateStats: updateStats
+            updateStats: updateStats,
+            displaySettingsPage: displaySettingsPage,
+            getDom: getDom
         }
     }
 );

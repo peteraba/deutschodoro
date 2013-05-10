@@ -1,7 +1,7 @@
 define(
     ['gui', 'games', 'stat', 'timer', 'dictionary', 'vendor/jquery', 'vendor/underscore'],
     function(gui, games, stat, timer, dictionary, $, _){
-        var importances, currentGame, currentAnswer, canReRun = false;
+        var importanceList, currentGame, currentAnswer, canReRun = false;
 
         /**
          *
@@ -10,13 +10,13 @@ define(
         function getGamesSum() {
             var result;
 
-            importances = {};
+            importanceList = {};
 
             _.each(games, function(game, key){
-                importances[key] = game.importance;
+                importanceList[key] = game.getImportance();
             });
 
-            result = _.reduce(importances, function(memo, importance){return memo + importance;}, 0);
+            result = _.reduce(importanceList, function(memo, importance){return memo + importance;}, 0);
 
             return result;
         }
@@ -31,7 +31,7 @@ define(
             sum = getGamesSum();
             rand = _.random(sum);
 
-            _.every(importances, function(value, key){
+            _.every(importanceList, function(value, key){
                 rand = rand - value;
                 if (rand <= 0) {
                     game = key;
@@ -70,6 +70,10 @@ define(
             return game;
         }
 
+        /**
+         *
+         * @param {Object} game
+         */
         function displayGame(game) {
             var html = $(game.getHtml());
 
@@ -81,6 +85,10 @@ define(
             timer.end('game.display');
         }
 
+        /**
+         *
+         * @param {Object} event
+         */
         function checkResult(event) {
             var radioBtns, answer;
 
@@ -102,6 +110,11 @@ define(
             updateStats();
         }
 
+        /**
+         *
+         * @param {Object} answer
+         * @param {Object} radioBtns
+         */
         function handleFailure(answer, radioBtns) {
             var hashes = [], rightAnswer, i, span;
 
@@ -127,6 +140,10 @@ define(
             reRun();
         }
 
+        /**
+         *
+         * @param {Object} answer
+         */
         function handleSuccess(answer) {
             var hashes = [];
 
