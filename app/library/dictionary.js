@@ -97,7 +97,6 @@ define(
 
             _.each(usedDictionary, function(word, key) {
                 if (word.level >= level && checkItem(word, searchData, level)) {
-                    console.log(word.level, level, word);
                     results[key] = word;
                 }
             });

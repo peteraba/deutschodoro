@@ -15,7 +15,7 @@ define(
         _.each(games, function(game, name){
             var validImportance;
 
-            gameOptions = options.get(name, 100);
+            gameOptions = options.get(name);
 
             if (gameOptions && gameOptions.importance && gameOptions.importance > 0) {
                 validImportance = Math.max(0, Math.min(parseInt(gameOptions.importance), 1000));
