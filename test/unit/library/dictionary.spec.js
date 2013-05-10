@@ -39,15 +39,15 @@ define(
                 describe('#findWords()', function() {
                     it('should return all words matching the search options', function(){
                         dictionary.setLevel(1);
-                        expect(dictionary.findWords({english: 'yes'})).to.eql({a: rawDict.dict[0]});
+                        expect(dictionary.findWords({english: 'yes'}, 1)).to.eql({a: rawDict.dict[0]});
                     });
                     it('should return all words missing the negated search options', function(){
                         dictionary.setLevel(1);
-                        expect(dictionary.findWords({english: '!no'})).to.eql({a: rawDict.dict[0]});
+                        expect(dictionary.findWords({english: '!no'}, 1)).to.eql({a: rawDict.dict[0]});
                     });
                     it('should return empty array when there is no result', function(){
                         dictionary.setLevel(1);
-                        expect(dictionary.findWords({english: 'asd'})).to.eql({});
+                        expect(dictionary.findWords({english: 'asd'}, 1)).to.eql({});
                     });
                 })
             });

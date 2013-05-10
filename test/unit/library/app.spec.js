@@ -4,26 +4,30 @@ define(
         var stubs, context, loaded = false, createResult = 'hello';
 
         stubs = {
-            games: {
-                game1: {
-                    importance: 100,
-                    create: sinon.stub().returns(createResult),
-                    getHtml: sinon.stub().returns('<h1>' + createResult + '</h1>'),
-                    getHelp: sinon.stub(),
-                    getUsedWords: sinon.stub()
-                }
-            },
             gui: {
                 isReady: sinon.stub().returns(true),
                 displayGame: sinon.stub(),
                 displayHelp: sinon.stub(),
                 updateStats: sinon.stub()
             },
-            dictionary: {
-                getDictionary: sinon.stub()
+            games: {
+                game1: {
+                    getImportance: sinon.stub().returns(100),
+                    create: sinon.stub().returns(createResult),
+                    getHtml: sinon.stub().returns('<h1>' + createResult + '</h1>'),
+                    getHelp: sinon.stub(),
+                    getUsedWords: sinon.stub()
+                }
             },
             stat: {
                 getStats: sinon.stub()
+            },
+            timer: {
+                start: sinon.stub(),
+                end: sinon.stub()
+            },
+            dictionary: {
+                getDictionary: sinon.stub()
             }
         };
 

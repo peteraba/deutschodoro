@@ -16,6 +16,10 @@ define(
             return null===useRandom ? _.random(100) : useRandom;
         }
 
+        function setRandom(random) {
+            useRandom = random;
+        }
+
         /**
          *
          * @return {Boolean}
@@ -197,7 +201,8 @@ define(
             getAnswer: getAnswer,
             getImportance: getImportance,
             setImportance: setImportance,
-            setLevel: setLevel
+            setLevel: setLevel,
+            setRandom: setRandom
         };
     }
 );

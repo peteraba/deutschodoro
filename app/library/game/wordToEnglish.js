@@ -212,7 +212,8 @@ define(
             getAnswer: getAnswer,
             getImportance: getImportance,
             setImportance: setImportance,
-            setLevel: setLevel
+            setLevel: setLevel,
+            setRandom: setRandom
         };
     }
 );

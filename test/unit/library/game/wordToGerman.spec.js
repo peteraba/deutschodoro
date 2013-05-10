@@ -6,8 +6,8 @@ define(
         function context1() {
             var stubs, context, verb1, verb2;
 
-            verb1 = {type:'verb',german:"arbeiten",english:"to work"};
-            verb2 = {type:'verb',german:"bringen",english:["to bring","to fetch"]};
+            verb1 = {type:'verb',german:"arbeiten",english:"to work",level:1};
+            verb2 = {type:'verb',german:"bringen",english:["to bring","to fetch"],level:1};
 
             stubs = {
                 wordFinder: {
