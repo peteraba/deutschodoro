@@ -14,7 +14,7 @@ define(
          * @return {Boolean}
          */
         function create() {
-            pickedWord = wordFinder.getWord({type:"noun", plural:'!–'});
+            pickedWord = wordFinder.getWord({type:"noun", plural:'!–'}, level);
 
             answer = germanNoun.getPlural(pickedWord.german, pickedWord.plural);
 
@@ -124,7 +124,7 @@ define(
          * @returns {Number}
          */
         function setLevel(newLevel) {
-            var level = newLevel;
+            level = newLevel;
 
             return level;
         }

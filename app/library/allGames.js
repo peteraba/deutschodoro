@@ -17,16 +17,15 @@ define(
 
             gameOptions = options.get(name, 100);
 
-            if (gameOptions && gameOptions.importance && gameOptions.importance > 0) {
-                validImportance = Math.max(0, Math.min(parseInt(gameOptions.importance), 1000));
-
-                game.setImportance(validImportance);
-                game.setLevel(level);
-
-                enabledGames[name] = game;
-            } else if (!gameOptions) {
-                enabledGames[name] = game;
+            if (gameOptions && typeof gameOptions.importance != 'undefined') {
+                game.setImportance(gameOptions.importance);
+            } else {
+                game.setImportance(0);
             }
+
+            game.setLevel(level);
+
+            enabledGames[name] = game;
         });
 
         return enabledGames;

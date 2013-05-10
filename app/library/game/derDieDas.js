@@ -8,7 +8,7 @@ define(
          * @return {Boolean}
          */
         function create() {
-            pickedWord = wordFinder.getWord({type:"noun", plural:'!–'});
+            pickedWord = wordFinder.getWord({type:"noun", plural:'!–'}, level);
 
             return true;
         }
@@ -111,7 +111,7 @@ define(
          * @returns {Number}
          */
         function setLevel(newLevel) {
-            var level = newLevel;
+            level = newLevel;
 
             return level;
         }

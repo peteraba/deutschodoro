@@ -1,7 +1,7 @@
 define(
-    ['dict/dict', 'vendor/underscore'],
-    function(rawDictionary, _){
-        var level, usedDictionary = {}, MAX_LEVEL = 99;
+    ['options', 'vendor/underscore'],
+    function(options, _){
+        var level, usedDictionary = {}, MAX_LEVEL = 99, rawDictionary;
 
         function getDictionary() {
             return usedDictionary;
@@ -69,9 +69,10 @@ define(
          *
          * @param {String} word
          * @param {Object} searchData
+         * @param {String} level
          * @return {Boolean}
          */
-        function checkItem(word, searchData) {
+        function checkItem(word, searchData, level) {
             var found = true;
 
             _.every(searchData, function(value, key) {
@@ -88,13 +89,15 @@ define(
         /**
          *
          * @param {Object} searchData
+         * @param {Number} level
          * @return {Array}
          */
-        function findWords(searchData) {
+        function findWords(searchData, level) {
             var results = {};
 
             _.each(usedDictionary, function(word, key) {
-                if (checkItem(word, searchData)) {
+                if (word.level >= level && checkItem(word, searchData, level)) {
+                    console.log(word.level, level, word);
                     results[key] = word;
                 }
             });
@@ -102,6 +105,7 @@ define(
             return results;
         }
 
+        rawDictionary = options.getRawDictionary();
         setLevel(MAX_LEVEL);
 
         return {

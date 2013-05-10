@@ -23,13 +23,13 @@ define(
         function create() {
             var type, word2, word3, english;
 
-            pickedWord = wordFinder.getWord();
+            pickedWord = wordFinder.getWord({}, level);
 
             type = _.isArray(pickedWord.type) ? pickedWord.type[0] : pickedWord.type;
             english = _.isArray(pickedWord.english) ? pickedWord.english[0] : pickedWord.english;
 
-            word2 = wordFinder.getRandomWord({type: type}, [pickedWord.german]);
-            word3 = wordFinder.getRandomWord({type: type}, [pickedWord.german, word2.german]);
+            word2 = wordFinder.getRandomWord({type: type}, [pickedWord.german], level);
+            word3 = wordFinder.getRandomWord({type: type}, [pickedWord.german, word2.german], level);
 
             switch (type) {
                 case 'noun':
@@ -183,7 +183,7 @@ define(
          * @returns {Number}
          */
         function setLevel(newLevel) {
-            var level = newLevel;
+            level = newLevel;
 
             return level;
         }

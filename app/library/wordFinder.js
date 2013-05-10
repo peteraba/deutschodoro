@@ -5,10 +5,15 @@ define(
         /**
          *
          * @param {Object} searchData
+         * @param {Number} level
          * @return {Object|Boolean}
          */
-        function getWord(searchData) {
-            var wordList = dictionary.findWords(searchData);
+        function getWord(searchData, level) {
+            var wordList;
+
+            level = typeof level=='undefined' ? 1 : level;
+
+            wordList = dictionary.findWords(searchData, level);
 
             return _.size(wordList) ? stat.pickWord(wordList) : false;
         }
@@ -17,13 +22,15 @@ define(
          *
          * @param {Object} searchData
          * @param {Array} skipGermanWords
+         * @param {Number} level
          * @return {Object|Boolean}
          */
-        function getRandomWord(searchData, skipGermanWords) {
+        function getRandomWord(searchData, skipGermanWords, level) {
             var wordList, wordArray, pickedWord = null, maxTries, tryCount = 0;
 
+            level = typeof level=='undefined' ? 1 : level;
             skipGermanWords = typeof skipGermanWords == 'undefined' ? [] : skipGermanWords;
-            wordList = dictionary.findWords(searchData);
+            wordList = dictionary.findWords(searchData, level);
             wordArray = _.toArray(wordList);
 
             if (wordArray.length == 0) {

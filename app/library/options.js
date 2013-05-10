@@ -1,5 +1,6 @@
 define(
-    function(){
+    ['dict/dict'],
+    function(rawDictionary){
         var storage = null;
 
         /**
@@ -32,12 +33,15 @@ define(
         /**
          *
          * @param {String} key
+         * @param {*} defaultValue
          * @returns {*}
          */
-        function get(key) {
+        function get(key, defaultValue) {
             var data = getStorage().getItem(key);
 
-            data = data ? JSON.parse(data) : null;
+            defaultValue = typeof defaultValue=='undefined' ? null : defaultValue;
+
+            data = data ? JSON.parse(data) : defaultValue;
 
             return data;
         }
@@ -51,10 +55,56 @@ define(
             getStorage().setItem(key, JSON.stringify(data));
         }
 
+        /**
+         *
+         * @returns {Object}
+         */
+        function getRawDictionary(){
+            var dict = get('rawDictionary');
+
+            if (dict) {
+                return dict;
+            }
+
+            return rawDictionary;
+        }
+
+        /**
+         *
+         * @param {Object} newDictionary
+         * @returns {Boolean}
+         */
+        function setRawDictionary(newDictionary){
+            try {
+                newDictionary = JSON.parse(newDictionary);
+
+                if (newDictionary && _.isArray(newDictionary.dict)) {
+                    set('rawDictionary', newDictionary);
+                    return true;
+                }
+
+            } catch (e) {
+            }
+            return false;
+        }
+
+        /**
+         *
+         * @returns {Object}
+         */
+        function resetRawDictionary(){
+            getStorage().removeItem('rawDictionary');
+
+            return rawDictionary;
+        }
+
         return {
             setStorage: setStorage,
             get: get,
-            set: set
+            set: set,
+            getRawDictionary: getRawDictionary,
+            setRawDictionary: setRawDictionary,
+            resetRawDictionary: resetRawDictionary
         };
     }
 );

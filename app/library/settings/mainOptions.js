@@ -1,5 +1,5 @@
 define(
-    ['games', 'options', 'vendor/jquery', 'vendor/underscore'],
+    ['allGames', 'options', 'vendor/jquery', 'vendor/underscore'],
     function(games, options, $, _){
         var gameTemplate, levelTemplate, formTemplate, bodyTemplate;
 
@@ -14,18 +14,18 @@ define(
         levelTemplate = [
             '<li>',
             '<label for="level">',
-            '<input type="number" name="level" id="level" value="{value}" min="0" max="10" class="level">',
+            '<input type="number" name="level" id="level" value="{value}" min="1" max="3" class="level">',
             'Your german level',
             '</label>',
             '</li>'
         ];
         formTemplate = [
             '<form action="" method="post">',
-            '<p>Probability of games:</p>',
+            '<h3>Probability of games</h3>',
             '<ul>',
             '{gameOptions}',
             '</ul>',
-            '<p>General settings:</p>',
+            '<h3>General settings</h3>',
             '<ul>',
             '{levelOptions}',
             '</ul>',
@@ -36,7 +36,7 @@ define(
         ];
         bodyTemplate = [
             '<div>',
-            '<h1>Game options</h1>',
+            '<h1>Main options</h1>',
             '{form}',
             '</div>'
         ];
@@ -89,16 +89,16 @@ define(
             event.preventDefault();
 
             $('.gameImportance', $this).each(function(){
-                var $input = $(this), name, oldGameOptions;
+                var $input = $(this), name = $input.attr('name'), oldGameOptions;
 
                 oldGameOptions = options.get(name);
-                oldGameOptions = oldGameOptions ? oldGameOptions : {};
+                oldGameOptions = typeof oldGameOptions=='undefined' ? {} : oldGameOptions;
                 oldGameOptions.importance = Math.max(0, Math.min(1000, $input.val()));
 
                 options.set(name, oldGameOptions);
             });
 
-            options.set('level', Math.max(0, Math.min(1000, $('#level').val())));
+            options.set('level', Math.max(1, Math.min(3, $('#level').val())));
 
             displaySavedMsg();
         }

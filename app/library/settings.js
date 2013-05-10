@@ -33,10 +33,10 @@ define(
         }
 
         function init() {
-            gui.getDom('#mainOptions').click(buildMainOptions);
-            gui.getDom('#addNoun').click(buildAddNoun);
+            gui.getDom('#mainOptions').click(buildMainOptions).click();
+            /*gui.getDom('#addNoun').click(buildAddNoun);
             gui.getDom('#addVerb').click(buildAddVerb);
-            gui.getDom('#addWord').click(buildAddWord);
+            gui.getDom('#addWord').click(buildAddWord);*/
             gui.getDom('#dictionary').click(buildDictionary);
         }
 
