@@ -44,7 +44,7 @@ function buildChromeExtensionZip {
 
 function gitTag {
     command="git tag -a v$1 -m 'version $1'"
-    `command`
+    `$command`
 }
 
 
