@@ -17,6 +17,7 @@ function verifyUnitTests {
 function replaceVersionTags {
     sed -i "s/v$1/v$2/" index.html
     sed -i "s/v$1/v$2/" build/popup.html
+    sed -i "s/v$1/v$2/" build/options.html
     sed -i "s/$1/$2/" build/manifest.json
     echo "Version change: $1 --> $2"
 }
@@ -39,6 +40,11 @@ function buildChromeExtensionZip {
     zip build.zip *
     cd ..
     echo "Zip for Chrome rebuilt"
+}
+
+function gitTag {
+    command="git tag -a v$1 -m 'version $1'"
+    `command`
 }
 
 
@@ -98,6 +104,8 @@ if test $doTag -gt 0; then
     updateDictionary
 
     buildJs
+
+    gitTag $newVersion
 fi
 
 
