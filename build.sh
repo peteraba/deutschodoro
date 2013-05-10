@@ -37,16 +37,15 @@ function buildJs {
 function buildChromeExtensionZip {
     cd build
     rm build.zip
-    zip build.zip *
+    zip -r build.zip *
     cd ..
     echo "Zip for Chrome rebuilt"
 }
 
 function gitTag {
-    command="git tag -a v$1 -m 'version $1'"
-    `$command`
+    git tag -a v$1 -m 'version $1'
+    echo "Git tag created"
 }
-
 
 doTag=0
 doZip=0
@@ -85,7 +84,6 @@ done
 
 url="http://$server/test/unit/index.html"
 
-
 if test $doTag -gt 0; then
     if [ -z "$newVersion" ]; then
         echo "New version is not specified."
@@ -105,7 +103,11 @@ if test $doTag -gt 0; then
 
     buildJs
 
-    gitTag $newVersion
+    if [ "$newVersion" != "$oldVersion" ]; then
+        gitTag $newVersion
+    else
+        echo "Git tagging skipped."
+    fi
 fi
 
 
