@@ -15,7 +15,7 @@ define(
             '<li>',
             '<label for="level">',
             '<input type="number" name="level" id="level" value="{value}" min="0" max="10" class="level">',
-            'Level',
+            'Your german level',
             '</label>',
             '</li>'
         ];
@@ -30,7 +30,7 @@ define(
             '{levelOptions}',
             '</ul>',
             '<p>',
-            '<input type="submit" name="submit">',
+            '<input type="submit" name="submit" id="submit">',
             '</p>',
             '</form>'
         ];
@@ -99,6 +99,18 @@ define(
             });
 
             options.set('level', Math.max(0, Math.min(1000, $('#level').val())));
+
+            displaySavedMsg();
+        }
+
+        function displaySavedMsg() {
+            var display;
+
+            display = $('<span class="saved">Saved.</span>');
+
+            display.insertAfter('#submit');
+
+            setTimeout(function(){if (display) display.hide();}, 3000);
         }
 
         function render(){

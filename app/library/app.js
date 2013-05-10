@@ -16,7 +16,7 @@ define(
                 importanceList[key] = game.getImportance();
             });
 
-            result = _.reduce(importanceList, function(memo, importance){return memo + importance;}, 0);
+            result = _.reduce(importanceList, function(memo, importance){return parseInt(memo) + parseInt(importance);}, 0);
 
             return result;
         }
