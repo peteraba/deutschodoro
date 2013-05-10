@@ -172,9 +172,9 @@ define(
          * @returns {Number}
          */
         function setImportance(newImportance) {
-            var importance = newImportance;
+            importance = newImportance;
 
-            return importance;
+            return newImportance;
         }
 
         /**

@@ -37,7 +37,7 @@ define(
         function get(key) {
             var data = getStorage().getItem(key);
 
-            data = data ? JSON.parse(jsonData) : null;
+            data = data ? JSON.parse(data) : null;
 
             return data;
         }

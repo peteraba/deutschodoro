@@ -1,55 +1,35 @@
 define(
-    ['gui', 'options', 'vendor/jquery', 'vendor/underscore'],
-    function(gui, options, $, _){
+    ['gui', 'settings/dictionary', 'settings/addNoun', 'settings/addVerb', 'settings/addWord', 'settings/mainOptions'],
+    function(gui, dictionarySettings, addNounSettings, addVerbSettings, addWordSettings, mainOptionsSettings){
 
-        function buildMainOptions(event) {
-            var html;
-
-            html = 'buildMainOptions';
-
+        function buildDictionary(event) {
             event.preventDefault();
 
-            gui.displaySettingsPage(html);
+            gui.displaySettingsPage(dictionarySettings.render());
         }
 
         function buildAddNoun(event) {
-            var html;
-
-            html = 'buildAddNoun';
-
             event.preventDefault();
 
-            gui.displaySettingsPage(html);
+            gui.displaySettingsPage(addNounSettings.render());
         }
 
         function buildAddVerb(event) {
-            var html;
-
-            html = 'buildAddVerb';
-
             event.preventDefault();
 
-            gui.displaySettingsPage(html);
+            gui.displaySettingsPage(addVerbSettings.render());
         }
 
         function buildAddWord(event) {
-            var html;
-
-            html = 'buildAddWord';
-
             event.preventDefault();
 
-            gui.displaySettingsPage(html);
+            gui.displaySettingsPage(addWordSettings.render());
         }
 
-        function buildDictionary(event) {
-            var html;
-
-            html = 'buildDictionary';
-
+        function buildMainOptions(event) {
             event.preventDefault();
 
-            gui.displaySettingsPage(html);
+            gui.displaySettingsPage(mainOptionsSettings.render());
         }
 
         function init() {

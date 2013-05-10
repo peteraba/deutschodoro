@@ -13,10 +13,12 @@ define(
         _.each(games, function(game, name){
             gameOptions = options.get(name);
 
-            if (!gameOptions || gameOptions.importance > 0) {
+            if (gameOptions && gameOptions.importance && gameOptions.importance > 0) {
+                game.setImportance(gameOptions.importance);
+
                 enabledGames[name] = game;
-            } else if (gameOptions) {
-                enabledGames[name].setImportance(getOptions.importance);
+            } else if (true) {
+                enabledGames[name] = game;
             }
         });
 

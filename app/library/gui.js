@@ -45,7 +45,7 @@ define(
         }
 
         function displaySettingsPage(html) {
-            east = getDom('#center').html(html);
+            east = getDom('#center').empty().append(html);
         }
 
         function displayHelp(gameHelp, words) {
