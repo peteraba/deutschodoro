@@ -13,9 +13,9 @@ define(
         ];
         levelTemplate = [
             '<li>',
-            '<label for="level">',
-            '<input type="number" name="level" id="level" value="{value}" min="1" max="10" class="level">',
-            'Your german level',
+            '<label for="{name}">',
+            '<input type="number" name="{name}" id="{name}" value="{value}" min="1" max="10" class="level">',
+            '{word} level',
             '</label>',
             '</li>'
         ];
@@ -27,7 +27,8 @@ define(
             '</ul>',
             '<h3>General settings</h3>',
             '<ul>',
-            '{levelOptions}',
+            '{minLevelOptions}',
+            '{maxLevelOptions}',
             '</ul>',
             '<p>',
             '<input type="submit" name="submit" id="submit">',
@@ -55,12 +56,13 @@ define(
             return html.join('');
         }
 
-        function getLevelOptions() {
+        function getLevelOptions(name, word) {
             var levelHtml = levelTemplate.join(''), levelOption;
-
-            levelOption = options.get('level', 1);
+            levelOption = options.get(name, 1);
 
             levelHtml = levelHtml.replace(/\{value\}/g, levelOption);
+            levelHtml = levelHtml.replace(/\{word\}/g, word);
+            levelHtml = levelHtml.replace(/\{name\}/g, name);
 
             return levelHtml;
         }
@@ -69,7 +71,8 @@ define(
             var formHtml = formTemplate.join('');
 
             formHtml = formHtml.replace(/\{gameOptions\}/g, getGameOptions());
-            formHtml = formHtml.replace(/\{levelOptions\}/g, getLevelOptions());
+            formHtml = formHtml.replace(/\{minLevelOptions\}/g, getLevelOptions('minLevel', 'Minimum'));
+            formHtml = formHtml.replace(/\{maxLevelOptions\}/g, getLevelOptions('maxLevel', 'Maximum'));
 
             return formHtml;
         }
@@ -83,7 +86,7 @@ define(
         }
 
         function saveOptions(event) {
-            var $this = $(this);
+            var $this = $(this), minLevel;
 
             event.preventDefault();
 
@@ -96,7 +99,9 @@ define(
                 options.set(name, oldGameOptions);
             });
 
-            options.set('level', Math.max(1, Math.min(10, parseInt($('#level').val()))));
+            minLevel = Math.max(1, Math.min(10, parseInt($('#minLevel').val())));
+            options.set('minLevel', minLevel);
+            options.set('maxLevel', Math.max(minLevel, Math.min(10, parseInt($('#maxLevel').val()))));
 
             displaySavedMsg();
         }

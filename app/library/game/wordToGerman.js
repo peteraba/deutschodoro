@@ -10,7 +10,8 @@ define(
             , ENGLISH_NOUN_PREFIX = 'the '
             , GERMAN_PLURAL_PREFIX = 'die '
             , importance = 100
-            , level = 1;
+            , minLevel = 1
+            , maxLevel = 1;
 
         function getRandom() {
             return null===useRandom ? _.random(100) : useRandom;
@@ -27,13 +28,13 @@ define(
         function create() {
             var type, word2, word3, english;
 
-            pickedWord = wordFinder.getWord({}, level);
+            pickedWord = wordFinder.getWord({}, minLevel, maxLevel);
 
             type = _.isArray(pickedWord.type) ? pickedWord.type[0] : pickedWord.type;
             english = _.isArray(pickedWord.english) ? pickedWord.english[0] : pickedWord.english;
 
-            word2 = wordFinder.getRandomWord({type: type}, [pickedWord.german], level);
-            word3 = wordFinder.getRandomWord({type: type}, [pickedWord.german, word2.german], level);
+            word2 = wordFinder.getRandomWord({type: type}, [pickedWord.german], minLevel, maxLevel);
+            word3 = wordFinder.getRandomWord({type: type}, [pickedWord.german, word2.german], minLevel, maxLevel);
 
             switch (type) {
                 case 'noun':
@@ -183,13 +184,24 @@ define(
 
         /**
          *
-         * @param {Number} newLevel
+         * @param {Number} newMinLevel
          * @returns {Number}
          */
-        function setLevel(newLevel) {
-            level = newLevel;
+        function setMinLevel(newMinLevel) {
+            minLevel = newMinLevel;
 
-            return level;
+            return minLevel;
+        }
+
+        /**
+         *
+         * @param {Number} newMaxLevel
+         * @returns {Number}
+         */
+        function setMaxLevel(newMaxLevel) {
+            maxLevel = newMaxLevel;
+
+            return maxLevel;
         }
 
         return {
@@ -201,7 +213,8 @@ define(
             getAnswer: getAnswer,
             getImportance: getImportance,
             setImportance: setImportance,
-            setLevel: setLevel,
+            setMinLevel: setMinLevel,
+            setMaxLevel: setMaxLevel,
             setRandom: setRandom
         };
     }

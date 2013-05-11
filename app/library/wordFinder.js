@@ -5,15 +5,17 @@ define(
         /**
          *
          * @param {Object} searchData
-         * @param {Number} level
+         * @param {Number} minLevel
+         * @param {Number} maxLevel
          * @return {Object|Boolean}
          */
-        function getWord(searchData, level) {
+        function getWord(searchData, minLevel, maxLevel) {
             var wordList;
 
-            level = typeof level=='undefined' ? 1 : level;
+            minLevel = typeof minLevel=='undefined' ? 1 : minLevel;
+            maxLevel = typeof maxLevel=='undefined' ? 10 : maxLevel;
 
-            wordList = dictionary.findWords(searchData, level);
+            wordList = dictionary.findWords(searchData, minLevel, maxLevel);
 
             return _.size(wordList) ? stat.pickWord(wordList) : false;
         }
@@ -22,15 +24,18 @@ define(
          *
          * @param {Object} searchData
          * @param {Array} skipGermanWords
-         * @param {Number} level
+         * @param {Number} minLevel
+         * @param {Number} maxLevel
          * @return {Object|Boolean}
          */
-        function getRandomWord(searchData, skipGermanWords, level) {
+        function getRandomWord(searchData, skipGermanWords, minLevel, maxLevel) {
             var wordList, wordArray, pickedWord = null, maxTries, tryCount = 0;
 
-            level = typeof level=='undefined' ? 1 : level;
+            minLevel = typeof minLevel=='undefined' ? 1 : minLevel;
+            maxLevel = typeof maxLevel=='undefined' ? 10 : maxLevel;
             skipGermanWords = typeof skipGermanWords == 'undefined' ? [] : skipGermanWords;
-            wordList = dictionary.findWords(searchData, level);
+
+            wordList = dictionary.findWords(searchData, minLevel, maxLevel);
             wordArray = _.toArray(wordList);
 
             if (wordArray.length == 0) {

@@ -7,14 +7,15 @@ define(
             , words
             , GERMAN_PLURAL_PREFIX = 'die '
             , importance = 100
-            , level = 1;
+            , minLevel = 1
+            , maxLevel = 1;
 
         /**
          *
          * @return {Boolean}
          */
         function create() {
-            pickedWord = wordFinder.getWord({type:"noun", plural:'!–'}, level);
+            pickedWord = wordFinder.getWord({type:"noun", plural:'!–'}, minLevel, maxLevel);
 
             answer = germanNoun.getPlural(pickedWord.german, pickedWord.plural);
 
@@ -120,13 +121,24 @@ define(
 
         /**
          *
-         * @param {Number} newLevel
+         * @param {Number} newMinLevel
          * @returns {Number}
          */
-        function setLevel(newLevel) {
-            level = newLevel;
+        function setMinLevel(newMinLevel) {
+            minLevel = newMinLevel;
 
-            return level;
+            return minLevel;
+        }
+
+        /**
+         *
+         * @param {Number} newMaxLevel
+         * @returns {Number}
+         */
+        function setMaxLevel(newMaxLevel) {
+            maxLevel = newMaxLevel;
+
+            return maxLevel;
         }
 
         return {
@@ -138,7 +150,8 @@ define(
             getAnswer: getAnswer,
             getImportance: getImportance,
             setImportance: setImportance,
-            setLevel: setLevel
+            setMinLevel: setMinLevel,
+            setMaxLevel: setMaxLevel
         };
     }
 );

@@ -1,7 +1,7 @@
 define(
     ['options', 'game/derDieDas', 'game/pluralize', 'game/wordToEnglish', 'game/wordToGerman'],
     function(options, derDieDas, pluralize, wordToEnglish, wordToGerman){
-        var enabledGames = {}, gameOptions, games, level;
+        var enabledGames = {}, gameOptions, games, minLevel, maxLevel;
 
         games = {
             derDieDas: derDieDas,
@@ -10,7 +10,8 @@ define(
             wordToGerman: wordToGerman
         };
 
-        level = Math.max(0, Math.min(parseInt(options.get('level', 1)), 3));
+        minLevel = Math.max(1, Math.min(parseInt(options.get('minLevel', 1)), 10));
+        maxLevel = Math.max(minLevel, Math.min(parseInt(options.get('maxLevel', 1)), 10));
 
         _.each(games, function(game, name){
             var validImportance;
@@ -23,7 +24,8 @@ define(
                 game.setImportance(0);
             }
 
-            game.setLevel(level);
+            game.setMinLevel(minLevel);
+            game.setMaxLevel(maxLevel);
 
             enabledGames[name] = game;
         });

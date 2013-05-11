@@ -1,7 +1,7 @@
 define(
     ['options', 'vendor/underscore'],
     function(options, _){
-        var level, usedDictionary = {}, MAX_LEVEL = 99, rawDictionary;
+        var minLevel, usedDictionary = {}, MAX_LEVEL = 99, rawDictionary;
 
         function getDictionary() {
             return usedDictionary;
@@ -9,19 +9,19 @@ define(
 
         /**
          *
-         * @param {Number} newLevel
+         * @param {Number} newMinLevel
          * @return {Object} this
          */
-        function setLevel(newLevel) {
-            if (newLevel < 1 || newLevel > MAX_LEVEL) {
-                newLevel = MAX_LEVEL;
+        function setMinLevel(newMinLevel) {
+            if (newMinLevel < 1 || newMinLevel > MAX_LEVEL) {
+                newMinLevel = MAX_LEVEL;
             }
 
-            level = newLevel;
+            minLevel = newMinLevel;
 
             usedDictionary = {};
             _.each(rawDictionary.dict, function(word){
-                if (typeof word.level !== 'undefined' && word.level <= newLevel) {
+                if (typeof word.level !== 'undefined' && word.level <= newMinLevel) {
                     usedDictionary[word.hash] = word;
                 }
             });
@@ -69,10 +69,9 @@ define(
          *
          * @param {String} word
          * @param {Object} searchData
-         * @param {String} level
          * @return {Boolean}
          */
-        function checkItem(word, searchData, level) {
+        function checkItem(word, searchData) {
             var found = true;
 
             _.every(searchData, function(value, key) {
@@ -89,14 +88,17 @@ define(
         /**
          *
          * @param {Object} searchData
-         * @param {Number} level
+         * @param {Number} minLevel
+         * @param {Number} maxLevel
          * @return {Array}
          */
-        function findWords(searchData, level) {
+        function findWords(searchData, minLevel, maxLevel) {
             var results = {};
 
+            maxLevel = typeof maxLevel!='undefined' ? maxLevel : 10;
+
             _.each(usedDictionary, function(word, key) {
-                if (word.level >= level && checkItem(word, searchData, level)) {
+                if (word.level >= minLevel && word.level <= maxLevel && checkItem(word, searchData)) {
                     results[key] = word;
                 }
             });
@@ -105,10 +107,10 @@ define(
         }
 
         rawDictionary = options.getRawDictionary();
-        setLevel(MAX_LEVEL);
+        setMinLevel(MAX_LEVEL);
 
         return {
-            setLevel: setLevel,
+            setMinLevel: setMinLevel,
             findWords: findWords,
             rawDictionary: rawDictionary.dict,
             getDictionary: getDictionary
