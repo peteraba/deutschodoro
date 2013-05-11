@@ -15,7 +15,7 @@ define(
         _.each(games, function(game, name){
             var validImportance;
 
-            gameOptions = options.get(name, 100);
+            gameOptions = options.get(name, {importance: 100});
 
             if (gameOptions && typeof gameOptions.importance != 'undefined') {
                 game.setImportance(gameOptions.importance);

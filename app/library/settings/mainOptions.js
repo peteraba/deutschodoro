@@ -58,8 +58,7 @@ define(
         function getLevelOptions() {
             var levelHtml = levelTemplate.join(''), levelOption;
 
-            levelOption = options.get('level');
-            levelOption = levelOption ? levelOption : 1;
+            levelOption = options.get('level', 1);
 
             levelHtml = levelHtml.replace(/\{value\}/g, levelOption);
 
@@ -91,14 +90,13 @@ define(
             $('.gameImportance', $this).each(function(){
                 var $input = $(this), name = $input.attr('name'), oldGameOptions;
 
-                oldGameOptions = options.get(name);
-                oldGameOptions = typeof oldGameOptions=='undefined' ? {} : oldGameOptions;
-                oldGameOptions.importance = Math.max(0, Math.min(1000, $input.val()));
+                oldGameOptions = options.get(name, {});
+                oldGameOptions.importance = Math.max(0, Math.min(1000, parseInt($input.val())));
 
                 options.set(name, oldGameOptions);
             });
 
-            options.set('level', Math.max(1, Math.min(3, $('#level').val())));
+            options.set('level', Math.max(1, Math.min(3, parseInt($('#level').val()))));
 
             displaySavedMsg();
         }
