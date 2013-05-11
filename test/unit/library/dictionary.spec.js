@@ -28,25 +28,25 @@ define(
                         expect(dictionary.getDictionary()).to.eql(validDictionary);
                     });
                     it('should return the dictionary with the applied level filter', function(){
-                        dictionary.setLevel(1);
+                        dictionary.setMinLevel(1);
                         expect(dictionary.getDictionary()).to.eql(level1Dictionary);
 
-                        dictionary.setLevel(2);
+                        dictionary.setMinLevel(2);
                         expect(dictionary.getDictionary()).to.eql(level2Dictionary);
                     });
                 });
 
                 describe('#findWords()', function() {
                     it('should return all words matching the search options', function(){
-                        dictionary.setLevel(1);
+                        dictionary.setMinLevel(1);
                         expect(dictionary.findWords({english: 'yes'}, 1)).to.eql({a: rawDict.dict[0]});
                     });
                     it('should return all words missing the negated search options', function(){
-                        dictionary.setLevel(1);
+                        dictionary.setMinLevel(1);
                         expect(dictionary.findWords({english: '!no'}, 1)).to.eql({a: rawDict.dict[0]});
                     });
                     it('should return empty array when there is no result', function(){
-                        dictionary.setLevel(1);
+                        dictionary.setMinLevel(1);
                         expect(dictionary.findWords({english: 'asd'}, 1)).to.eql({});
                     });
                 })
