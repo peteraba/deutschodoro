@@ -14,7 +14,7 @@ define(
             $('#statToggler').click(function() {
                 toggle(eastPanes, 1);
             });
-            $('#feedback').click(newWindow);
+            $('#feedback, #south .deutschodoro-link a').click(newWindow);
 
             ready = true;
         }
@@ -44,7 +44,7 @@ define(
             window.open(url, 'deutschodoro-help');
         }
 
-        function displaySettingsPage(html) {
+        function displayPage(html) {
             east = getDom('#center').empty().append(html);
         }
 
@@ -173,7 +173,7 @@ define(
             displayHelp: displayHelp,
             showErrorReportBtn: showErrorReportBtn,
             updateStats: updateStats,
-            displaySettingsPage: displaySettingsPage,
+            displayPage: displayPage,
             getDom: getDom
         }
     }

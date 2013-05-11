@@ -1,6 +1,6 @@
 define(
-    ['gui', 'games', 'stat', 'timer', 'dictionary', 'vendor/jquery', 'vendor/underscore'],
-    function(gui, games, stat, timer, dictionary, $, _){
+    ['gui', 'games', 'stat', 'timer', 'dictionary', 'logger', 'vendor/jquery', 'vendor/underscore'],
+    function(gui, games, stat, timer, dictionary, logger, $, _){
         var importanceList, currentGame, currentAnswer, canReRun = false;
 
         /**
@@ -52,7 +52,7 @@ define(
          * @return {Boolean|Object}
          */
         function run() {
-            var game, html, submit;
+            var game, msg;
 
             timer.start('game.init');
             game = getRandomGame();
@@ -61,13 +61,49 @@ define(
             currentGame = game;
             currentAnswer = null;
 
-            if (game && game.create()) {
-                displayGame(game);
+            if (game) {
+                if (game.create()) {
+                    displayGame(game);
+                } else {
+                    msg = [
+                        'Word for game was not found. Check your dictionary and settings.',
+                        'Is your minimum skill level too high for your dictionary?'
+                    ].join('<br />');
+                    displayMsg(msg);
+                }
+            } else {
+                msg = [
+                    'Game was not loaded. Check your settings.',
+                    'Do you have games with probability over 0?'
+                ].join('<br />');
+                displayMsg(msg);
             }
 
             timer.end('game.init');
 
             return game;
+        }
+
+        function displayMsg(msg) {
+            var html, htmlTemplate, retryBtn;
+
+            htmlTemplate = [
+                '<div>',
+                '<h1>Error</h1>',
+                '<p>',
+                msg,
+                '</p>',
+                '<p id="retry"><button>Retry</button></p>',
+                '</div>'
+            ];
+
+            html = $(htmlTemplate.join(''));
+
+            $('#retry', html).click(function(){
+                run();
+            });
+
+            gui.displayPage(html);
         }
 
         /**

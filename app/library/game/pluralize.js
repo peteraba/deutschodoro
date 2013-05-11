@@ -35,7 +35,7 @@ define(
 
             question = pickedWord.article + ' ' + pickedWord.german;
 
-            return true;
+            return pickedWord==false ? false : true;
         }
 
         /**

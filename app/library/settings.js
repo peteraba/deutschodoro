@@ -5,31 +5,31 @@ define(
         function buildDictionary(event) {
             event.preventDefault();
 
-            gui.displaySettingsPage(dictionarySettings.render());
+            gui.displayPage(dictionarySettings.render());
         }
 
         function buildAddNoun(event) {
             event.preventDefault();
 
-            gui.displaySettingsPage(addNounSettings.render());
+            gui.displayPage(addNounSettings.render());
         }
 
         function buildAddVerb(event) {
             event.preventDefault();
 
-            gui.displaySettingsPage(addVerbSettings.render());
+            gui.displayPage(addVerbSettings.render());
         }
 
         function buildAddWord(event) {
             event.preventDefault();
 
-            gui.displaySettingsPage(addWordSettings.render());
+            gui.displayPage(addWordSettings.render());
         }
 
         function buildMainOptions(event) {
             event.preventDefault();
 
-            gui.displaySettingsPage(mainOptionsSettings.render());
+            gui.displayPage(mainOptionsSettings.render());
         }
 
         function init() {
