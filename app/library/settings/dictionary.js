@@ -1,11 +1,11 @@
 define(
-    ['options', 'vendor/jquery', 'vendor/underscore'],
-    function(options, $, _){
+    ['options', 'logger', 'vendor/jquery', 'vendor/underscore'],
+    function(options, logger, $, _){
         var formTemplate, bodyTemplate;
 
         formTemplate = [
             '<form action="" method="post">',
-            '<h3>Probability of games</h3>',
+            '<h3>Dictionary used</h3>',
             '<p>',
             '<textarea cols="50" rows="10" id="rawDictionary">{rawDictionary}</textarea>',
             '</p>',
@@ -39,14 +39,19 @@ define(
         }
 
         function saveOptions(event) {
-            var $this = $(this), result;
+            var $this = $(this), result, oldLogLevel;
 
             event.preventDefault();
 
+            oldLogLevel = logger.getLogLevel();
+            logger.setLogLevel(logger.ERROR);
             result = options.setRawDictionary($('#rawDictionary').val());
+            logger.setLogLevel(oldLogLevel)
 
             if (result) {
-                displaySavedMsg();
+                displayMsg('Saved.');
+            } else {
+                displayMsg('Check errors.');
             }
         }
 
@@ -58,10 +63,10 @@ define(
             $('#rawDictionary').val(JSON.stringify(dict));
         }
 
-        function displaySavedMsg() {
+        function displayMsg(msg) {
             var display;
 
-            display = $('<span class="saved">Saved.</span>');
+            display = $('<span class="saved">' + msg + '</span>');
 
             display.insertAfter('#submit');
 

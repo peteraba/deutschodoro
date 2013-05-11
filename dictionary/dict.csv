@@ -1,139 +1,207 @@
 ;;abhängig;;;adj;med;2;addicted, dependent
-;;acht;;;art, pron;num;1;eight
-die;;Achtung;~;–;noun;expr;1;warning, esteem
-der;;Administrator;~s;~en;noun;job, pers;1;admin
-w;;ähneln;;;verb;;3;to resemble
 ;;ähnlich;;;adj;;2;similar
 ;;aktiv;;;adj;;1;active
 ;;aktuell;;;adj;;1;actual, recent, current
-der;;Alkohol;~s;~e;noun;;1;alcohol
-;;alle;;;pron;;1;all
 ;;allgemein;;;adj;;2;general, universal
 ;;alt;;;adj;pers, anim;1;old
-;;an;;;prep;;2;on, by
 ;;ander;;;adj;;1;other
+;;ausgezeichnet;;;adj;;2;excellent, outstanding
+;;automatisch;;;adj;;1;automatic
+;;begeistert;;;adj;;3;enthusiastic
+;;beliebt;;;adj;;1;popular, admired
+;;bequem;;;adj;;1;comfortable
+;;bereit;;;adj;;1;ready
+;;blau;~er;~sten;adj;col;1;blue
+;;clever;;;adj;pers, anim;1;clever
+;;deutsch;;;adj;;1;german
+;;dritte;;;adj;ordn;2;third
+;;echt;~er;~esten;adj;;2;authentic, unique, real
+;;eindeutig;~er;~sten;adj;;2;unique
+;;einfach;~er;~sten;adj;;2;easy, simple
+;;einige;;;adj;;3;some, any, few
+;;englisch;;;adj;pers;1;english
+;;extrem;~er;~sten;adj;;2;extreme
+;;falsch;~er;~esten;adj;;1;false, wrong
+;;fit;;;adj;pers;2;fit
+;;frei;~er;~sten;adj;;2;free
+;;früh;;;adj;;2;early
+;;ganz;;;adj;;2;whole, complete
+;;gelb;;;adj;;1;yellow
+;;gesund;;;adj;pers, anim;1;healthy
+;;gleichzeitig;–;–;adj;;3;simultaneous, concurrent,
+;;groß;⍨er;⍨ten;adj;;1;big, great
+;;grün;~er;~sten;adj;col;1;green
+;;gut;;;adj;;1;good, well
+;;herzlich;~er;~sten;adj;;2;cordial, hearty
+;;hilfreich;;;adj;;100;useful, helpful
+;;hoch;höher;⍨sten;adj;;2;high
+;;hohe;;;adj;;2;high, tall
+;;individuell;~er;~sten;adj;;2;individual
+;;interessant;;;adj;pers;1;interesting
+;;intern;;;adj;;2;internal
+;;international;–;–;adj;;2;international
+;;jede;–;–;adj;;2;each, every
+;;jung;⍨er;⍨sten;adj;;2;young
+;;kalt;⍨er;⍨esten;adj;;2;cold
+;;kaputt;~er;~esten;adj;;2;broken, out of order
+;;klar;~er;~sten;adj;;1;clear
+;;klein;~er;~sten;adj;;2;small, little
+;;knapp;~er;~sten;adj;;2;tight, lean
+;;komplett;–;–;adj;;2;complete
+;;kostenlos;;;adj;;2;free, without cost
+;;lang;⍨er;⍨sten;adj;;2;long
+;;leicht;;;adj;;2;light
+;;möglich;~er;~sten;adj;;3;likely, possible
+;;neu;~er;~sten;adj;;2;new
+;;normal;~er;~sten;adj;;2;normal
+;;notwendig;~er;~sten;adj;;3;necessary
+;;offen;~er;~sten;adj;;2;open
+;;original;~er;~sten;adj;;2;original
+;;öffentlich;~er;~sten;adj;;3;public
+;;perfekt;~er;~esten;adj;;2;perfect
+;;persönlich;~er;~sten;adj;;2;personal
+;;plötzlich;–;–;adj;;3;suddenly
+;;positiv;~er;~sten;adj;;2;positive
+;;praktisch;~er;meest praktisch, ~t;adj;;3;practical
+;;privat;~er;~esten;adj;;3;private
+;;regional;–;–;adj;;2;regional
+;;relativ;~er;~sten;adj;;2;relative
+;;richtig;~er;~sten;adj;;3;correct, right
+;;rot;~ter;~st;adj;col;1;red
+;;royal;;;adj;;3;royal
+;;schlecht;~er;~esten;adj;;1;bad
+;;schnell;~er;~sten;adj;;2;quick, fast
+;;schön;~er;~sten;adj;;1;pretty, nice
+;;schwanger;–;–;adj;;2;prenant
+;;schwarz;⍨er;⍨esten;adj;col;1;black
+;;schwer;~er;~sten;adj;;2;heavy, weighty
+;;selbstverständlich;;;adj;;3;natural, self-evident
+;;sichtbar;~er;~sten;adj;;2;visible
+;;sinnvoll;~er;~sten;adj;;3;meaningful
+;;speziell;~er;~sten;adj;;2;special
+;;ständig;–;–;adj;;3;permanent, persistant
+;;stark;⍨er;⍨sten;adj;;2;strong, powerful
+;;stressig;~er;~sten;adj;;2;stressful
+;;super;–;–;adj;;2;super
+;;tatsächlich;–;–;adj;;2;actual, real
+;;teuer;~er;~sten;adj;;2;expensive
+;;toll;~er;~sten;adj;;2;great
+;;unabhängig;~er;~sten;adj;;3;independent
+;;unbekannt;~er;~esten;adj;;3;unknown, unfamiliar
+;;verantwortlich;~er;~sten;adj;;2;responsible
+;;verfügbar;–;–;adj;;3;available, disposable
+;;viel;mehr;meisten;adj;;3;much, a lot
+;;voll;~er;~sten;adj;;3;full
+;;vollständig;~er;~sten;adj;;3;complete, entire
+;;vorhanden;–;–;adj;;3;available
+;;völlig;–;–;adj;;3;complete
+;;weiß;~er;~esten;adj;col;1;white
+;;wenig;~er;~sten;adj;;3;few, little
+;;wert;;;adj;;3;worth
+;;wesentlich;~;~sten;adj;;3;significant, crucial
+;;wichtig;~er;~sten;adj;;2;important
+;;willkommen;;;adj;;2;welcome
+;;wirklich;~er;~sten;adj;;2;real
+;;wollen;–;–;adj;;3;wool
+;;ziemlich;;;adj;;2;quite
+;;zufrieden;~er;~sten;adj;;3;satisfied
+;;zusätzlich;–;–;adj;;3;additional
+;;zuständig;–;–;adj;;3;responsible
+;;bald;;;adv;;2;soon
+;;bitte;;;adv;expr;1;please, excuse me, here you are
+;;eher;;;adv;;2;rather, quite
+;;erneut;;;adv;;3;again
+;;erst;;;adv;ordn;2;first
+;;ja;;;adv;;1;yes
+;;kurz;⍨er;⍨esten;adv;;2;briefly
+;;kürzlich;;;adv;;2;recently
+;;links;;;adv;;1;on the left
+;;meist;;;adv;;2;most
+;;mitunter;;;adv;;2;occasionally
+;;nein;;;adv;;1;no
+;;nicht;;;adv;;1;not
+;;prinzipiell;;;adv;;1;basically
+;;rechts;;;adv;;2;on the right
+;;sehr;;;adv;;1;very
+;;unbedingt;;;adv;;3;absolutely, definietly, unconditionally
+;;zweit;;;adv;;3;in two
+;;ein;;;art;;1;a, an
+;;kein;;;art;;1;no, not
+;;acht;;;art, pron;num;1;eight
+;;Hau ab!;;;expr;;3;Get lost!, Beat it!
+;;tschüss;;;inte;;1;bye, cheers, ciao
+;;hallo;;;inte;;1;hello
+die;;Achtung;~;–;noun;expr;1;warning, esteem
+der;;Administrator;~s;~en;noun;job, pers;1;admin
+der;;Alkohol;~s;~e;noun;;1;alcohol
 die;;Änderung;~;~en;noun;;2;change, modification
 der;;Anfänger;~s;~;noun;pers;2;beginner, novice, amateur
 die;;Anzahl;;;noun;;2;amount
 der;;Apfel;~s;⍨;noun;food;1;apple
-w;;arbeiten;;;verb;;1;to work
 der;;Arbeitgeber;~s;~;noun;job, pers;1;employer
 der;;Arbeitnehmer;~s;~;noun;job, pers;1;employee
 der;;Architekt;~en;~en;noun;job, pers;1;architect
 der;;Arzt;~es;⍨e;noun;job, pers;1;physical, doctor
-;;aus;;;prep;;1;out of, due to, for
-;;ausgezeichnet;;;adj;;2;excellent, outstanding
-;;automatisch;;;adj;;1;automatic
 der;;Autor;~s;~en;noun;job, pers;1;author
 das;;Baby;;;noun;pers, chil;1;baby
 das;;Bad;;;noun;plac, furn;1;bathroom
-;;bald;;;adv;;2;soon
 der;;Balkon;~s;~e;noun;plac;1;balcony
 der;;Bär;~en;~en;noun;anim;1;bear
 der;;Bau;~s, ~es;~en, ~e;noun;;1;building, construction
 der;;Bauer;~n;~n;noun;job, pers;1;farmer, peasant
 der;;Baum;~s, ~es;~e;noun;plan;1;tree
 die;;Bedienung;~;~en;noun;;2;service
-;;begeistert;;;adj;;3;enthusiastic
-s3;;beginnen;~;~;verb;;1;to begin, to start
-;;beide;;;pron;;2;both
 die;;Bekleidung;~;~en;noun;;1;clothing, apparel
-;;beliebt;;;adj;;1;popular, admired
 der;;Benutzern;~;~;noun;pers;2;user
-;;bequem;;;adj;;1;comfortable
-;;bereit;;;adj;;1;ready
 der;;Beruf;~s, ~es;~e;noun;;1;occupation
 der;;Besucher;~s;~er;noun;pers;1;visitor
-;;betreffen;;;verb;;3;to be concerned so./sth.
 das;;Bett;~s, ~es;~en;noun;furn;1;bad
 die;;Bevölkerung;~;~en;noun;;3;population
-w;;bezahlen;;;verb;;1;to pay
 die;;Beziehung;~;~en;noun;;1;relationship, affair
-;;bitte;;;adv;expr;1;please, excuse me, here you are
-;;blau;~er;~sten;adj;col;1;blue
 die;;Blume;~;~n;noun;plan;1;flower
-w;;brauchen;;;verb;;2;to need
-w;;bringen;;;verb;;2;to fetch
 das;;Brot;~s, ~es;~e;noun;food;1;bread
 der;;Bruder;~s;⍨s;noun;pers, fam;1;brother
 das;;Buch;~s, ~es;⍨er;noun;read;1;book
 der;;Bürger;~s;~er;noun;pers;1;citizen
-;;clever;;;adj;pers, anim;1;clever
 das;;Dach;~s, ~es;⍨er;noun;on;1;roof
 die;;Dame;~;~n;noun;pers;1;lady, queen (chess)
-w;;danken;;;verb;;1;to thank
-w;;definieren;;;verb;;1;define
-;;dein;;;pron;;1;your, yours
-;;deutsch;;;adj;;1;german
 das;;Deutsch;~en, ~, ~s;–;noun;lang;1;German
 die;;Diät;~;~en;noun;;1;diet
 der;;Dienst;~s, ~es;~e;noun;;2;service, work, duty
 die;;Dienstleistung;~;~en;noun;;3;service, provision of services
-;;dies;;;pron;;100;this
-;;diese;;;pron;;1;this
-;;drei;;;num;;1;three
-;;dritte;;;adj;ordn;2;third
-;;du;;;pron;;1;you
 der;;Durst;~s, ~es;–;noun;;1;thirst
-;;echt;~er;~esten;adj;;2;authentic, unique, real
-;;eher;;;adv;;2;rather, quite
 das;;Ei;~es, ~s;~er;noun;food;1;egg
 der;;Eigentümer;~s;~;noun;pers;2;owner
-;;ein;;;art;;1;a, an
-;;eindeutig;~er;~sten;adj;;2;unique
-;;einfach;~er;~sten;adj;;2;easy, simple
-;;einige;;;adj;;3;some, any, few
 die;;Einrichtung;~;~en;noun;conc;3;facility, institution
-;;eins;;;num;;1;one
 der;;Einwohner;~s;~;noun;pers;2;inhabitant
 der;;Elefant;~en;~en;noun;anim;1;elephant
 –;;Eltern;;;noun;fam;1;parents
 der;;Empfänger;~s;~;noun;pers;1;addressee, receiver
-;;englisch;;;adj;pers;1;english
 der;;Englisch;;;noun;lang;1;English
 die;;Ente;~;~n;noun;anim;1;duck
-;;enthalten;;;verb;;3;to contain
 die;;Entschuldigung;~;~en;noun;conc;2;apology, excuse
 der;;Entwickler;;;noun;job, pers;1;developer
-;;er;;;pron;;1;he
 die;;Erde;~;~n;noun;;2;Earth, ground
 die;;Ernährung;~;–;noun;;2;nutrition
-;;erneut;;;adv;;3;again
-;;erst;;;adv;ordn;2;first
 die;;Erwachsene;;;noun;;2;adult (female)
-;;es;;;pron;;1;it
 das;;Essen;;;noun;food;1;food
-s5;;essen;;;verb;;1;to eat
-;;euer;;;pron;;2;your, yours (plural)
-;;extrem;~er;~sten;adj;;2;extreme
 der;;Fahrer;;;noun;job, pers;1;driver
-;;falsch;~er;~esten;adj;;1;false, wrong
 die;;Familie;~;~en;noun;;1;family
 der;;Fan;~s;~s;noun;pers;2;fan
 die;;Farbe;~;~n;noun;;2;color
-w;;fehlen;;;verb;;3;to lack, to be absent
 das;;Fenster;~s;~;noun;;2;window
 der;;Fisch;~es;~e;noun;food, anim;1;fish
 der;;Fischer;;~;noun;job, pers;1;fisherman
-;;fit;;;adj;pers;2;fit
 die;;Flasche;~;~n;noun;;1;bottle
 das;;Fleisch;~s, ~es;–;noun;food;1;meat
 die;;Frage;~;~n;noun;;1;question
 das;;Französisch;~en;–;noun;lang;1;French
 die;;Frau;~;~en;noun;pers;1;woman, wife
-;;frei;~er;~sten;adj;;2;free
 der;;Freund;~s, ~es;~e;noun;pers, fam;2;friend
 die;;Freundin;~;~nen;noun;pers, fam;2;girlfriend
-;;früh;;;adj;;2;early
 das;;Frühstück;~s, ~es;~e;noun;;1;breakfast
-w;;funktionieren;;;verb;mech;2;to function
-;;fünf;;;num;;1;five
-;;ganz;;;adj;;2;whole, complete
 der;;Gast;~es, ~s;⍨e;noun;pers;2;guest
-s7;;gefallen;;;verb;;3;to please
 der;;Gegner;~s;~;noun;;3;adversary, opponent
-s7;;gehen;;;verb;;1;to go
-;;gelb;;;adj;;1;yellow
 die;;Gemeinde;~;~n;noun;conc;1;town, community
 der;;General;~s;⍨;noun;job, pers;2;general (rank)
 die;;Generation;~;~en;noun;conc;2;generation
@@ -142,118 +210,67 @@ der;;Geschäftsführer;~s;~;noun;job, pers;3;managing director
 das;;Geschlecht;~es, ~s;~er;noun;conc;2;gender, sex
 der;;Geschmack;~es, ~s;⍨er;noun;conc;1;taste, flavor
 –;;Geschwister;;–;noun;pers, fam;1;siblings
-;;gesund;;;adj;pers, anim;1;healthy
 das;;Glas;~es;⍨er;noun;mat;1;glass
-;;gleichzeitig;–;–;adj;;3;simultaneous, concurrent,
-;;groß;⍨er;⍨ten;adj;;1;big, great
 –;;Großeltern;–;–;noun;pers, fam;1;grandparents
 die;;Großmutter;–;⍨;noun;pers, fam;1;grandmother
 der;;Großvater;~s;⍨;noun;pers, fam;1;grandfather
 die;;Größe;~;~n;noun;;2;size, quantity
 die;;Gruppe;~;~n;noun;grou;2;group
 der;;Gruß;~es;~e;noun;conc;2;greeting
-;;grün;~er;~sten;adj;col;1;green
-;;gut;;;adj;;1;good, well
 das;;Gut;~es, ~s;⍨er;noun;;3;goods, property
-;;gutgehen;;;;;100;
-ir;;haben;;;verb;;1;to have
 das;;Hähnchen;~s;~;noun;anim;1;chicken
 die;;Hälfte;~;~n;noun;num;2;half
-;;hallo;;;inte;;1;hello
 der;;Händler;~s;~;noun;job, pers;2;trader, merchant
-;;Hau ab!;;;expr;;3;Get lost!, Beat it!
 das;;Haus;~es;⍨er;noun;plac;1;house
 der;;Haushalt;~s, ~es;~e;noun;conc;2;household
 der;;Heimwerker;~;~;noun;pers;2;amateur
 die;;Heizung;~;~en;noun;conc;2;heating
-s3;;helfen;;;verb;;2;to help
 das;;Hemd;~s, ~es;~en;noun;clot;2;shirt
 der;;Herausgeber;~s;~;noun;job, pers;3;publisher
 der;;Herr;~n;~en;noun;pers;2;gentleman
 der;;Hersteller;~s;~;noun;job, pers;2;manufacturer
-;;herzlich;~er;~sten;adj;;2;cordial, hearty
-;;hilfreich;;;adj;;100;useful, helpful
-;;hoch;höher;⍨sten;adj;;2;high
 die;;Hochzeit;~;~en;noun;eve;2;wedding
-;;hoh;;;;;100;
-;;hohe;;;adj;;2;high, tall
 die;;Hose;~;~n;noun;clot;2;trousers
 der;;Hund;~es, ~s;~e;noun;anim;1;dog
 der;;Hunger;~s;–;noun;;1;hunger
 der;;Hut;~s, ~es;⍨e;noun;clot;1;hat
-;;ich;;;pron;;1;I
-;;ihr;;;pron;;2;you
-;;in;;;prep;;1;in, within, at
-;;individuell;~er;~sten;adj;;2;individual
 die;;Integration;~;~en;noun;;2;integration
-;;interessant;;;adj;pers;1;interesting
-;;intern;;;adj;;2;internal
-;;international;–;–;adj;;2;international
 der;;Investor;~s;~en;noun;pers;1;investor
-;;ja;;;adv;;1;yes
 die;;Jacke;~;~n;noun;clot;1;jacket
-;;jede;–;–;adj;;2;each, every
-;;jemand;;;pron;;2;someone, somebody
-;;jung;⍨er;⍨sten;adj;;2;young
 der;;Junge;~n;~n, Jungs, ~ns;noun;pers, chil;1;child, kid
 der;;Kaffee;~s;~s;noun;dri;1;coffee
 der;;Kaiser;~s;~;noun;job, pers;2;emperor
-;;kalt;⍨er;⍨esten;adj;;2;cold
-;;kaputt;~er;~esten;adj;;2;broken, out of order
 der;;Käse;~s;~;noun;food;1;cheese
 die;;Katze;~;~n;noun;anim;1;cat
 der;;Käufer;~s;~;noun;pers;1;buyer
-;;kein;;;art;;1;no, not
 der;;Keller;~s;~;noun;plac;2;cellar, basement
-w;;kennen;;;verb;;2;to know
 das;;Kind;~s, ~es;~er;noun;pers, chil;1;kid, child
-;;klar;~er;~sten;adj;;1;clear
 das;;Kleid;~es, ~s;~er;noun;;2;dress
 die;;Kleidung;~;~en;noun;clot;2;clothing
-;;klein;~er;~sten;adj;;2;small, little
-;;knapp;~er;~sten;adj;;2;tight, lean
 der;;Koch;~s;⍨e;noun;;2;cook
-s4;;kommen;;;verb;;1;to come
-;;komplett;–;–;adj;;2;complete
 die;;Kosmetik;~;–;noun;;2;cosmetics
-;;kostenlos;;;adj;;2;free, without cost
 der;;König;~es, ~s;~e;noun;job, pers;1;king
 die;;Krippe;~;~n;noun;furn;3;crib
 die;;Kritik;~;~ken;noun;read;2;criticism, review
 die;;Krone;~;~n;noun;clot;2;crown
-;;kurz;⍨er;⍨esten;adv;;2;briefly
-;;kürzlich;;;adv;;2;recently
 der;;Laden;~s;⍨;noun;plac;2;shop
 die;;Lampe;~;~n;noun;furn;1;lamp
-;;lang;⍨er;⍨sten;adj;;2;long
-s7;;laufen;;;verb;;2;to run, to walk
-s7;;lauten;;;verb;;3;to sound
 das;;Lebensmittel;~s;~;noun;;2;groceries
 das;;Leder;~s;~;noun;mat;2;leather
 der;;Lehrer;~s;~;noun;job, pers;1;teacher
 die;;Lehrerin;~;~nen;noun;job, pers;1;teacher
-;;leicht;;;adj;;2;light
 der;;Leiter;~s;~;noun;job, pers;2;leader
-w;;lernen;;;verb;;2;to learn
-s5;;lesen;;;verb;;2;to read
 das;;Licht;~s, ~es;~er, ~e;noun;conc;2;light
-s5;;liegen;;;verb;;3;to lie, to be located
-;;links;;;adv;;1;on the left
 der;;Liter;~s;~;noun;conc;1;liter
 der;;Löffel;~s;~;noun;tool;1;spoon
-w;;machen;;;verb;;2;to make
 das;;Mädchen;~s;~;noun;pers, chil;1;girl
-;;man;;;pron;;2;one, they
 der;;Manager;;;noun;job, pers;2;manager
-;;manch;;;pron;;2;many
 der;;Mann;~s, ~es;⍨er, ~, ~en;noun;pers;1;man, husband
 die;;Mannschaft;~;~en;noun;grou;2;crew (for ship), team
 der;;Mantel;~s;⍨;noun;clot;1;coat
 das;;Maß;~es;~e;noun;;2;size
 die;;Maßnahme;~;~n;noun;;2;measure
 die;;Maus;~;⍨e;noun;anim;1;mouse
-;;mein;;;pron;;1;my, mine
-;;meist;;;adv;;2;most
 der;;Meister;~s;~;noun;pers;2;master, champion
 der;;Mensch;~en;~en;noun;pers;2;person, human
 der;;Meter;~s;~;noun;conc;2;meter
@@ -261,199 +278,177 @@ die;;Milch;~;~en, ~e;noun;dri;1;milk
 die;;Milliarde;~;~n;noun;num;2;billion
 die;;Million;~;~en;noun;num;2;million
 der;;Mini;~s;~s;noun;clot;2;mini skirt
-;;mit;;;prep;;2;with
 der;;Mitarbeiter;~s;~;noun;job, pers;2;employee
 das;;Mitglied;~s, ~es;~er;noun;pers;3;member
 die;;Mittag;~s;~e;noun;time;1;noon
-;;mitunter;;;adv;;2;occasionally
 das;;Möbel;~s;~, ~n;noun;furn;1;furniture
-ir;;mögen;;;verb;;2;to like
-;;möglich;~er;~sten;adj;;3;likely, possible
 die;;Mutter;~;⍨;noun;fam, pers;1;mother
 der;;Name;~ns;~n;noun;conc;1;name
-;;nein;;;adv;;1;no
-;;neu;~er;~sten;adj;;2;new
-;;neun;;;pron;neun;1;nine
-;;nicht;;;adv;;1;not
-;;nichts;;;pron;;3;nothing
-;;niemand;;;pron;;3;nobody
-;;normal;~er;~sten;adj;;2;normal
-;;notwendig;~er;~sten;adj;;3;necessary
 die;;Nudel;~;~n;noun;food;1;pasta
 die;;Nummer;~;~n;noun;num;1;number
 der;;Nutzer;~s;~;noun;pers;2;user
-;;offen;~er;~sten;adj;;2;open
 das;;Orange;~;~n;noun;food;1;orange
-;;original;~er;~sten;adj;;2;original
-;;öffentlich;~er;~sten;adj;;3;public
 die;;Öffentlichkeit;~;–;noun;;3;public
 das;;Paar;~s, ~es;~e;noun;;2;pair
-;;paar;;;pron;;2;few
 der;;Partner;~s;~;noun;;2;partner
-;;perfekt;~er;~esten;adj;;2;perfect
 die;;Person;~;~en;noun;;3;person
 das;;Personal;~s;~;noun;;2;staff, personnel
-;;persönlich;~er;~sten;adj;;2;personal
 das;;Pferd;~s, ~es;~e;noun;anim;1;horse
-;;plötzlich;–;–;adj;;3;suddenly
-;;positiv;~er;~sten;adj;;2;positive
 der;;Posten;~s;~;noun;;2;post, station, position
-;;praktisch;~er;meest praktisch, ~t;adj;;3;practical
 der;;Präsident;~en;~en;noun;job, pers;2;president
-;;prinzipiell;;;adv;;1;basically
-;;privat;~er;~esten;adj;;3;private
 der;;Professor;~s;~en;noun;job, pers;1;professor
 das;;Prozent;~s, ~es;~e;noun;conc;2;percent
 das;;Publikum;;;noun;conc;3;audience
 die;;Quote;~;~n;noun;conc;2;quota
 der;;Ratgeber;~s;~;noun;job, pers;3;advisor
 der;;Raum;~s, ~es;⍨e;noun;plac;2;room
-;;rechts;;;adv;;2;on the right
-;;regional;–;–;adj;;2;regional
-w;;reichen;;;verb;;3;to reach
 die;;Reinigung;~;~en;noun;;2;cleaning
 der;;Reis;~es;~;noun;food;1;rice
 der;;Reiseführer;~s;~;noun;job, pers;2;tour guide
-;;relativ;~er;~sten;adj;;2;relative
 das;;Restaurant;~s;~s;noun;plac;1;restaurant
 das;;Rezept;~s, ~es;~e;noun;read;2;recipe
 der;;Richter;~s;~;noun;job, pers;2;judge
-;;richtig;~er;~sten;adj;;3;correct, right
 der;;Rock;~s, ~es;⍨e;noun;clot;1;skirt
-;;rot;~ter;~st;adj;col;1;red
-;;royal;;;adj;;3;royal
 der;;Saft;~s, ~es;⍨e;noun;dri;1;juice
 das;;Salz;~s;~e;noun;food;1;salt
 das;;Sandwich;~s;~s;noun;food;1;sandwich
 der;;Schlaf;~s, ~es;–;noun;eve;2;sleeping
-s7;;schlafen;;;verb;;1;to sleep
-;;schlecht;~er;~esten;adj;;1;bad
 der;;Schlüssel;~s;~;noun;;2;key
 der;;Schmuck;~s, ~es;~e;noun;clot;2;jewelry
 der;;Schneider;~s;~;noun;job, pers;1;tailor
-;;schnell;~er;~sten;adj;;2;quick, fast
-;;schön;~er;~sten;adj;;1;pretty, nice
-s1;;schreiben;;;verb;;1;to write
 der;;Schuh;~s, ~es;~e;noun;clot;1;shoe
 der;;Schüler;~s;~;noun;pers, chil;1;pupil
 die;;Schülerin;~;~en;noun;pers, chil;1;pupil
-;;schwanger;–;–;adj;;2;prenant
-;;schwarz;⍨er;⍨esten;adj;col;1;black
-;;schwer;~er;~sten;adj;;2;heavy, weighty
 die;;Schwester;~;~n;noun;pers, fam;1;sister
-s3;;schwimmen;;;verb;;2;to swim
-;;sechs;;;num;;1;six
-s5;;sehen;;;verb;;1;to see
-;;sehr;;;adv;;1;very
-ir;;sein;bin,bist,ist,sind,seid,sind;war,warst,war,waren,wart,waren;verb;;1;to be
-;;selbstverständlich;;;adj;;3;natural, self-evident
 der;;Senior;~en;~en;noun;pers;1;senior
-;;sichtbar;~er;~sten;adj;;2;visible
-;;sie;;;pron;;1;she
-;;sieben;;;num;;1;seven
-;;sinnvoll;~er;~sten;adj;;3;meaningful
 das;;Sofa;~s;~s;noun;furn;1;sofa
 der;;Sohn;~s, ~es;⍨e;noun;pers, fam;1;son
-;;solch;;;pron;;3;such
-;;speziell;~er;~sten;adj;;2;special
 der;;Spiegel;~s;~;noun;furn;2;mirror
-w;;spielen;;;verb;;1;to play
 das;;Spielzeug;~s, ~es;~e;noun;;2;toy
-s4;;sprechen;;;verb;;1;to speak
-;;ständig;–;–;adj;;3;permanent, persistant
-;;stark;⍨er;⍨sten;adj;;2;strong, powerful
-ir;;stehen;;;verb;;2;to stand
 der;;Stift;~s, ~es;~e;noun;;2;pen
-w;;stimmen;;;verb;;3;to be true, to vote
-;;stressig;~er;~sten;adj;;2;stressful
 der;;Student;~en;~en;noun;job, pers;1;student
 die;;Studentin;~;~nen;noun;job, pers;1;student
 der;;Stuhl;~s, ~es;⍨e;noun;furn;1;chair
 die;;Summe;~;~n;noun;;2;sum
-;;super;–;–;adj;;2;super
 die;;Suppe;~;~n;noun;food;1;soup
 die;;Tasche;~;~n;noun;clot;1;bag
 die;;Tasse;~;~n;noun;;1;cup
-;;tatsächlich;–;–;adj;;2;actual, real
 der;;Teilnehmer;~s;~;noun;pers;3;participant
 der;;Teller;~s;~;noun;;1;plate, dish
-;;teuer;~er;~sten;adj;;2;expensive
 das;;Tier;~es, ~s;~e;noun;anim;1;animal
 der;;Tisch;~s, ~es;~e;noun;furn;1;table
 die;;Tochter;~;⍨;noun;fam, pers;1;daughter
 die;;Toilette;~;~n;noun;plac ;1;toilet
-;;toll;~er;~sten;adj;;2;great
 das;;Tor;~s, ~es;~e;noun;;2;gate
-;;tragen;;;verb;;2;to wear, to carry
 der;;Trainer;~s;~;noun;job, pers;2;trainer
-s3;;trinken;;;verb;;1;to drink
-;;tschüss;;;int;;1;bye, cheers, ciao
 die;;Tür;~;~en;noun;;1;door
 der;;Umzug;~s, ~es;⍨s;noun;conc;2;move, relocation
-;;unabhängig;~er;~sten;adj;;3;independent
-;;unbedingt;;;adv;;3;absolutely, definietly, unconditionally
-;;unbekannt;~er;~esten;adj;;3;unknown, unfamiliar
-;;unser;;;pron;;1;our, ours
 der;;Unternehmer;~s;~;noun;job, pers;2;entrepreneur
 der;;Vater;~s;⍨;noun;fam, pers;1;father
 der;;Veranstalter;~s;~;noun;job, pers;2;host, organizer
-;;verantwortlich;~er;~sten;adj;;2;responsible
 die;;Verbindung;~;~en;noun;conc;3;connection
 der;;Verbraucher;~s;~;noun;pers;3;consumer
 der;;Verein;~s, ~es;~e;noun;grou;3;club, society
 der;;Verfasser;~s;~;noun;job, pers;2;author
-;;verfügbar;–;–;adj;;3;available, disposable
 das;;Verhältnis;~ses;~se;noun;conc;3;relationship, affair
 der;;Verkäufer;~s;~;noun;job, pers;3;seller, salesman, vendor
-;;verpflichtet;;;;;100;
 der;;Vertreter;~s;~;noun;job, pers;3;representative, agent
-;;viel;mehr;meisten;adj;;3;much, a lot
-;;vier;;;num;;1;four
 die;;Villa;;Villen;noun;plac;3;villa, mansion
 der;;Vogel;~s;⍨;noun;anim;1;bird
-;;voll;~er;~sten;adj;;3;full
-;;vollständig;~er;~sten;adj;;3;complete, entire
-;;vorgesehen;;;;;100;
-;;vorhanden;–;–;adj;;3;available
 der;;Vorname;~s;~en;noun;conc;1;given name
 der;;Vorsitz;;;noun;;100;
 der;;Vorsitzende;~n;~;noun;job, pers;3;chairman
 die;;Vorstand;~s, ~es;⍨e;noun;conc;3;board of directors
-;;völlig;–;–;adj;;3;complete
 die;;Wand;~;⍨e;noun;on;2;wall, separator
-;;was;;;pron;;2;what
 das;;Wasser;~s;~, ⍨;noun;dri;1;water
 der;;Weber;~s;~;noun;job, pers;1;weaver
 der;;Wein;~s, ~es;~e;noun;dri;1;wine
-;;weiß;~er;~esten;adj;col;1;white
-;;welch;;;;;100;
-;;welche;;;pron;;2;what
-;;wenig;~er;~sten;adj;;3;few, little
-ir;;werden;;;verb;;1;will
 das;;Werk;~s, ~es;~e;noun;conc;2;work
 die;;Werkstatt;~;⍨en;noun;;2;workshop, garage
-;;wert;;;adj;;3;worth
-;;wesentlich;~;~sten;adj;;3;significant, crucial
-;;wichtig;~er;~sten;adj;;2;important
-s5;wieder;wiedersehen;;;verb;;3;to see again
-;;willkommen;;;adj;;2;welcome
-;;wir;;;pron;;1;we
-;;wirklich;~er;~sten;adj;;2;real
-ir;;wissen;;;verb;;2;to know
 die;;Wohnung;~;~en;noun;plac;2;flat, apartment
 der;;Wolf;~s, ~es;⍨e;noun;anim;1;wolf
-;;wollen;–;–;adj;;3;wool
 das;;Wort;~s, ~es;~e;noun;;1;word
 die;;Zahl;~;~en;noun;;2;number, figure
-w;;zählen;;;verb;;2;to count
-;;zehn;;;num;;1;ten
 die;;Zeitung;~;~en;noun;read;1;newspaper
-;;ziemlich;;;adj;;2;quite
 die;;Zitrone;~;~n;noun;food;1;lemon
 der;;Zucker;~s;~;noun;food;1;sugar
-;;zufrieden;~er;~sten;adj;;3;satisfied
-;;zusätzlich;–;–;adj;;3;additional
-;;zuständig;–;–;adj;;3;responsible
+;;drei;;;num;;1;three
+;;eins;;;num;;1;one
+;;fünf;;;num;;1;five
+;;sechs;;;num;;1;six
+;;sieben;;;num;;1;seven
+;;vier;;;num;;1;four
+;;zehn;;;num;;1;ten
 ;;zwei;;;num;;1;two
-;;zweit;;;adv;;3;in two
 ;;zwölf;;;num;;1;twelve
+;;an;;;prep;;2;on, by
+;;aus;;;prep;;1;out of, due to, for
+;;in;;;prep;;1;in, within, at
+;;mit;;;prep;;2;with
+;;alle;;;pron;;1;all
+;;beide;;;pron;;2;both
+;;dein;;;pron;;1;your, yours
+;;dies;;;pron;;100;this
+;;diese;;;pron;;1;this
+;;du;;;pron;;1;you
+;;er;;;pron;;1;he
+;;es;;;pron;;1;it
+;;euer;;;pron;;2;your, yours (plural)
+;;ich;;;pron;;1;I
+;;ihr;;;pron;;2;you
+;;jemand;;;pron;;2;someone, somebody
+;;man;;;pron;;2;one, they
+;;manch;;;pron;;2;many
+;;mein;;;pron;;1;my, mine
+;;neun;;;pron;neun;1;nine
+;;nichts;;;pron;;3;nothing
+;;niemand;;;pron;;3;nobody
+;;paar;;;pron;;2;few
+;;sie;;;pron;;1;she
+;;solch;;;pron;;3;such
+;;unser;;;pron;;1;our, ours
+;;was;;;pron;;2;what
+;;welche;;;pron;;2;what
+;;wir;;;pron;;1;we
+w;;ähneln;;;verb;;3;to resemble
+w;;arbeiten;;;verb;;1;to work
+s3;;beginnen;~;~;verb;;1;to begin, to start
+;;betreffen;;;verb;;3;to be concerned so./sth.
+w;;bezahlen;;;verb;;1;to pay
+w;;brauchen;;;verb;;2;to need
+w;;bringen;;;verb;;2;to fetch
+w;;danken;;;verb;;1;to thank
+w;;definieren;;;verb;;1;define
+;;enthalten;;;verb;;3;to contain
+s5;;essen;;;verb;;1;to eat
+w;;fehlen;;;verb;;3;to lack, to be absent
+w;;funktionieren;;;verb;mech;2;to function
+s7;;gefallen;;;verb;;3;to please
+s7;;gehen;;;verb;;1;to go
+ir;;haben;;;verb;;1;to have
+s3;;helfen;;;verb;;2;to help
+w;;kennen;;;verb;;2;to know
+s4;;kommen;;;verb;;1;to come
+s7;;laufen;;;verb;;2;to run, to walk
+s7;;lauten;;;verb;;3;to sound
+w;;lernen;;;verb;;2;to learn
+s5;;lesen;;;verb;;2;to read
+s5;;liegen;;;verb;;3;to lie, to be located
+w;;machen;;;verb;;2;to make
+ir;;mögen;;;verb;;2;to like
+w;;reichen;;;verb;;3;to reach
+s7;;schlafen;;;verb;;1;to sleep
+s1;;schreiben;;;verb;;1;to write
+s3;;schwimmen;;;verb;;2;to swim
+s5;;sehen;;;verb;;1;to see
+ir;;sein;bin,bist,ist,sind,seid,sind;war,warst,war,waren,wart,waren;verb;;1;to be
+w;;spielen;;;verb;;1;to play
+s4;;sprechen;;;verb;;1;to speak
+ir;;stehen;;;verb;;2;to stand
+w;;stimmen;;;verb;;3;to be true, to vote
+;;tragen;;;verb;;2;to wear, to carry
+s3;;trinken;;;verb;;1;to drink
+ir;;werden;;;verb;;1;will
+s5;wieder;wiedersehen;;;verb;;3;to see again
+ir;;wissen;;;verb;;2;to know
+w;;zählen;;;verb;;2;to count

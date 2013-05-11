@@ -13,6 +13,14 @@ define(
 
         /**
          *
+         * @return {Number} logLevel
+         */
+        function getLogLevel(newLogLevel){
+            return logLevel;
+        }
+
+        /**
+         *
          * @param {Number} newLogLevel
          */
         function setLogLevel(newLogLevel){
@@ -106,6 +114,7 @@ define(
         }
 
         return {
+            getLogLevel: getLogLevel,
             setLogLevel: setLogLevel,
             error: error,
             debug: debug,

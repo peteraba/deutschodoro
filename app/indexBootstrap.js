@@ -17,7 +17,7 @@ requirejs.config({
             exports: '$'
         }
     }
-    //,urlArgs: "bust=" +  (new Date()).getTime()
+    ,urlArgs: "bust=" +  (new Date()).getTime()
 });
 
 // Start the main app logic.

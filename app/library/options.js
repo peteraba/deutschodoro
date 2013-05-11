@@ -1,6 +1,6 @@
 define(
-    ['dict/dict'],
-    function(rawDictionary){
+    ['dict/dict', 'logger', 'validation/dictionary'],
+    function(rawDictionary, logger, dictionaryValidation){
         var storage = null;
 
         /**
@@ -78,13 +78,36 @@ define(
             try {
                 newDictionary = JSON.parse(newDictionary);
 
-                if (newDictionary && _.isArray(newDictionary.dict)) {
+                if (newDictionary && dictionaryValidation.validate(newDictionary)) {
                     set('rawDictionary', newDictionary);
                     return true;
                 }
 
             } catch (e) {
+                logger.error(e);
             }
+
+            return false;
+        }
+
+        /**
+         *
+         * @param {Object} newDictionary
+         * @returns {Boolean}
+         */
+        function setCsvDictionary(newDictionary){
+            try {
+                newDictionary = dictionaryValidation.csvFilter(newDictionary);
+
+                if (newDictionary && dictionaryValidation.validate(newDictionary)) {
+                    set('rawDictionary', newDictionary);
+                    return true;
+                }
+
+            } catch (e) {
+                logger.error(e);
+            }
+
             return false;
         }
 
@@ -104,6 +127,7 @@ define(
             set: set,
             getRawDictionary: getRawDictionary,
             setRawDictionary: setRawDictionary,
+            setCsvDictionary: setCsvDictionary,
             resetRawDictionary: resetRawDictionary
         };
     }
