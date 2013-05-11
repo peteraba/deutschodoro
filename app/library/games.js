@@ -10,7 +10,7 @@ define(
             wordToGerman: wordToGerman
         };
 
-        level = Math.max(0, Math.min(parseInt(options.get('level', 1)), 3));
+        level = Math.max(0, Math.min(parseInt(options.get('level', 1)), 10));
 
         _.each(games, function(game, name){
             var validImportance;
@@ -18,7 +18,7 @@ define(
             gameOptions = options.get(name);
 
             if (gameOptions && gameOptions.importance && gameOptions.importance > 0) {
-                validImportance = Math.max(0, Math.min(parseInt(gameOptions.importance), 1000));
+                validImportance = Math.max(0, Math.min(parseInt(gameOptions.importance), 999));
 
                 game.setImportance(validImportance);
                 game.setLevel(level);

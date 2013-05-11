@@ -6,7 +6,7 @@ define(
         gameTemplate = [
             '<li>',
             '<label for="{name}">',
-            '<input type="number" name="{name}" id="{name}" value="{value}" min="0" max="1000" class="gameImportance">',
+            '<input type="number" name="{name}" id="{name}" value="{value}" min="0" max="999" class="gameImportance">',
             '{name}',
             '</label>',
             '</li>'
@@ -14,7 +14,7 @@ define(
         levelTemplate = [
             '<li>',
             '<label for="level">',
-            '<input type="number" name="level" id="level" value="{value}" min="1" max="3" class="level">',
+            '<input type="number" name="level" id="level" value="{value}" min="1" max="10" class="level">',
             'Your german level',
             '</label>',
             '</li>'
@@ -91,12 +91,12 @@ define(
                 var $input = $(this), name = $input.attr('name'), oldGameOptions;
 
                 oldGameOptions = options.get(name, {});
-                oldGameOptions.importance = Math.max(0, Math.min(1000, parseInt($input.val())));
+                oldGameOptions.importance = Math.max(0, Math.min(999, parseInt($input.val())));
 
                 options.set(name, oldGameOptions);
             });
 
-            options.set('level', Math.max(1, Math.min(3, parseInt($('#level').val()))));
+            options.set('level', Math.max(1, Math.min(10, parseInt($('#level').val()))));
 
             displaySavedMsg();
         }
