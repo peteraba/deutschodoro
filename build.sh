@@ -16,8 +16,9 @@ function verifyUnitTests {
 
 function replaceVersionTags {
     sed -i "s/v$1/v$2/" index.html
-    sed -i "s/v$1/v$2/" build/popup.html
-    sed -i "s/v$1/v$2/" build/options.html
+    sed -i "s/v$1/v$2/" settings.html
+    sed -i "s/v$1/v$2/" build/index.html
+    sed -i "s/v$1/v$2/" build/settings.html
     sed -i "s/$1/$2/" build/manifest.json
     echo "Version change: $1 --> $2"
 }
