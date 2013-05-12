@@ -1,7 +1,11 @@
 define(
     ['base/gui', 'base/games', 'base/stat', 'base/timer', 'base/dictionary', 'base/logger', 'vendor/jquery', 'vendor/underscore'],
     function(gui, games, stat, timer, dictionary, logger, $, _){
-        var importanceList, currentGame, currentAnswer, canReRun = false;
+        var importanceList, currentGame, currentAnswer, canReRun = false, enabledGames;
+
+        function init() {
+            enabledGames = games.getEnabledGames();
+        }
 
         /**
          *
@@ -12,7 +16,7 @@ define(
 
             importanceList = {};
 
-            _.each(games, function(game, key){
+            _.each(enabledGames, function(game, key){
                 importanceList[key] = game.getImportance();
             });
 
@@ -41,7 +45,7 @@ define(
             });
 
             if (game) {
-                return games[game];
+                return enabledGames[game];
             }
 
             return false;
@@ -219,6 +223,8 @@ define(
             }
             return false;
         }
+
+        init();
 
         return {
             run: run,

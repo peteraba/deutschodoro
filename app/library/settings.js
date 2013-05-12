@@ -8,24 +8,6 @@ define(
             gui.displayPage(dictionarySettings.render());
         }
 
-        function buildAddNoun(event) {
-            event.preventDefault();
-
-            gui.displayPage(addNounSettings.render());
-        }
-
-        function buildAddVerb(event) {
-            event.preventDefault();
-
-            gui.displayPage(addVerbSettings.render());
-        }
-
-        function buildAddWord(event) {
-            event.preventDefault();
-
-            gui.displayPage(addWordSettings.render());
-        }
-
         function buildMainOptions(event) {
             event.preventDefault();
 
@@ -34,9 +16,6 @@ define(
 
         function init() {
             gui.getDom('#mainOptions').click(buildMainOptions).click();
-            /*gui.getDom('#addNoun').click(buildAddNoun);
-            gui.getDom('#addVerb').click(buildAddVerb);
-            gui.getDom('#addWord').click(buildAddWord);*/
             gui.getDom('#dictionary').click(buildDictionary);
         }
 

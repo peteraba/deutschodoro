@@ -10,28 +10,51 @@ define(
             wordToGerman: wordToGerman
         };
 
-        minLevel = Math.max(1, Math.min(parseInt(options.get('minLevel', 1)), 10));
-        maxLevel = Math.max(minLevel, Math.min(parseInt(options.get('maxLevel', 1)), 10));
+        function init() {
+            minLevel = Math.max(1, Math.min(parseInt(options.get('minLevel', 1)), 10));
+            maxLevel = Math.max(minLevel, Math.min(parseInt(options.get('maxLevel', 1)), 10));
 
-        _.each(games, function(game, name){
-            var validImportance;
+            _.each(games, function(game, name){
+                var validImportance;
 
-            gameOptions = options.get(name);
+                gameOptions = options.get(name);
 
-            if (gameOptions && gameOptions.importance && gameOptions.importance > 0) {
-                validImportance = Math.max(0, Math.min(parseInt(gameOptions.importance), 999));
+                if (gameOptions && gameOptions.importance) {
+                    if (typeof gameOptions.importance == 'undefined' || isNaN(gameOptions.importance)) {
+                        gameOptions.importance = 100;
+                    }
+                    validImportance = Math.max(0, Math.min(parseInt(gameOptions.importance), 999));
 
-                game.setImportance(validImportance);
+                    game.setImportance(validImportance);
 
-                game.setMinLevel(minLevel);
-                game.setMaxLevel(maxLevel);
+                    game.setMinLevel(minLevel);
+                    game.setMaxLevel(maxLevel);
 
-                enabledGames[name] = game;
-            } else if (!gameOptions) {
-                enabledGames[name] = game;
-            }
-        });
+                    if (validImportance > 0) {
+                        enabledGames[name] = game;
+                    }
+                } else if (!gameOptions) {
+                    enabledGames[name] = game;
 
-        return enabledGames;
+                    game.setMinLevel(minLevel);
+                    game.setMaxLevel(maxLevel);
+                }
+            });
+        }
+
+        function getEnabledGames() {
+            return enabledGames;
+        }
+
+        function getAllGames() {
+            return games;
+        }
+
+        init();
+
+        return {
+            getEnabledGames: getEnabledGames,
+            getAllGames: getAllGames
+        };
     }
 );

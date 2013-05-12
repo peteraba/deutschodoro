@@ -1,7 +1,7 @@
 define(
-    ['base/allGames', 'base/options', 'vendor/jquery', 'vendor/underscore'],
+    ['base/games', 'base/options', 'vendor/jquery', 'vendor/underscore'],
     function(games, options, $, _){
-        var gameTemplate, levelTemplate, formTemplate, bodyTemplate;
+        var gameTemplate, levelTemplate, formTemplate, bodyTemplate, allGames;
 
         gameTemplate = [
             '<li>',
@@ -42,10 +42,14 @@ define(
             '</div>'
         ];
 
+        function init(){
+            allGames = games.getAllGames();
+        }
+
         function getGameOptions() {
             var html = [];
 
-            _.each(games, function(game, name) {
+            _.each(allGames, function(game, name) {
                 var value = game.getImportance(), gameHtml = gameTemplate.join(''), option;
 
                 option = gameHtml.replace(/\{name\}/g, name).replace(/\{value\}/g, value);
@@ -123,6 +127,8 @@ define(
 
             return html;
         }
+
+        init();
 
         return {
             render: render
