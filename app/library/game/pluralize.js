@@ -2,7 +2,7 @@ define(
     ['base/wordFinder', 'german/noun', 'vendor/underscore'],
     function(wordFinder, germanNoun, _){
         var pickedWord = null
-            , answer = null
+            , answer = false
             , question = null
             , words
             , GERMAN_PLURAL_PREFIX = 'die '
@@ -15,13 +15,7 @@ define(
          * @return {Boolean}
          */
         function create() {
-            pickedWord = wordFinder.getWord({type:"noun", plural:'!–'}, minLevel, maxLevel);
-
-            answer = germanNoun.getPlural(pickedWord.german, pickedWord.plural);
-
-            if (answer === false) {
-                throw 'Picked word: `' + pickedWord.german + '` was not pluralizable.';
-            }
+            findPluralizableWord();
 
             words = [answer];
             words.push(germanNoun.getPluralWrongPlural(pickedWord.german, words));
@@ -37,6 +31,21 @@ define(
             question = pickedWord.article + ' ' + pickedWord.german;
 
             return pickedWord==false ? false : true;
+        }
+
+        function findPluralizableWord() {
+            var currentTry = 0, maxTries = 20;
+
+            while (answer === false) {
+                pickedWord = wordFinder.getWord({type:"noun", plural:'!–'}, minLevel, maxLevel);
+
+                answer = germanNoun.getPlural(pickedWord.german, pickedWord.plural);
+
+                if (currentTry++ >= maxTries && answer == false) {
+                    pickedWord = false;
+                    break;
+                }
+            }
         }
 
         /**

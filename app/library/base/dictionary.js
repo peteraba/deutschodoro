@@ -112,7 +112,6 @@ define(
         return {
             setMinLevel: setMinLevel,
             findWords: findWords,
-            rawDictionary: rawDictionary.dict,
             getDictionary: getDictionary
         };
     }

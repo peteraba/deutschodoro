@@ -120,6 +120,7 @@ require([
     'unit/german/verb.spec',
     'unit/english/noun.spec',
     'unit/english/verb.spec',
+    'unit/base/games.spec',
     'unit/game/derDieDas.spec',
     'unit/game/pluralize.spec',
     'unit/game/wordToEnglish.spec',

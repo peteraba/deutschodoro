@@ -19,7 +19,7 @@ define(
 
                 gameOptions = options.get(name);
 
-                if (gameOptions && gameOptions.importance) {
+                if (gameOptions) {
                     if (typeof gameOptions.importance == 'undefined' || isNaN(gameOptions.importance)) {
                         gameOptions.importance = 100;
                     }

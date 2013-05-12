@@ -11,12 +11,27 @@ define(
                 updateStats: sinon.stub()
             },
             'base/games': {
-                game1: {
-                    getImportance: sinon.stub().returns(100),
-                    create: sinon.stub().returns(createResult),
-                    getHtml: sinon.stub().returns('<h1>' + createResult + '</h1>'),
-                    getHelp: sinon.stub(),
-                    getUsedWords: sinon.stub()
+                getAllGames: function() {
+                    return {
+                        game1: {
+                            getImportance: sinon.stub().returns(100),
+                            create: sinon.stub().returns(createResult),
+                            getHtml: sinon.stub().returns('<h1>' + createResult + '</h1>'),
+                            getHelp: sinon.stub(),
+                            getUsedWords: sinon.stub()
+                        }
+                    }
+                },
+                getEnabledGames: function() {
+                    return {
+                        game1: {
+                            getImportance: sinon.stub().returns(100),
+                                create: sinon.stub().returns(createResult),
+                                getHtml: sinon.stub().returns('<h1>' + createResult + '</h1>'),
+                                getHelp: sinon.stub(),
+                                getUsedWords: sinon.stub()
+                        }
+                    }
                 }
             },
             'base/stat': {
