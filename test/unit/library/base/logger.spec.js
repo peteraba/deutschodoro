@@ -1,5 +1,5 @@
 define(
-    ['logger'],
+    ['base/logger'],
     function (logger) {
         var dumbConsole, noFilter, keyFilter, OK = 'ok', FAIL = 'fail';
 
@@ -16,7 +16,7 @@ define(
 
         logger.setConsole(dumbConsole);
 
-        describe('logger', function() {
+        describe('base/logger', function() {
             beforeEach(function(){
                 logger.setFilter(noFilter);
             });

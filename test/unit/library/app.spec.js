@@ -4,13 +4,13 @@ define(
         var stubs, context, loaded = false, createResult = 'hello';
 
         stubs = {
-            gui: {
+            'base/gui': {
                 isReady: sinon.stub().returns(true),
                 displayGame: sinon.stub(),
                 displayHelp: sinon.stub(),
                 updateStats: sinon.stub()
             },
-            games: {
+            'base/games': {
                 game1: {
                     getImportance: sinon.stub().returns(100),
                     create: sinon.stub().returns(createResult),
@@ -19,14 +19,14 @@ define(
                     getUsedWords: sinon.stub()
                 }
             },
-            stat: {
+            'base/stat': {
                 getStats: sinon.stub()
             },
-            timer: {
+            'base/timer': {
                 start: sinon.stub(),
                 end: sinon.stub()
             },
-            dictionary: {
+            'base/dictionary': {
                 getDictionary: sinon.stub()
             }
         };

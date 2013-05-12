@@ -4,15 +4,15 @@ define(
         var stubs, context, loaded = false;
 
         stubs = {
-            logger: {
+            'base/logger': {
                 info: sinon.stub()
             }
         };
 
         context = createContext(stubs, _);
 
-        context(['timer'], function (timer) {
-            describe('timer', function() {
+        context(['base/timer'], function (timer) {
+            describe('base/timer', function() {
                 var key = 'hello';
 
                 beforeEach(function(){

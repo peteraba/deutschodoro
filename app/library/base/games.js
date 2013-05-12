@@ -1,5 +1,5 @@
 define(
-    ['options', 'game/derDieDas', 'game/pluralize', 'game/wordToEnglish', 'game/wordToGerman'],
+    ['base/options', 'game/derDieDas', 'game/pluralize', 'game/wordToEnglish', 'game/wordToGerman'],
     function(options, derDieDas, pluralize, wordToEnglish, wordToGerman){
         var enabledGames = {}, gameOptions, games, minLevel, maxLevel;
 
@@ -16,18 +16,20 @@ define(
         _.each(games, function(game, name){
             var validImportance;
 
-            gameOptions = options.get(name, {importance: 100});
+            gameOptions = options.get(name);
 
-            if (gameOptions && typeof gameOptions.importance != 'undefined') {
-                game.setImportance(gameOptions.importance);
-            } else {
-                game.setImportance(0);
+            if (gameOptions && gameOptions.importance && gameOptions.importance > 0) {
+                validImportance = Math.max(0, Math.min(parseInt(gameOptions.importance), 999));
+
+                game.setImportance(validImportance);
+
+                game.setMinLevel(minLevel);
+                game.setMaxLevel(maxLevel);
+
+                enabledGames[name] = game;
+            } else if (!gameOptions) {
+                enabledGames[name] = game;
             }
-
-            game.setMinLevel(minLevel);
-            game.setMaxLevel(maxLevel);
-
-            enabledGames[name] = game;
         });
 
         return enabledGames;

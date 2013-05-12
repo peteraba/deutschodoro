@@ -1,5 +1,5 @@
 define(
-    ['wordFinder', 'german/noun', 'english/noun', 'vendor/underscore'],
+    ['base/wordFinder', 'german/noun', 'english/noun', 'vendor/underscore'],
     function(wordFinder, germanNoun, englishNoun, _){
         var question = ''
             , answer

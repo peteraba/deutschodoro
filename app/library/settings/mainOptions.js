@@ -1,5 +1,5 @@
 define(
-    ['allGames', 'options', 'vendor/jquery', 'vendor/underscore'],
+    ['base/allGames', 'base/options', 'vendor/jquery', 'vendor/underscore'],
     function(games, options, $, _){
         var gameTemplate, levelTemplate, formTemplate, bodyTemplate;
 

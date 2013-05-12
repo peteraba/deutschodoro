@@ -10,7 +10,7 @@ define(
             verb2 = {type:'verb',german:"bringen",english:["to bring","to fetch"],level:1};
 
             stubs = {
-                wordFinder: {
+                'base/wordFinder': {
                     getWord: sinon.stub().returns(verb1),
                     getRandomWord: sinon.stub().returns(verb2)
                 }
@@ -48,7 +48,7 @@ define(
             noun2 = {type:'noun',article:"der",plural:"~en", german:"Administrator",english:"admin"};
 
             stubs = {
-                wordFinder: {
+                'base/wordFinder': {
                     getWord: sinon.stub().returns(noun1),
                     getRandomWord: sinon.stub().returns(noun2)
                 },

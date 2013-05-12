@@ -1,5 +1,5 @@
 define(
-    ['gui', 'games', 'stat', 'timer', 'dictionary', 'logger', 'vendor/jquery', 'vendor/underscore'],
+    ['base/gui', 'base/games', 'base/stat', 'base/timer', 'base/dictionary', 'base/logger', 'vendor/jquery', 'vendor/underscore'],
     function(gui, games, stat, timer, dictionary, logger, $, _){
         var importanceList, currentGame, currentAnswer, canReRun = false;
 

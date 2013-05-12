@@ -1,6 +1,6 @@
 // Start the main app logic.
 define(
-    ['app', 'gui'],
+    ['app', 'base/gui'],
     function(app, gui) {
         function init() {
             if (!app.isReady()) {

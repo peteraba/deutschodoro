@@ -1,5 +1,5 @@
 define(
-    ['logger'],
+    ['base/logger'],
     function(logger){
         var MIN_LEVEL = 1, MAX_LEVEL = 10;
 

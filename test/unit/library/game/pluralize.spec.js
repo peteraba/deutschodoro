@@ -6,7 +6,7 @@ define(
         noun = {plural:"⍨", german:"Apfel"};
 
         stubs = {
-            wordFinder: {getWord: sinon.stub().returns(noun)}
+            'base/wordFinder': {getWord: sinon.stub().returns(noun)}
         };
 
         context = createContext(stubs, _);

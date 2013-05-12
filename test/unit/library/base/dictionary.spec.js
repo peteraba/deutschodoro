@@ -16,13 +16,15 @@ define(
         validDictionary  = {a: rawDict.dict[0], b: rawDict.dict[1], c: rawDict.dict[2], d: rawDict.dict[3]};
 
         stubs = {
-            'dict/dict': rawDict
+            'base/options': {
+                getRawDictionary: sinon.stub().returns(rawDict)
+            }
         };
 
         context = createContext(stubs, _);
 
-        context(['dictionary'], function (dictionary) {
-            describe('dictionary', function() {
+        context(['base/dictionary'], function (dictionary) {
+            describe('base/dictionary', function() {
                 describe('#getDictionary()', function() {
                     it('should return the dictionary including all words with levels by default', function(){
                         expect(dictionary.getDictionary()).to.eql(validDictionary);

@@ -1,5 +1,5 @@
 define(
-    ['gui', 'settings/dictionary', 'settings/addNoun', 'settings/addVerb', 'settings/addWord', 'settings/mainOptions'],
+    ['base/gui', 'settings/dictionary', 'settings/addNoun', 'settings/addVerb', 'settings/addWord', 'settings/mainOptions'],
     function(gui, dictionarySettings, addNounSettings, addVerbSettings, addWordSettings, mainOptionsSettings){
 
         function buildDictionary(event) {

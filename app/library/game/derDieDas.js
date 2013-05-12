@@ -1,5 +1,5 @@
 define(
-    ['wordFinder', 'vendor/underscore'],
+    ['base/wordFinder', 'vendor/underscore'],
     function(wordFinder, _){
         var pickedWord = null, importance = 100, minLevel = 1, maxLevel = 10;
 

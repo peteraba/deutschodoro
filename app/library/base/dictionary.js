@@ -1,5 +1,5 @@
 define(
-    ['options', 'vendor/underscore'],
+    ['base/options', 'vendor/underscore'],
     function(options, _){
         var minLevel, usedDictionary = {}, MAX_LEVEL = 99, rawDictionary;
 

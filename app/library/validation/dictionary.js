@@ -1,6 +1,6 @@
 define(
     [
-        'logger',
+        'base/logger',
         'validation/hash',
         'validation/level',
         'validation/article',

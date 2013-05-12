@@ -1,5 +1,5 @@
 define(
-    ['dict/dict', 'logger', 'validation/dictionary'],
+    ['dict/dict', 'base/logger', 'validation/dictionary'],
     function(rawDictionary, logger, dictionaryValidation){
         var storage = null;
 

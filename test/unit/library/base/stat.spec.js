@@ -8,8 +8,8 @@ define(
 
         context = createContext(stubs, _);
 
-        context(['stat'], function (stat) {
-            describe('stat', function() {
+        context(['base/stat'], function (stat) {
+            describe('base/stat', function() {
                 describe('#pickWord()', function() {
                     it('should pick the word with the lowest score', function(){
                         var words, ts, statData;

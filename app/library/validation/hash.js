@@ -1,5 +1,5 @@
 define(
-    ['logger', 'vendor/underscore'],
+    ['base/logger', 'vendor/underscore'],
     function(logger, _){
 
         /**

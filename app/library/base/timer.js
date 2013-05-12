@@ -1,5 +1,5 @@
 define(
-    ['logger'],
+    ['base/logger'],
     function(logger){
         var timers = {};
 

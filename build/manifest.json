@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Deutschodoro",
     "description": "Practice German in your Pomodoro break time.",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "icons": {
         "48": "images/icon-48.png",
         "128": "images/icon-128.png"

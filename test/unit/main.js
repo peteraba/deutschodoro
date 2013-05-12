@@ -124,11 +124,11 @@ require([
     'unit/game/pluralize.spec',
     'unit/game/wordToEnglish.spec',
     'unit/game/wordToGerman.spec',
-    'unit/wordFinder.spec',
-    'unit/dictionary.spec',
-    'unit/stat.spec',
-    'unit/logger.spec',
-    'unit/timer.spec',
+    'unit/base/wordFinder.spec',
+    'unit/base/dictionary.spec',
+    'unit/base/stat.spec',
+    'unit/base/logger.spec',
+    'unit/base/timer.spec',
     'unit/app.spec'
 ], function(){
     checkRequire(_.toArray(arguments), getTs());

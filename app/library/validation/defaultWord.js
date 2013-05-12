@@ -1,5 +1,5 @@
 define(
-    ['logger', 'vendor/underscore'],
+    ['base/logger', 'vendor/underscore'],
     function(logger, _){
         var validArticles = ['–', 'der', 'die', 'das'];
 

@@ -1,6 +1,6 @@
 // Start the main app logic.
 define(
-    ['settings', 'gui'],
+    ['base/settings', 'base/gui'],
     function(settings, gui) {
         function init() {
             if (!settings.isReady()) {

@@ -9,14 +9,14 @@ define(
         };
 
         stubs = {
-            dictionary: {findWords: sinon.stub().returns({a: dict.a, b: dict.b})},
-            stat: {pickWord: sinon.stub().returns(dict.a)}
+            'base/dictionary': {findWords: sinon.stub().returns({a: dict.a, b: dict.b})},
+            'base/stat': {pickWord: sinon.stub().returns(dict.a)}
         };
 
         context = createContext(stubs, _);
 
-        context(['wordFinder'], function (wordFinder) {
-            describe('wordFinder - not empty dictionary', function() {
+        context(['base/wordFinder'], function (wordFinder) {
+            describe('base/wordFinder - not empty dictionary', function() {
                 describe('#getWord()', function() {
                     it('should return the word returned by stat', function(){
                         expect(wordFinder.getWord({})).to.equal(dict.a);
@@ -42,12 +42,12 @@ define(
         });
 
         stubs = {
-            dictionary: {findWords: sinon.stub().returns({})}
+            'base/dictionary': {findWords: sinon.stub().returns({})}
         };
 
         context2 = createContext(stubs, _);
 
-        context2(['wordFinder'], function (wordFinder) {
+        context2(['base/wordFinder'], function (wordFinder) {
             describe('wordFinder - empty dictionary', function() {
                 describe('#getWord()', function() {
                     it('should return false when no words were returned by dictionary', function(){

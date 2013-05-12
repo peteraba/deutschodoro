@@ -1,5 +1,5 @@
 define(
-    ['options', 'logger', 'vendor/jquery', 'vendor/underscore'],
+    ['base/options', 'base/logger', 'vendor/jquery', 'vendor/underscore'],
     function(options, logger, $, _){
         var formTemplate, bodyTemplate;
 
