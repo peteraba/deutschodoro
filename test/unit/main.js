@@ -130,6 +130,7 @@ require([
     'unit/base/stat.spec',
     'unit/base/logger.spec',
     'unit/base/timer.spec',
+    'unit/base/gui.spec',
     'unit/app.spec'
 ], function(){
     checkRequire(_.toArray(arguments), getTs());
