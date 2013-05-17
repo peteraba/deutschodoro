@@ -131,7 +131,9 @@ require([
     'unit/base/logger.spec',
     'unit/base/timer.spec',
     'unit/base/gui.spec',
-    'unit/app.spec'
+    'unit/app.spec',
+    'unit/settings/dictionary.spec',
+    'unit/settings/mainOptions.spec'
 ], function(){
     checkRequire(_.toArray(arguments), getTs());
 });

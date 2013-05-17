@@ -46,6 +46,10 @@ define(
             allGames = games.getAllGames();
         }
 
+        function setAllGames(newAllGames){
+            allGames = newAllGames;
+        }
+
         function getGameOptions() {
             var html = [];
 
@@ -131,7 +135,8 @@ define(
         init();
 
         return {
-            render: render
+            render: render,
+            setAllGames: setAllGames
         };
     }
 );
