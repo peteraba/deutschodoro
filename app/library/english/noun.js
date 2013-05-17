@@ -1,11 +1,11 @@
 define(
-    ['helper/english', 'vendor/underscore'],
-    function(englishHelper, _){
+    ['helper/english'],
+    function(englishHelper){
         /**
          *
          * @type {Object} irregularNouns
          */
-        irregularNouns = {
+        var irregularNouns = {
             person: 'people'
         };
     
