@@ -1,6 +1,6 @@
 define(
-    ['base/gui', 'base/games', 'base/stat', 'base/timer', 'base/dictionary', 'base/logger', 'vendor/jquery', 'vendor/underscore'],
-    function(gui, games, stat, timer, dictionary, logger, $, _){
+    ['base/gui', 'base/games', 'base/stat', 'base/timer', 'base/dictionary', 'base/logger', 'helper/dom', 'vendor/underscore'],
+    function(gui, games, stat, timer, dictionary, logger, dom, _){
         var importanceList, currentGame, currentAnswer, canReRun = false, enabledGames;
 
         function init() {
@@ -101,9 +101,9 @@ define(
                 '</div>'
             ];
 
-            html = $(htmlTemplate.join(''));
+            html = dom.get(htmlTemplate.join(''));
 
-            $('#retry', html).click(function(){
+            dom.get('#retry', html).click(function(){
                 run();
             });
 
@@ -115,9 +115,9 @@ define(
          * @param {Object} game
          */
         function displayGame(game) {
-            var html = $(game.getHtml());
+            var html = dom.get(game.getHtml());
 
-            $('#submit', html).click(checkResult);
+            dom.get('#submit', html).click(checkResult);
 
             timer.start('game.display');
             gui.displayGame(html);
@@ -134,8 +134,8 @@ define(
 
             event.preventDefault();
 
-            radioBtns = $('.options input');
-            answer = $('span', radioBtns.filter(':checked').parent());
+            radioBtns = dom.get('.options input');
+            answer = dom.get('span', radioBtns.filter(':checked').parent());
             currentAnswer = answer;
 
             if (answer.length) {
@@ -166,7 +166,7 @@ define(
 
             rightAnswer = currentGame.getAnswer();
             for (i = 0; i < radioBtns.length; i++) {
-                span = $('span', radioBtns.eq(i).parent());
+                span = dom.get('span', radioBtns.eq(i).parent());
                 if (span.text() == rightAnswer) {
                     span.addClass('rightAnswer');
                     break;

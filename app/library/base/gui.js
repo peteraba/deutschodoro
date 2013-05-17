@@ -1,29 +1,21 @@
 define(
-    ['vendor/jquery'],
-    function($){
+    ['helper/dom'],
+    function(dom){
         var ready = false,
-            $doc = $(document),
-            $window = $(window),
-            domCache = {},
+            $doc = dom.getDocument(),
+            $window = dom.getWindow(),
             eastPanes = ['#help', '#stat'];
 
         function init(){
-            $('#helpToggler').click(function() {
+            dom.get('#helpToggler').click(function() {
                 toggle(eastPanes, 0);
             });
-            $('#statToggler').click(function() {
+            dom.get('#statToggler').click(function() {
                 toggle(eastPanes, 1);
             });
-            $('#feedback, #south .deutschodoro-link a').click(newWindow);
+            dom.get('#feedback, #south .deutschodoro-link a').click(newWindow);
 
             ready = true;
-        }
-
-        function getDom(selector) {
-            if (!domCache[selector]) {
-                domCache[selector] = $(selector);
-            }
-            return domCache[selector];
         }
 
         function isReady() {
@@ -32,20 +24,16 @@ define(
 
         function displayGame(html) {
             if (isReady()) {
-                getDom('#center').empty().append(html);
+                dom.getCached('#center').empty().append(html);
             }
         }
 
         function newWindow(e){
-            var url = $(this).attr('href');
+            var url = dom.get(this).attr('href');
 
             e.preventDefault();
 
-            window.open(url, 'deutschodoro-help');
-        }
-
-        function displayPage(html) {
-            east = getDom('#center').empty().append(html);
+            dom.getWindow(true).open(url, 'deutschodoro-help');
         }
 
         function displayHelp(gameHelp, words) {
@@ -55,8 +43,8 @@ define(
                 html.push(getGameHelpHtml(gameHelp));
                 html.push(getDictionaryHelpHtml(words));
 
-                east = getDom('#help').empty().append(html.join(''));
-                $('a', east).click(newWindow);
+                east = dom.getCached('#help').empty().append(html.join(''));
+                dom.get('a', east).click(newWindow);
             }
         }
 
@@ -81,11 +69,11 @@ define(
                     german = words[i].german;
                     html.push('<h3>Word #' + (i+1) + '</h3>');
                     html.push('<ul>');
-                    html.push('<li><a href="http://en.wiktionary.org/wiki/' + german + '#German">wiktionary.org</a></li>');
-                    html.push('<li><a href="http://dict.leo.org/#/search=' + german + '&searchLoc=1&resultOrder=basic&multiwordShowSingle=on">leo.org</a></li>');
-                    html.push('<li><a href="http://de.thefreedictionary.com/' + german + '">thefreedictionary.com</a></li>');
-                    html.push('<li><a href="http://www.duden.de/suchen/dudenonline/' + german + '#German">duden.de</a></li>');
-                    html.push('<li><a href="http://www.canoo.net/services/Controller?input=' + german + '&service=inflection">canoo.net</a></li>');
+                    html.push('<li>' + getWikiLink(german) + '</li>');
+                    html.push('<li>' + getLeoLink(german) + '</li>');
+                    html.push('<li>' + getThefreedictionaryLink(german) + '</li>');
+                    html.push('<li>' + getDudenLink(german) + '</li>');
+                    html.push('<li>' + getCanooLink(german) + '</li>');
                     html.push('</ul>');
                 }
 
@@ -95,17 +83,50 @@ define(
             return '';
         }
 
+        function getWikiLink(german) {
+            return '<a href="http://en.wiktionary.org/wiki/' + german + '#German">wiktionary.org</a>';
+        }
+
+        function getLeoLink(german) {
+            return [
+                '<a href="http://dict.leo.org/#/search=' + german + '',
+                '&searchLoc=1&resultOrder=basic&multiwordShowSingle=on">',
+                'leo.org',
+                '</a>'
+            ].join('');
+        }
+
+        function getThefreedictionaryLink(german) {
+            return '<a href="http://de.thefreedictionary.com/' + german + '">thefreedictionary.com</a>';
+        }
+
+        function getDudenLink(german) {
+            return '<a href="http://www.duden.de/suchen/dudenonline/' + german + '#German">duden.de</a>';
+        }
+
+        function getCanooLink(german) {
+            return [
+                '<a href="http://www.canoo.net/services/Controller?input=' + german + '&service=inflection">',
+                'canoo.net',
+                '</a>'
+            ].join('');
+        }
+
+        function displayPage(html) {
+            dom.getCached('#center').empty().append(html);
+        }
+
         function toggle(selectors, toggleIndex) {
             var i;
 
-            if (getDom(selectors[toggleIndex]).is(':visible')) {
-                getDom(selectors[toggleIndex]).hide();
+            if (dom.getCached(selectors[toggleIndex]).is(':visible')) {
+                dom.getCached(selectors[toggleIndex]).hide();
             } else {
                 for (i = 0; i < selectors.length; i++) {
-                    getDom(selectors[i]).hide();
+                    dom.getCached(selectors[i]).hide();
                 }
 
-                getDom(selectors[toggleIndex]).show();
+                dom.getCached(selectors[toggleIndex]).show();
             }
         }
 
@@ -114,7 +135,7 @@ define(
 
             width = Math.min(300, Math.floor($doc.width()/4));
 
-            getDom('.ui-layout-eas').width(width);
+            dom.getCached('.ui-layout-eas').width(width);
         }
 
         function updateStats(stats) {
@@ -147,13 +168,13 @@ define(
 
             html.push('</table>');
 
-            getDom('#stat').html(html.join(''));
+            dom.getCached('#stat').html(html.join(''));
         }
 
-        function showErrorReportBtn(game, questions, answer) {
+        function showErrorReportBtn() {
             var errorReportBtn;
 
-            errorReportBtn = $('<a id="report" href="">Report a problem</a>')
+            errorReportBtn = dom.get('<a id="report" href="">Report a problem</a>')
                 .attr('href', 'https://groups.google.com/forum/#!forum/deutschodoro')
                 .click(newWindow);
 
@@ -171,10 +192,9 @@ define(
             isReady: isReady,
             displayGame: displayGame,
             displayHelp: displayHelp,
-            showErrorReportBtn: showErrorReportBtn,
-            updateStats: updateStats,
             displayPage: displayPage,
-            getDom: getDom
+            showErrorReportBtn: showErrorReportBtn,
+            updateStats: updateStats
         }
     }
 );

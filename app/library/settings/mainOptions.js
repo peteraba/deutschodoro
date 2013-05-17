@@ -1,6 +1,6 @@
 define(
-    ['base/games', 'base/options', 'vendor/jquery', 'vendor/underscore'],
-    function(games, options, $, _){
+    ['base/games', 'base/options', 'helper/dom', 'vendor/underscore'],
+    function(games, options, dom, _){
         var gameTemplate, levelTemplate, formTemplate, bodyTemplate, allGames;
 
         gameTemplate = [
@@ -90,12 +90,12 @@ define(
         }
 
         function saveOptions(event) {
-            var $this = $(this), minLevel;
+            var $this = dom.get(this), minLevel;
 
             event.preventDefault();
 
-            $('.gameImportance', $this).each(function(){
-                var $input = $(this), name = $input.attr('name'), oldGameOptions;
+            dom.get('.gameImportance', $this).each(function(){
+                var $input = dom.get(this), name = $input.attr('name'), oldGameOptions;
 
                 oldGameOptions = options.get(name, {});
                 oldGameOptions.importance = Math.max(0, Math.min(999, parseInt($input.val())));
@@ -103,9 +103,9 @@ define(
                 options.set(name, oldGameOptions);
             });
 
-            minLevel = Math.max(1, Math.min(10, parseInt($('#minLevel').val())));
+            minLevel = Math.max(1, Math.min(10, parseInt(dom.get('#minLevel').val())));
             options.set('minLevel', minLevel);
-            options.set('maxLevel', Math.max(minLevel, Math.min(10, parseInt($('#maxLevel').val()))));
+            options.set('maxLevel', Math.max(minLevel, Math.min(10, parseInt(dom.get('#maxLevel').val()))));
 
             displaySavedMsg();
         }
@@ -113,7 +113,7 @@ define(
         function displaySavedMsg() {
             var display;
 
-            display = $('<span class="saved">Saved.</span>');
+            display = dom.get('<span class="saved">Saved.</span>');
 
             display.insertAfter('#submit');
 
@@ -121,9 +121,9 @@ define(
         }
 
         function render(){
-            var html = $(getHtml());
+            var html = dom.get(getHtml());
 
-            $('form', html).submit(saveOptions);
+            dom.get('form', html).submit(saveOptions);
 
             return html;
         }

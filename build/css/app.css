@@ -9,14 +9,15 @@ body {height: 100%;}
 .ui-layout-center, .ui-layout-south, .ui-layout-east {overflow: hidden;}
 .ui-layout-center {padding: 1em; background-color: #F9FAD9; color: #27202E;}
 .ui-layout-south {position: fixed; bottom: 0; left: 0; height: 30px; width: 100%; line-height: 30px; border-top: 5px solid #98BF43; background-color: #BCCC99}
+.ui-layout-south p {line-height: 30px;}
 .ui-layout-east {position: fixed; right: 0; top: 0; width: 30%; height: 100%; padding: 1em; border-left: 5px solid #6B597A; background-color: #27202E; color: #fff;}
 
-.gui h1 {margin: 1em 0; font-size: 1.5em; font-weight: bold;}
-.gui h2 {margin: 0.8em 0; font-size: 1.3em; font-weight: bold;}
-.gui h3 {margin: 0.8em 0 0.4em; font-size: 1.1em; font-weight: bold;}
-.gui p {font-size: 1.1em; margin: 0.6em 0; line-height: 1.3em;}
 .gui button {background-color: #98BF43; border: 2px solid #27202E; font-size: 0.8em; color: #27202E;}
 
+.ui-layout-center h1 {margin: 1em 0; font-size: 1.5em; font-weight: bold;}
+.ui-layout-center h2 {margin: 0.8em 0; font-size: 1.3em; font-weight: bold;}
+.ui-layout-center h3 {margin: 0.8em 0 0.4em; font-size: 1.1em; font-weight: bold;}
+.ui-layout-center p {font-size: 1.1em; margin: 0.6em 0; line-height: 1.3em;}
 .ui-layout-center li {margin: 5px 0;}
 .ui-layout-center span {display: inline-block; padding: 1px 3px; border: 2px solid #F9FAD9;}
 

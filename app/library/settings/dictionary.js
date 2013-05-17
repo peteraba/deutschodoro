@@ -1,6 +1,6 @@
 define(
-    ['base/options', 'base/logger', 'vendor/jquery', 'vendor/underscore'],
-    function(options, logger, $, _){
+    ['base/options', 'base/logger', 'helper/dom', 'vendor/underscore'],
+    function(options, logger, dom, _){
         var formTemplate, bodyTemplate;
 
         formTemplate = [
@@ -39,13 +39,13 @@ define(
         }
 
         function saveOptions(event) {
-            var $this = $(this), result, oldLogLevel;
+            var $this = dom.get(this), result, oldLogLevel;
 
             event.preventDefault();
 
             oldLogLevel = logger.getLogLevel();
             logger.setLogLevel(logger.ERROR);
-            result = options.setRawDictionary($('#rawDictionary').val());
+            result = options.setRawDictionary(dom.get('#rawDictionary').val());
             logger.setLogLevel(oldLogLevel)
 
             if (result) {
@@ -60,13 +60,13 @@ define(
 
             event.preventDefault();
 
-            $('#rawDictionary').val(JSON.stringify(dict));
+            dom.get('#rawDictionary').val(JSON.stringify(dict));
         }
 
         function displayMsg(msg) {
             var display;
 
-            display = $('<span class="saved">' + msg + '</span>');
+            display = dom.get('<span class="saved">' + msg + '</span>');
 
             display.insertAfter('#submit');
 
@@ -74,10 +74,10 @@ define(
         }
 
         function render(){
-            var html = $(getHtml());
+            var html = dom.get(getHtml());
 
-            $('form', html).submit(saveOptions);
-            $('#reset', html).click(resetDictionary);
+            dom.get('form', html).submit(saveOptions);
+            dom.get('#reset', html).click(resetDictionary);
 
             return html;
         }

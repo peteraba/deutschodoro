@@ -1,6 +1,6 @@
 define(
-    ['base/options', 'vendor/jquery', 'vendor/underscore'],
-    function(options, $, _){
+    ['base/options'],
+    function(options){
         function render(){
             return '';
         }
