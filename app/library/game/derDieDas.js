@@ -10,7 +10,7 @@ define(
         function create() {
             pickedWord = wordFinder.getWord({type:"noun", plural:'!–'}, minLevel, maxLevel);
 
-            return pickedWord==false ? false : true;
+            return pickedWord!==false;
         }
 
         /**

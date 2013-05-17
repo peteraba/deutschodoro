@@ -30,7 +30,7 @@ define(
 
             question = pickedWord.article + ' ' + pickedWord.german;
 
-            return pickedWord==false ? false : true;
+            return pickedWord!==false;
         }
 
         function findPluralizableWord() {

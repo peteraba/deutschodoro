@@ -50,7 +50,7 @@ define(
 
             words = _.shuffle(words);
 
-            return pickedWord==false ? false : true;
+            return pickedWord!==false;
         }
 
         /**
