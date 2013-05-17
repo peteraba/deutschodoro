@@ -48,7 +48,7 @@ define(
         context2 = createContext(stubs, _);
 
         context2(['base/wordFinder'], function (wordFinder) {
-            describe('wordFinder - empty dictionary', function() {
+            describe('base/wordFinder - empty dictionary', function() {
                 describe('#getWord()', function() {
                     it('should return false when no words were returned by dictionary', function(){
                         expect(wordFinder.getWord({})).to.equal(false);

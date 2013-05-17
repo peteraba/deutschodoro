@@ -2,16 +2,23 @@ define(
     ['base/wordFinder', 'german/noun', 'english/noun', 'vendor/underscore'],
     function(wordFinder, germanNoun, englishNoun, _){
         var question = ''
-            , answer
-            , pickedWord
-            , words
-            , useRandom = null
+            , answer = null
+            , pickedWord = null
+            , words = []
             , PLURAL_CHANCE = 50
             , ENGLISH_NOUN_PREFIX = 'the '
             , GERMAN_PLURAL_PREFIX = 'die '
             , importance = 100
             , minLevel = 1
-            , maxLevel = 1;
+            , maxLevel = 1
+            , useRandom = null;
+
+        function clear() {
+            question = '';
+            answer = false;
+            pickedWord = null;
+            words = [];
+        }
 
         function getRandom() {
             return null===useRandom ? _.random(100) : useRandom;
@@ -27,6 +34,8 @@ define(
          */
         function create() {
             var type, word2, word3, english;
+
+            clear();
 
             pickedWord = wordFinder.getWord({}, minLevel, maxLevel);
 

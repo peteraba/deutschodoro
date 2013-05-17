@@ -1,7 +1,7 @@
 define(
     ['german/verb'],
     function(germanVerb) {
-        describe('german.verb', function() {
+        describe('german/verb', function() {
             describe('#present()', function() {
                 it('should return personalized irregular verbs', function(){
                     var sein = ['bin','bist','ist','sind','seid','sind'];

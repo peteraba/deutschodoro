@@ -19,7 +19,7 @@ define(
             context = createContext(stubs, _);
 
             context(['game/wordToGerman'], function (wordToGerman) {
-                describe('game.wordToGerman - noun', function() {
+                describe('game/wordToGerman - noun', function() {
                     describe('#checkResult()', function() {
                         it('should check if result is the correct English word', function(){
                             expect(wordToGerman.create()).to.equal(true);
@@ -44,8 +44,8 @@ define(
         function context2() {
             var stubs, context, noun1, noun2;
 
-            noun1 = {type:'noun',article:"der",plural:"⍨", german:"Apfel",english:"apple"};
-            noun2 = {type:'noun',article:"der",plural:"~en", german:"Administrator",english:"admin"};
+            noun1 = {type:'noun', article:"der", plural:"⍨", german:"Apfel", english:"apple"};
+            noun2 = {type:'noun', article:"der", plural:"~en", german:"Administrator", english:"admin"};
 
             stubs = {
                 'base/wordFinder': {
@@ -64,7 +64,14 @@ define(
             context = createContext(stubs, _);
 
             context(['game/wordToGerman'], function (wordToGerman) {
-                describe('game.wordToGerman - verb', function() {
+                describe('game/wordToGerman - verb', function() {
+                    describe('#getHtml()', function() {
+                        it('should return html', function(){
+                            expect(wordToGerman.create()).to.equal(true);
+                            expect(wordToGerman.getHtml()).to.contain('<h1>');
+                        });
+                    });
+
                     describe('#checkResult()', function() {
                         it('should check if result is the correct English singular noun', function(){
                             wordToGerman.setRandom(0);
@@ -84,10 +91,27 @@ define(
                         });
                     });
 
-                    describe('#getHtml()', function() {
+                    describe('#getUsedWords()', function() {
                         it('should return html', function(){
+                            wordToGerman.setRandom(0);
                             expect(wordToGerman.create()).to.equal(true);
-                            expect(wordToGerman.getHtml()).to.contain('<h1>');
+                            expect(wordToGerman.getUsedWords()).to.eql([noun1]);
+                        });
+                    });
+
+                    describe('#getAnswer()', function() {
+                        it('should return article of selected word', function(){
+                            wordToGerman.setRandom(0);
+                            expect(wordToGerman.create()).to.equal(true);
+                            expect(wordToGerman.getAnswer()).to.eql('der ' + noun1.german);
+                        });
+                    });
+
+                    describe('#getHelp()', function() {
+                        it('should return original word', function(){
+                            wordToGerman.setRandom(0);
+                            expect(wordToGerman.create()).to.equal(true);
+                            expect(wordToGerman.getHelp()).to.equal('');
                         });
                     });
                 });

@@ -4,17 +4,26 @@ define(
         var pickedWord = null
             , answer = false
             , question = null
-            , words
+            , words = []
             , GERMAN_PLURAL_PREFIX = 'die '
             , importance = 100
             , minLevel = 1
             , maxLevel = 1;
+
+        function clear() {
+            pickedWord = null;
+            answer = false;
+            question = null;
+            words = [];
+        }
 
         /**
          *
          * @return {Boolean}
          */
         function create() {
+            clear();
+
             findPluralizableWord();
 
             words = [answer];

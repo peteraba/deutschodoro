@@ -3,7 +3,7 @@ define(
     function(germanNoun) {
         var loaded = false;
 
-        describe('german.noun', function() {
+        describe('german/noun', function() {
             describe('#getPlural()', function() {
                 it('should return pluralized nouns', function(){
                     expect(germanNoun.getPlural('Apfel', '⍨')).to.equal('Äpfel');

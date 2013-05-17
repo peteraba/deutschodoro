@@ -3,11 +3,17 @@ define(
     function(wordFinder, _){
         var pickedWord = null, importance = 100, minLevel = 1, maxLevel = 10;
 
+        function clear() {
+            pickedWord = null;
+        }
+
         /**
          *
          * @return {Boolean}
          */
         function create() {
+            clear();
+
             pickedWord = wordFinder.getWord({type:"noun", plural:'!–'}, minLevel, maxLevel);
 
             return pickedWord!==false;

@@ -1,7 +1,7 @@
 define(
     ['helper/german'],
     function(germanHelper) {
-        describe('helper.german', function() {
+        describe('helper/german', function() {
             describe('#modify()', function() {
                 it('should return modified word only if it does not start with a tilde', function(){
                     expect(germanHelper.modifyWord('praktisch', 'meest praktisch')).to.equal('meest praktisch');

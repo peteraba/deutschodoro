@@ -3,7 +3,7 @@ define(
     function (_) {
         var noun, stubs, context, loaded = false;
 
-        noun = {plural:"⍨", german:"Apfel"};
+        noun = {plural:"⍨", german:"Apfel", english:"apple"};
 
         stubs = {
             'base/wordFinder': {getWord: sinon.stub().returns(noun)}
@@ -12,7 +12,14 @@ define(
         context = createContext(stubs, _);
 
         context(['game/pluralize'], function (pluralize) {
-            describe('game.pluralize', function() {
+            describe('game/pluralize', function() {
+                describe('#getHtml()', function() {
+                    it('should return html', function(){
+                        expect(pluralize.create()).to.equal(true);
+                        expect(pluralize.getHtml()).to.contain('<h1>');
+                    });
+                });
+
                 describe('#checkResult()', function() {
                     it('should check if result is the correct pluralized German word', function(){
                         expect(pluralize.create()).to.equal(true);
@@ -21,15 +28,29 @@ define(
                     });
                 });
 
-                describe('#getHtml()', function() {
-                    it('should return html', function(){
+                describe('#getUsedWords()', function() {
+                    it('should return selected word in an array', function(){
                         expect(pluralize.create()).to.equal(true);
-                        expect(pluralize.getHtml()).to.contain('<h1>');
+                        expect(pluralize.getUsedWords()).to.eql([noun]);
                     });
                 });
 
-                loaded = true;
+                describe('#getAnswer()', function() {
+                    it('should return article of selected word', function(){
+                        expect(pluralize.create()).to.equal(true);
+                        expect(pluralize.getAnswer()).to.equal('die Äpfel');
+                    });
+                });
+
+                describe('#getHelp()', function() {
+                    it('should return original word', function(){
+                        expect(pluralize.create()).to.equal(true);
+                        expect(pluralize.getHelp()).to.contain(noun.english);
+                    });
+                });
             });
+
+            loaded = true;
         });
 
 
