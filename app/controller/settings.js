@@ -1,7 +1,7 @@
 // Start the main app logic.
 define(
-    ['settings', 'base/gui'],
-    function(settings, gui) {
+    ['settings', 'helper/dom'],
+    function(settings, dom) {
         function init() {
             if (!settings.isReady()) {
                 setTimeout(function(){init();}, 100);
@@ -15,11 +15,11 @@ define(
         }
 
         function websiteFix() {
-            var settingLink = $('<a href="index.html">Back to main</a>'), listItem = $('<li />');
+            var settingLink = dom.get('<a href="index.html">Back to main</a>'), listItem = dom.get('<li />');
 
             listItem.append(settingLink);
 
-            gui.getDom('#south ul').append(listItem);
+            dom.getCached('#south ul').append(listItem);
         }
 
         init();

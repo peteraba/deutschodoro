@@ -1,6 +1,6 @@
 define(
-    ['base/gui', 'settings/dictionary', 'settings/addNoun', 'settings/addVerb', 'settings/addWord', 'settings/mainOptions'],
-    function(gui, dictionarySettings, addNounSettings, addVerbSettings, addWordSettings, mainOptionsSettings){
+    ['helper/dom', 'base/gui', 'settings/dictionary', 'settings/addNoun', 'settings/addVerb', 'settings/addWord', 'settings/mainOptions'],
+    function(dom, gui, dictionarySettings, addNounSettings, addVerbSettings, addWordSettings, mainOptionsSettings){
 
         function buildDictionary(event) {
             event.preventDefault();
@@ -15,8 +15,8 @@ define(
         }
 
         function init() {
-            gui.getDom('#mainOptions').click(buildMainOptions).click();
-            gui.getDom('#dictionary').click(buildDictionary);
+            dom.getCached('#mainOptions').click(buildMainOptions).click();
+            dom.getCached('#dictionary').click(buildDictionary);
         }
 
         function isReady(){
