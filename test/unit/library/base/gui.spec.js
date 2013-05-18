@@ -23,7 +23,7 @@ define(
             }
         };
 
-        context = createContext(stubs, _);
+        context = requireHelper.createContext(stubs, _);
 
         context(['base/gui'], function (gui) {
             describe('base/gui', function() {

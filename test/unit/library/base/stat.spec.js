@@ -6,7 +6,7 @@ define(
         stubs = {
         };
 
-        context = createContext(stubs, _);
+        context = requireHelper.createContext(stubs, _);
 
         context(['base/stat'], function (stat) {
             describe('base/stat', function() {

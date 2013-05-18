@@ -13,7 +13,7 @@ define(
             'base/stat': {pickWord: sinon.stub().returns(dict.a)}
         };
 
-        context = createContext(stubs, _);
+        context = requireHelper.createContext(stubs, _);
 
         context(['base/wordFinder'], function (wordFinder) {
             describe('base/wordFinder - not empty dictionary', function() {
@@ -45,7 +45,7 @@ define(
             'base/dictionary': {findWords: sinon.stub().returns({})}
         };
 
-        context2 = createContext(stubs, _);
+        context2 = requireHelper.createContext(stubs, _);
 
         context2(['base/wordFinder'], function (wordFinder) {
             describe('base/wordFinder - empty dictionary', function() {

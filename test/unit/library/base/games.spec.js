@@ -28,7 +28,7 @@ define(
             'game/wordToGerman': gameStub
         };
 
-        context = createContext(stubs, _);
+        context = requireHelper.createContext(stubs, _);
 
         context(['base/games'], function (games) {
             var allGames = {

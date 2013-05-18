@@ -46,7 +46,7 @@ define(
             }
         };
 
-        context = createContext(stubs, _);
+        context = requireHelper.createContext(stubs, _);
 
         context(['app'], function (app) {
             describe('app', function() {

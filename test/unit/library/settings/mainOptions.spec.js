@@ -15,7 +15,7 @@ define(
             }
         };
 
-        context = createContext(stubs, _);
+        context = requireHelper.createContext(stubs, _);
 
         context(['settings/mainOptions'], function (mainOptions) {
             describe('settings/mainOptions', function() {

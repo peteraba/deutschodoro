@@ -21,7 +21,7 @@ define(
             }
         };
 
-        context = createContext(stubs, _);
+        context = requireHelper.createContext(stubs, _);
 
         context(['base/dictionary'], function (dictionary) {
             describe('base/dictionary', function() {

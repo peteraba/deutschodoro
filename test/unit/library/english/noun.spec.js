@@ -7,7 +7,7 @@ define(
             'helper/english' : englishHelper
         };
 
-        context = createContext(stubs, _);
+        context = requireHelper.createContext(stubs, _);
 
         context(['english/noun'], function (englishNoun) {
             describe('english/noun', function() {

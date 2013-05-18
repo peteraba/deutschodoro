@@ -9,7 +9,7 @@ define(
             }
         };
 
-        context = createContext(stubs, _);
+        context = requireHelper.createContext(stubs, _);
 
         context(['base/timer'], function (timer) {
             describe('base/timer', function() {

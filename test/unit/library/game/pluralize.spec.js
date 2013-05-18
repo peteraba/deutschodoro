@@ -9,7 +9,7 @@ define(
             'base/wordFinder': {getWord: sinon.stub().returns(noun)}
         };
 
-        context = createContext(stubs, _);
+        context = requireHelper.createContext(stubs, _);
 
         context(['game/pluralize'], function (pluralize) {
             describe('game/pluralize', function() {

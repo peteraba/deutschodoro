@@ -16,7 +16,7 @@ define(
                 }
             };
 
-            context = createContext(stubs, _);
+            context = requireHelper.createContext(stubs, _);
 
             context(['game/wordToEnglish'], function (wordToEnglish) {
                 describe('game/wordToEnglish - verb', function() {
@@ -83,7 +83,7 @@ define(
 
             };
 
-            context = createContext(stubs, _);
+            context = requireHelper.createContext(stubs, _);
 
             context(['game/wordToEnglish'], function (wordToEnglish) {
                 describe('game/wordToEnglish - noun', function() {

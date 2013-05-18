@@ -22,8 +22,23 @@
         globals:["_", "$", "jQuery", "mocha", "chai", "expect", "sinon"]
     });
 </script>
+<script type="text/javascript">
+    var rand, body, script;
 
-<script data-main="main.js" src="../../vendor/js/require.js" type="text/javascript"></script>
+    body = document.getElementsByTagName('body')[0];
+    rand = Math.floor(Math.random() * 1000000);
+
+    script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = './requireHelper.js?rand=' + rand;
+    body.appendChild(script);
+
+    script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '../../vendor/js/require.js?rand=' + rand;
+    script.setAttribute('data-main', 'main.js');
+    body.appendChild(script);
+</script>
 
 </body>
 </html>

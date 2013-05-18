@@ -15,7 +15,7 @@ define(
             }
         };
 
-        context = createContext(stubs, _);
+        context = requireHelper.createContext(stubs, _);
 
         context(['settings/dictionary'], function (dictionarySettings) {
             describe('settings/dictionary', function() {
