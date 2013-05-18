@@ -46,6 +46,8 @@ define(
 
                         expect(englishNoun.getPlural('brief')).to.equal('briefs');
 
+                        expect(englishNoun.getPlural('abyss')).to.equal('abysses');
+
                     });
                     it('should return irregular nouns', function(){
                         expect(englishNoun.getPlural('person')).to.equal('people');
@@ -64,6 +66,11 @@ define(
                         expect(englishNoun.getPlural('crew (for ship)')).to.equal('crews (for ship)');
                         expect(englishNoun.getPlural('general (rank)')).to.equal('generals (rank)');
                         expect(englishNoun.getPlural('queen (chess)')).to.equal('queens (chess)');
+                    });
+                    it('should pluralize man and woman ', function(){
+                        expect(englishNoun.getPlural('fireman')).to.equal('firemen');
+                        expect(englishNoun.getPlural('policewoman')).to.equal('policewomen');
+                        expect(englishNoun.getPlural('ombudsman (investigate complaints)')).to.equal('ombudsmen (investigate complaints)');
                     });
                 });
 

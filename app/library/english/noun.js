@@ -6,6 +6,7 @@ define(
          * http://www.english-zone.com/spelling/plurals.html
          * http://wiki.answers.com/Q/What_are_words_that_have_an_f_that_does_not_change_to_a_v_when_pluralized
          * http://en.wikipedia.org/wiki/English_plurals
+         * http://www.esldesk.com/vocabulary/irregular-nouns
          *
          * @type {Object} irregularNouns
          */
@@ -97,7 +98,36 @@ define(
             // random irregular words
             person: 'people'
         };
-    
+
+        var man = {
+            bar: 'bar',
+            boiler: 'boiler',
+            brick: 'brick',
+            business: 'business',
+            camera: 'camera',
+            crafts: 'crafts',
+            crossbow: 'crossbow',
+            delivery: 'delivery',
+            dust: 'dust',
+            fire: 'fire',
+            fisher: 'fisher',
+            hit: 'hit',
+            length: 'length',
+            loco: 'loco',
+            mail: 'mail',
+            marks: 'marks',
+            ombuds: 'ombuds',
+            police: 'police',
+            post: 'post',
+            sales: 'sales',
+            store: 'store',
+            stunt: 'stunt',
+            tin: 'tin',
+            trash: 'trash',
+            warehouse: 'warehouse',
+            watch: 'watch'
+        };
+
         /**
          *
          * @param singular
@@ -107,7 +137,41 @@ define(
             if (typeof irregularNouns[singular] != 'undefined') {
                 return irregularNouns[singular];
             }
-    
+
+            return false;
+        }
+
+        /**
+         *
+         * @param occupation
+         * @param ending
+         * @return {*}
+         */
+        function occupationPlural(occupation, ending) {
+            if (typeof man[occupation] != 'undefined') {
+                return occupation + ending;
+            }
+
+            return false;
+        }
+
+        /**
+         *
+         * @param singular
+         * @return {*}
+         */
+        function complexPlural(singular) {
+            var womanPos, manPos;
+
+            womanPos = singular.indexOf('woman');
+            manPos = singular.indexOf('man');
+
+            if (womanPos == singular.length-5 && womanPos > 0) {
+                return occupationPlural(singular.substr(0, singular.length-5), 'women');
+            } else if (manPos == singular.length-3 && manPos > 0) {
+                return occupationPlural(singular.substr(0, singular.length-3), 'men');
+            }
+
             return false;
         }
     
@@ -159,17 +223,21 @@ define(
          * @return {String}
          */
         function getPlural(singular) {
-            var irregular, wordParts;
+            var irregular, wordParts, complex;
 
             wordParts = separateWordParts(singular);
 
             irregular = irregularPlural(wordParts[0]);
-    
-            if (!irregular) {
-                return regularPlural(wordParts[0]) + wordParts[1];
+            if (irregular) {
+                return irregular + wordParts[1];
             }
-    
-            return irregular + wordParts[1];
+
+            complex = complexPlural(wordParts[0]);
+            if (complex) {
+                return complex + wordParts[1];
+            }
+
+            return regularPlural(wordParts[0]) + wordParts[1];
         }
     
         /**
