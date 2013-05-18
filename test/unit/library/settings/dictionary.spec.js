@@ -1,6 +1,6 @@
 define(
-    ['vendor/underscore'],
-    function(_) {
+    ['vendor/underscore', 'vendor/jquery'],
+    function(_, $) {
         var stubs, context, loaded = false;
 
         stubs = {
