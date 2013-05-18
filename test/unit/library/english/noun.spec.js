@@ -42,6 +42,10 @@ define(
                         expect(englishNoun.getPlural('day')).to.equal('days');
                         expect(englishNoun.getPlural('monkey')).to.equal('monkeys');
 
+                        expect(englishNoun.getPlural('quiz')).to.equal('quizzes');
+
+                        expect(englishNoun.getPlural('brief')).to.equal('briefs');
+
                     });
                     it('should return irregular nouns', function(){
                         expect(englishNoun.getPlural('person')).to.equal('people');

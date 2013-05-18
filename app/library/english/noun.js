@@ -117,24 +117,25 @@ define(
          * @return {String}
          */
         function regularPlural(singular) {
-            var shortenedVerb, lastChar, prevLastChar;
-    
-            shortenedVerb = singular.substr(0, singular.length - 1);
-            lastChar = singular[singular.length-1];
-            prevLastChar = singular[singular.length-2];
+            var shortenedNoun, lastChar, prevLastChar;
 
-            if (englishHelper.checkConsonantEnding(shortenedVerb)) {
-                if (lastChar == 'y') {
-                    return shortenedVerb + 'ies';
-    
-                } else if (['o', 's'].indexOf(lastChar) > -1) {
+            shortenedNoun = singular.substr(0, singular.length - 1);
+            lastChar = singular[singular.length - 1];
+            prevLastChar = singular[singular.length - 2];
+
+            if (lastChar == 'y' && englishHelper.checkConsonantEnding(shortenedNoun)) {
+                return shortenedNoun + 'ies';
+
+            } else if (lastChar == 'z') {
+                return singular + 'zes';
+
+            } else if (['o', 's'].indexOf(lastChar) > -1) {
+                return singular + 'es';
+
+            } else if (lastChar == 'h') {
+                if (['c', 's'].indexOf(prevLastChar) > -1) {
                     return singular + 'es';
 
-                } else if (lastChar == 'h') {
-                    if (['c', 's'].indexOf(prevLastChar) > -1) {
-                        return singular + 'es';
-
-                    }
                 }
             }
     
