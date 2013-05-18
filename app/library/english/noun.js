@@ -2,10 +2,99 @@ define(
     ['helper/english'],
     function(englishHelper){
         /**
+         * From:
+         * http://www.english-zone.com/spelling/plurals.html
+         * http://wiki.answers.com/Q/What_are_words_that_have_an_f_that_does_not_change_to_a_v_when_pluralized
+         * http://en.wikipedia.org/wiki/English_plurals
          *
          * @type {Object} irregularNouns
          */
         var irregularNouns = {
+            // us -> i
+            alumnus: 'deer',
+            cactus: 'cacti',
+            focus: 'focuses',
+            fungus: 'fungi',
+            nucleus: 'nuclei',
+            radius: 'radii',
+            stimulus: 'stimuli',
+            // is -> es
+            axis: 'axes',
+            analysis: 'analyses',
+            basis: 'bases',
+            crisis: 'crises',
+            diagnosis: 'diagnoses',
+            ellipsis: 'ellipses',
+            hypothesis: 'hypotheses',
+            oasis: 'oases',
+            paralysis: 'paralyses',
+            parenthesis: 'parentheses',
+            synthesis: 'syntheses',
+            synopsis: 'synopses',
+            thesis: 'theses',
+            // ix -> ices
+            appendix: 'appendices',
+            index: 'indeces',
+            matrix: 'matrices',
+            // eau -> eaux
+            beau: 'beaux',
+            bureau: 'bureaux',
+            tableau: 'tableaux',
+            // *** -> en
+            child: 'children',
+            man: 'men',
+            ox: 'oxen',
+            woman: 'women',
+            // *** -> a
+            bacterium: 'bacteria',
+            corpus: 'corpora',
+            criterion: 'criteria',
+            curriculum: 'curricula',
+            datum: 'data',
+            genus: 'genera',
+            medium: 'media',
+            memorandum: 'memoranda',
+            phenomenon: 'phenomena',
+            stratum: 'strata',
+            // no changes
+            deer: 'deer',
+            means: 'means',
+            series: 'series',
+            sheep: 'sheep',
+            species: 'species',
+            // oo -> ee
+            foot: 'feet',
+            goose: 'geese',
+            tooth: 'teeth',
+            // oo -> ee
+            nebula: 'nebulae',
+            vertebra: 'vertebrae',
+            vita: 'vitae',
+            // o -> os
+            canto: 'cantos',
+            hetero: 'heteros',
+            photo: 'photos',
+            zero: 'zeros',
+            piano: 'pianos',
+            portico: 'porticos',
+            pro: 'pros',
+            quarto: 'quartos',
+            kimono: 'kimonos',
+            // f/fe -> ves
+            calf: 'calves',
+            elf: 'elves',
+            half: 'halves',
+            knife: 'knives',
+            leaf: 'leaves',
+            life: 'lives',
+            loaf: 'loaves',
+            self: 'selves',
+            sheaf: 'sheaves',
+            shelf: 'shelves',
+            thief: 'thieves',
+            wife: 'wives',
+            wolf: 'wolves',
+            // random irregular words
             person: 'people'
         };
     
@@ -28,20 +117,39 @@ define(
          * @return {String}
          */
         function regularPlural(singular) {
-            var shortenedVerb;
+            var shortenedVerb, lastChar, prevLastChar;
     
             shortenedVerb = singular.substr(0, singular.length - 1);
+            lastChar = singular[singular.length-1];
+            prevLastChar = singular[singular.length-2];
+
             if (englishHelper.checkConsonantEnding(shortenedVerb)) {
-                if (singular[singular.length-1] == 'y') {
+                if (lastChar == 'y') {
                     return shortenedVerb + 'ies';
     
-                } else if (singular[singular.length-1] == 'o') {
+                } else if (['o', 's'].indexOf(lastChar) > -1) {
                     return singular + 'es';
-    
+
+                } else if (lastChar == 'h') {
+                    if (['c', 's'].indexOf(prevLastChar) > -1) {
+                        return singular + 'es';
+
+                    }
                 }
             }
     
             return singular + 's';
+        }
+
+        function separateWordParts(singular) {
+            var wordParts = [singular, ''];
+
+            if (singular.indexOf('(') > -1) {
+                wordParts[0] = singular.substr(0, singular.indexOf('(') - 1);
+                wordParts[1] = singular.substr(singular.indexOf('(') - 1);
+            }
+
+            return wordParts;
         }
     
         /**
@@ -50,15 +158,17 @@ define(
          * @return {String}
          */
         function getPlural(singular) {
-            var word;
+            var irregular, wordParts;
+
+            wordParts = separateWordParts(singular);
+
+            irregular = irregularPlural(wordParts[0]);
     
-            word = irregularPlural(singular);
-    
-            if (!word) {
-                return regularPlural(singular);
+            if (!irregular) {
+                return regularPlural(wordParts[0]) + wordParts[1];
             }
     
-            return word;
+            return irregular + wordParts[1];
         }
     
         /**
