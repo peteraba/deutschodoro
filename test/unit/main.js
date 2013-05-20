@@ -13,6 +13,7 @@ require([
     'unit/helper/word.spec',
     'unit/helper/english.spec',
     'unit/helper/german.spec',
+    'unit/german/adjective.spec',
     'unit/german/noun.spec',
     'unit/german/verb.spec',
     'unit/english/noun.spec',
