@@ -20,10 +20,18 @@ define(
             words = [];
         }
 
+        /**
+         *
+         * @returns {Number}
+         */
         function getRandom() {
             return null===useRandom ? _.random(100) : useRandom;
         }
 
+        /**
+         *
+         * @param {Number} random
+         */
         function setRandom(random) {
             useRandom = random;
         }

@@ -174,7 +174,7 @@ define(
         function showErrorReportBtn() {
             var errorReportBtn;
 
-            errorReportBtn = dom.get('<a id="report" href="">Report a problem</a>')
+            errorReportBtn = dom.get('<button class="alert" id="report" href="">Report</button>')
                 .attr('href', 'https://groups.google.com/forum/#!forum/deutschodoro')
                 .click(newWindow);
 

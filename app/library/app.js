@@ -162,13 +162,13 @@ define(
                 hashes.push(word.hash);
             });
 
-            answer.addClass('failure');
+            answer.closest('label, .label').addClass('failure');
 
             rightAnswer = currentGame.getAnswer();
             for (i = 0; i < radioBtns.length; i++) {
                 span = dom.get('span', radioBtns.eq(i).parent());
                 if (span.text() == rightAnswer) {
-                    span.addClass('rightAnswer');
+                    span.closest('label, .label').addClass('rightAnswer');
                     break;
                 }
             }
@@ -191,7 +191,7 @@ define(
                 hashes.push(word.hash);
             });
 
-            answer.addClass('success');
+            answer.closest('label, .label').addClass('success');
 
             stat.saveResult(hashes, true);
 
