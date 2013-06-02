@@ -5,10 +5,11 @@ define(
 
         stubs = {
             'base/gui': {
-                isReady: sinon.stub().returns(true),
-                displayGame: sinon.stub(),
-                displayHelp: sinon.stub(),
-                updateStats: sinon.stub()
+                isReady: function(){return true;},
+                displayGame: function(){},
+                displayHelp: function(){},
+                updateStats: function(){},
+                addRaters: function(){}
             },
             'base/games': {
                 getAllGames: function() {

@@ -28,6 +28,52 @@ define(
             }
         }
 
+        function addRaters() {
+            if (isReady()) {
+                dom.getCached('#center').append(getRaters());
+            }
+        }
+
+        function getRaters() {
+            var html, raters;
+
+            html = [
+                '<div class="raters">',
+                '<p>Rate this word!</p>',
+                '<ul>',
+                '<li><button class="alert">1</button></li>',
+                '<li><button class="alert">2</button></li>',
+                '<li><button class="alert">3</button></li>',
+                '<li><button class="alert">4</button></li>',
+                '<li><button class="alert">5</button></li>',
+                '<li><button class="alert">6</button></li>',
+                '<li><button class="alert">7</button></li>',
+                '<li><button class="alert">8</button></li>',
+                '<li><button class="alert">9</button></li>',
+                '</ul>',
+                '</div>'
+            ];
+
+            raters = $(html.join(''));
+            $('button', raters).click(function(e){
+                var $this = $(this), ul, p, div;
+
+                e.preventDefault();
+
+                ul  = $this.closest('ul');
+                p   = ul.prev();
+                div = ul.parent();
+
+                ul.fadeOut();
+                p.text('Thank you!');
+                setTimeout(function(){
+                    div.fadeOut('normal', function(){ div.remove(); });
+                }, 2000);
+            });
+
+            return raters;
+        }
+
         function newWindow(e){
             var url = dom.get(this).attr('href');
 
@@ -191,6 +237,7 @@ define(
         return {
             isReady: isReady,
             displayGame: displayGame,
+            addRaters: addRaters,
             displayHelp: displayHelp,
             displayPage: displayPage,
             showErrorReportBtn: showErrorReportBtn,
