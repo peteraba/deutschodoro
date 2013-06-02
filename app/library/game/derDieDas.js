@@ -1,7 +1,7 @@
 define(
     ['base/wordFinder', 'vendor/underscore'],
     function(wordFinder, _){
-        var pickedWord = null, importance = 100, minLevel = 1, maxLevel = 10;
+        var pickedWord = null, importance = 100, minLevel = 1, maxLevel = 10, hash = null;;
 
         function clear() {
             pickedWord = null;
@@ -15,6 +15,8 @@ define(
             clear();
 
             pickedWord = wordFinder.getWord({type:"noun", plural:'!–'}, minLevel, maxLevel);
+
+            hash = pickedWord.hash;
 
             return pickedWord!==false;
         }
@@ -133,6 +135,14 @@ define(
             return maxLevel;
         }
 
+        /**
+         *
+         * @returns {String}
+         */
+        function getHash() {
+            return hash;
+        }
+
         return {
             create: create,
             getHtml: getHtml,
@@ -143,7 +153,8 @@ define(
             getImportance: getImportance,
             setImportance: setImportance,
             setMinLevel: setMinLevel,
-            setMaxLevel: setMaxLevel
+            setMaxLevel: setMaxLevel,
+            getHash: getHash
         };
     }
 );

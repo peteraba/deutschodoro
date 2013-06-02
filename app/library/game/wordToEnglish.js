@@ -11,7 +11,8 @@ define(
             , importance = 100
             , minLevel = 1
             , maxLevel = 1
-            , useRandom = null;
+            , useRandom = null
+            , hash = null;
 
         function clear() {
             question = '';
@@ -47,8 +48,9 @@ define(
 
             pickedWord = wordFinder.getWord({}, minLevel, maxLevel);
 
-            type = _.isArray(pickedWord.type) ? pickedWord.type[0] : pickedWord.type;
+            type    = _.isArray(pickedWord.type) ? pickedWord.type[0] : pickedWord.type;
             english = _.isArray(pickedWord.english) ? pickedWord.english[0] : pickedWord.english;
+            hash    = pickedWord.hash;
 
             word2 = wordFinder.getRandomWord({type: type}, [pickedWord.german], minLevel, maxLevel);
             word3 = wordFinder.getRandomWord({type: type}, [pickedWord.german, word2.german], minLevel, maxLevel);
@@ -232,6 +234,14 @@ define(
             return maxLevel;
         }
 
+        /**
+         *
+         * @returns {String}
+         */
+        function getHash() {
+            return hash;
+        }
+
         return {
             create: create,
             getHtml: getHtml,
@@ -243,7 +253,8 @@ define(
             setImportance: setImportance,
             setMinLevel: setMinLevel,
             setMaxLevel: setMaxLevel,
-            setRandom: setRandom
+            setRandom: setRandom,
+            getHash: getHash
         };
     }
 );

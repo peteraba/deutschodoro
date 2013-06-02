@@ -20,6 +20,9 @@ define(
                 getWindow: function(){
                     return $stub;
                 }
+            },
+            'helper/ajax': {
+                vote: function(){}
             }
         };
 

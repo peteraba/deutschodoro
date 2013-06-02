@@ -8,7 +8,8 @@ define(
             , GERMAN_PLURAL_PREFIX = 'die '
             , importance = 100
             , minLevel = 1
-            , maxLevel = 1;
+            , maxLevel = 1
+            , hash = null;
 
         function clear() {
             pickedWord = null;
@@ -30,7 +31,7 @@ define(
             words.push(germanNoun.getPluralWrongPlural(pickedWord.german, words));
             words.push(germanNoun.getPluralWrongPlural(pickedWord.german, words));
 
-            answer = GERMAN_PLURAL_PREFIX + answer;
+            answer   = GERMAN_PLURAL_PREFIX + answer;
             words[0] = GERMAN_PLURAL_PREFIX + words[0];
             words[1] = GERMAN_PLURAL_PREFIX + words[1];
             words[2] = GERMAN_PLURAL_PREFIX + words[2];
@@ -38,6 +39,7 @@ define(
             words = _.shuffle(words);
 
             question = pickedWord.article + ' ' + pickedWord.german;
+            hash     = pickedWord.hash;
 
             return pickedWord!==false;
         }
@@ -159,17 +161,27 @@ define(
             return maxLevel;
         }
 
+        /**
+         *
+         * @returns {String}
+         */
+        function getHash() {
+            return hash;
+        }
+
         return {
             create: create,
             getHtml: getHtml,
             checkResult: checkResult,
+            getHash: getHash,
             getUsedWords: getUsedWords,
             getHelp: getHelp,
             getAnswer: getAnswer,
             getImportance: getImportance,
             setImportance: setImportance,
             setMinLevel: setMinLevel,
-            setMaxLevel: setMaxLevel
+            setMaxLevel: setMaxLevel,
+            getHash: getHash
         };
     }
 );

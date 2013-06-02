@@ -19,7 +19,8 @@ define(
                             create: sinon.stub().returns(createResult),
                             getHtml: sinon.stub().returns('<h1>' + createResult + '</h1>'),
                             getHelp: sinon.stub(),
-                            getUsedWords: sinon.stub()
+                            getUsedWords: sinon.stub(),
+                            getHash: sinon.stub()
                         }
                     }
                 },
@@ -27,10 +28,11 @@ define(
                     return {
                         game1: {
                             getImportance: sinon.stub().returns(100),
-                                create: sinon.stub().returns(createResult),
-                                getHtml: sinon.stub().returns('<h1>' + createResult + '</h1>'),
-                                getHelp: sinon.stub(),
-                                getUsedWords: sinon.stub()
+                            create: sinon.stub().returns(createResult),
+                            getHtml: sinon.stub().returns('<h1>' + createResult + '</h1>'),
+                            getHelp: sinon.stub(),
+                            getUsedWords: sinon.stub(),
+                            getHash: sinon.stub()
                         }
                     }
                 }

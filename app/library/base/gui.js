@@ -1,6 +1,6 @@
 define(
-    ['helper/dom'],
-    function(dom){
+    ['helper/dom', 'helper/ajax'],
+    function(dom, ajaxHelper){
         var ready = false,
             $doc = dom.getDocument(),
             $window = dom.getWindow(),
@@ -28,14 +28,24 @@ define(
             }
         }
 
-        function addRaters() {
+        function addRaters(hash) {
             if (isReady()) {
-                dom.getCached('#center').append(getRaters());
+                dom.getCached('#center').append(getRaters(hash));
             }
         }
 
-        function getRaters() {
-            var html, raters;
+        function getRaters(hash) {
+            var raters;
+
+            raters = $(getRatersHtml());
+
+            setupRaters(raters, hash);
+
+            return raters;
+        }
+
+        function getRatersHtml() {
+            var html;
 
             html = [
                 '<div class="raters">',
@@ -54,11 +64,16 @@ define(
                 '</div>'
             ];
 
-            raters = $(html.join(''));
+            return html.join('');
+        }
+
+        function setupRaters(raters, hash) {
             $('button', raters).click(function(e){
                 var $this = $(this), ul, p, div;
 
                 e.preventDefault();
+
+                ajaxHelper.vote(hash, vote);
 
                 ul  = $this.closest('ul');
                 p   = ul.prev();
@@ -70,8 +85,6 @@ define(
                     div.fadeOut('normal', function(){ div.remove(); });
                 }, 2000);
             });
-
-            return raters;
         }
 
         function newWindow(e){

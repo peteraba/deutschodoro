@@ -121,7 +121,7 @@ define(
 
             timer.start('game.display');
             gui.displayGame(html);
-            gui.addRaters();
+            gui.addRaters(game.getHash());
             gui.displayHelp(game.getHelp(), game.getUsedWords());
             timer.end('game.display');
         }
