@@ -4,7 +4,7 @@ define(
         var ready = false,
             $doc = dom.getDocument(),
             $window = dom.getWindow(),
-            eastPanes = ['#help', '#stat'];
+            eastPanes = ['#help', '#stat', '#rateHelp'];
 
         function init(){
             dom.get('#helpToggler').click(function() {
@@ -13,7 +13,27 @@ define(
             dom.get('#statToggler').click(function() {
                 toggle(eastPanes, 1);
             });
+            dom.get('#gui').delegate('.rateHelp', 'click', function(event) {
+                event.preventDefault();
+
+                toggle(eastPanes, 2);
+            });
             dom.get('#feedback, #south .deutschodoro-link a').click(newWindow);
+
+            dom.get('#rateHelp').html(
+                [
+                '<h2>Help for rating words:</h2>',
+                '<p>1. apple, mother, to sit, red</p>',
+                '<p>2. post office, cuisine, to use, tall</p>',
+                '<p>3. friendship, judge, to require, scary</p>',
+                '<p>4. corkscrew, chimneysweep, to pray, impressive</p>',
+                '<p>5. exhaust pipe, coroner, to depict, coarse</p>',
+                '<p>6. pelmet, mortgage, to to oblige, scruffy</p>',
+                '<p>7. pre-highschool level terminology, secondary synonyms</p>',
+                '<p>8. highschool level terminology, rare words</p>',
+                '<p>9. university level words</p>',
+                ].join('')
+            );
 
             ready = true;
         }
@@ -49,7 +69,7 @@ define(
 
             html = [
                 '<div class="raters">',
-                '<p>Rate this word!</p>',
+                '<p>What level this word belongs to? (<a href="#" class="rateHelp">Help</a>)</p>',
                 '<ul>',
                 '<li><button class="alert">1</button></li>',
                 '<li><button class="alert">2</button></li>',
