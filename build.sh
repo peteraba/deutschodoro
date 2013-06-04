@@ -45,8 +45,10 @@ function buildChromeExtensionZip {
 }
 
 function gitTag {
+    git add -u
     git commit -m 'version $1'
     git tag -a v$1 -m 'version $1'
+    git push
     echo "Git tag created"
 }
 
