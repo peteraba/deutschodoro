@@ -1,7 +1,7 @@
 define(
     ['vendor/jquery'],
     function($){
-        var site = 'http://b.deutschodoro.com/';
+        var site = 'http://b.deutschodoro.com';
 
         function setSite(newSite) {
             site = newSite;
