@@ -59,9 +59,9 @@ while test $# -gt 0; do
     case "$1" in
         -tag)
             shift
-            doTag=1
-            newVersion=$1
             doRebuild=1
+            newVersion=$1
+            doTag=1
             shift
             ;;
         -rebuild)
