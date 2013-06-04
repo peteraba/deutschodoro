@@ -73,7 +73,7 @@ define(
 
                 e.preventDefault();
 
-                ajaxHelper.vote(hash, vote);
+                ajaxHelper.vote(hash, $this.text());
 
                 ul  = $this.closest('ul');
                 p   = ul.prev();
