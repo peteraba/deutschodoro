@@ -8,7 +8,7 @@ define(
         }
 
         function vote(hash, vote) {
-            $.post(site + '/vote', {word: hash, vote: vote});
+            $.get(site + '/vote', {word: hash, vote: vote});
         }
 
         return {
