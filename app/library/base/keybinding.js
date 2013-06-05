@@ -10,6 +10,8 @@ define(
         function guiKeybinding(event) {
             var key = String.fromCharCode(event.which);
 
+            console.log(key, event.which);
+
             switch (key) {
                 case '1':
                 case 'a':
@@ -26,6 +28,10 @@ define(
                 case '"':
                     dom.get('input', dom.get('#answerOptions li').eq(2)).click();
                     break;
+                default:
+                    if (event.which == 13) {
+                        dom.get('#submit').click();
+                    }
             }
         }
 
