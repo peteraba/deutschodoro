@@ -20,10 +20,7 @@ define(
         }
 
         function isReady(){
-            if (gui.isReady()) {
-                return true;
-            }
-            return false;
+            return gui.isReady();
         }
 
         return {
