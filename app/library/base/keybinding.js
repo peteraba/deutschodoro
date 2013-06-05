@@ -10,8 +10,6 @@ define(
         function guiKeybinding(event) {
             var key = String.fromCharCode(event.which);
 
-            console.log(key, event.which);
-
             switch (key) {
                 case '1':
                 case 'a':
