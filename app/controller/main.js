@@ -8,7 +8,7 @@ define(
             } else {
                 app.run();
 
-                if (typeof chrome != 'undefined' && typeof chrome.alarm != 'undefined') {
+                if (typeof chrome == 'undefined' || typeof chrome.alarm == 'undefined') {
                     websiteFix();
                 }
             }
