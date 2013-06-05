@@ -77,7 +77,7 @@ define(
 
             html.push('<h1>Pluralize</h1>');
             html.push('<p>What is the plural of `' + question + '`?</p>');
-            html.push('<ul class="options">');
+            html.push('<ul class="options" id="answerOptions">');
             html.push(html2.join(''));
             html.push('</ul>');
             html.push('<p><button id="submit">Submit</button></p>');

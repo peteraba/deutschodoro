@@ -1,5 +1,15 @@
 define(
-    ['base/gui', 'base/games', 'base/stat', 'base/timer', 'base/dictionary', 'base/logger', 'helper/dom', 'vendor/underscore'],
+    [
+        'base/gui',
+        'base/games',
+        'base/stat',
+        'base/timer',
+        'base/dictionary',
+        'base/logger',
+        'helper/dom',
+        'vendor/underscore',
+        'base/keybinding'
+    ],
     function(gui, games, stat, timer, dictionary, logger, dom, _){
         var importanceList, currentGame, currentAnswer, canReRun = false, enabledGames;
 
@@ -135,7 +145,7 @@ define(
 
             event.preventDefault();
 
-            radioBtns = dom.get('.options input');
+            radioBtns = dom.get('#answerOptions input');
             answer = dom.get('span', radioBtns.filter(':checked').parent());
             currentAnswer = answer;
 

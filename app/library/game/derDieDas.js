@@ -30,7 +30,7 @@ define(
 
             html.push('<h1>Der, die, das</h1>');
             html.push('<p>What is the article of `' + pickedWord.german + '`?</p>');
-            html.push('<ul class="options">');
+            html.push('<ul class="options" id="answerOptions">');
 
             html.push('<li>');
             html.push('<label for="der">');

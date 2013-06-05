@@ -141,7 +141,7 @@ define(
 
             html.push('<h1>Word to German</h1>');
             html.push('<p>What is the translation of `' + question + '`?</p>');
-            html.push('<ul class="options">');
+            html.push('<ul class="options" id="answerOptions">');
             html.push(html2.join(''));
             html.push('</ul>');
             html.push('<p><button id="submit">Submit</button></p>');

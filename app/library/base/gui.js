@@ -22,16 +22,16 @@ define(
 
             dom.get('#rateHelp').html(
                 [
-                '<h2>Help for rating words:</h2>',
-                '<p>1. apple, mother, to sit, red</p>',
-                '<p>2. post office, cuisine, to use, tall</p>',
-                '<p>3. friendship, judge, to require, scary</p>',
-                '<p>4. corkscrew, chimneysweep, to pray, impressive</p>',
-                '<p>5. exhaust pipe, coroner, to depict, coarse</p>',
-                '<p>6. pelmet, mortgage, to to oblige, scruffy</p>',
-                '<p>7. pre-highschool level terminology, secondary synonyms</p>',
-                '<p>8. highschool level terminology, rare words</p>',
-                '<p>9. university level words</p>',
+                    '<h2>Help for rating words:</h2>',
+                    '<p>1. apple, mother, to sit, red</p>',
+                    '<p>2. post office, cuisine, to use, tall</p>',
+                    '<p>3. friendship, judge, to require, scary</p>',
+                    '<p>4. corkscrew, chimneysweep, to pray, impressive</p>',
+                    '<p>5. exhaust pipe, coroner, to depict, coarse</p>',
+                    '<p>6. pelmet, mortgage, to to oblige, scruffy</p>',
+                    '<p>7. pre-highschool level terminology, secondary synonyms</p>',
+                    '<p>8. highschool level terminology, rare words</p>',
+                    '<p>9. university level words</p>'
                 ].join('')
             );
 
