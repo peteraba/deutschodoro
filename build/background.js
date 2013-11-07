@@ -1,5 +1,5 @@
 (function(){
-    chrome.alarms.create('check', {periodInMinutes: 0.1});
+    chrome.alarms.create('check', {periodInMinutes: 1});
 
     chrome.alarms.onAlarm.addListener(function() {
         var breakInMinutes, workInMinutes;
